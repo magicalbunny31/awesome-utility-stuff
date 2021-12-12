@@ -16,9 +16,9 @@
       }
    },
    "files": [
-      "./dist",
-      "./src",
-      "./types"
+      "dist",
+      "src",
+      "types"
    ],
    "repository": {
       "type": "git",
