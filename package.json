@@ -6,15 +6,9 @@
       "test-cjs": "node ./test/index.cjs",
       "test-esm": "node ./test/index.mjs"
    },
-   "main": "./dist/cjs/index.js",
-   "module": "./dist/esm/index.js",
-   "types": "./types/index.d.ts",
-   "exports": {
-      ".": {
-         "require": "./dist/cjs/index.js",
-         "import": "./dist/esm/index.js"
-      }
-   },
+   "main": "dist/cjs/index.js",
+   "module": "dist/esm/index.js",
+   "types": "types/index.d.ts",
    "files": [
       "dist",
       "src",
