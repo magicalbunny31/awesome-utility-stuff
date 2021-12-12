@@ -23,5 +23,8 @@
    "bugs": {
       "url": "https://github.com/magicalbunny31/awesome-utility-stuff/issues"
    },
-   "homepage": "https://github.com/magicalbunny31/awesome-utility-stuff#readme"
+   "homepage": "https://github.com/magicalbunny31/awesome-utility-stuff#readme",
+   "dependencies": {
+      "discord.js": "^13.3.1"
+   }
 }
