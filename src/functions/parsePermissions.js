@@ -1,9 +1,9 @@
 /**
- * formats a permission to a readable string
- * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
- * @param {import("discord.js/typings").PermissionString} permissionString permission to format
+ * formats a permission to a readable string 📝
+ * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags 🔗
+ * @param {import("discord.js/typings").PermissionString} permissionString permission to format 🗨️
  * @example parsePermissions("BAN_MEMBERS"); // ban members 🚫
- * @returns a string of a permission that has been formatted
+ * @returns {string} a string of a permission that has been formatted 📄
  */
 module.exports = permissionString => {
    const permissions = {

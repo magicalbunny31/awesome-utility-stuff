@@ -1,6 +1,6 @@
 /**
- * a bunch of emojis used for my projects
- * @returns {string} an emoji in the format <a:name:id> or <:name:id>
+ * a bunch of emojis used for my projects 🦊
+ * @returns {string} an emoji in the format <a:name:id> or <:name:id> 🗨️
  */
 module.exports = {
    "bun":          "<:bun:898586051994615879>",

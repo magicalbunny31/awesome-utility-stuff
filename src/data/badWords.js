@@ -5,7 +5,7 @@
  *
  * whatcha gunna do when they cum for you
  *
- * @returns {string[]} list of *bad* words hehe
+ * @returns {string[]} list of *bad* words hehe 📜
  */
 module.exports = [
    "anal",

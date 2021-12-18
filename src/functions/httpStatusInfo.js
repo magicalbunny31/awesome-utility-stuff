@@ -1,10 +1,11 @@
 /**
- * covers info on (about) all erroneous status codes
- * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
- * @param {StatusCode} statusCode status code
- * @returns {StatusInfo} status info
+ * covers info on (about) all erroneous status codes 📋
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Status 🔗
+ * @param {string} api name of the api 🦊
+ * @param {import("../../types/index").StatusCode} statusCode status code #️⃣
+ * @returns {import("../../types/index").StatusInfo} status info 🗨️
  */
-module.exports = statusCode => {
+module.exports = (api, statusCode) => {
    const statusCodes = {
       400: {
          code: 400,
