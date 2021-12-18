@@ -40,6 +40,10 @@ module.exports = {
    "category_channel": "<a:category_channel:916395583663669318>",
    "rules_channel":    "<a:rules_channel:916395583663669319>",
 
+   "shield": "<a:shield:921777486172405823>",
+   "person": "<a:person:921777485463572490>",
+   "people": "<a:people:921777485492936804>",
+
    "server_booster": "<a:server_booster:915296177799442442>",
    "wumpus_nitro":   "<a:wumpus_nitro:915297825384972288>",
 
