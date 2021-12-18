@@ -8,7 +8,7 @@ that's it
 
 **dependencies require [Node.js](https://nodejs.org "https://nodejs.org 🔗") >16.6.0 installed!**
 
-you can then install this repository via npm~
+you can then install this repository via [npm](https://www.npmjs.com "https://www.npmjs.com 🔗")~
 
 ```sh
 npm install github:magicalbunny31/awesome-utility-stuff
