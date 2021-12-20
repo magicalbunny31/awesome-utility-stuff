@@ -5,6 +5,8 @@
  * @returns {any} an element of that array 📄
  */
 module.exports = (array, choices) => {
-   if (choices) return array.sort(() => .5 - Math.random()).slice(0, choices); // get n random choices
+   const { shuffle } = require("../../");
+
+   if (choices) return shuffle(array).slice(0, choices); // get n random choices
    else return  array[Math.floor(Math.random() * array.length)]; // get 1 random choice
 };
