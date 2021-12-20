@@ -8,5 +8,5 @@ module.exports = (array, choices) => {
    const { shuffle } = require("../../");
 
    if (choices) return shuffle(array).slice(0, choices); // get n random choices
-   else return  array[Math.floor(Math.random() * array.length)]; // get 1 random choice
+   else         return array[Math.floor(Math.random() * array.length)]; // get 1 random choice
 };
