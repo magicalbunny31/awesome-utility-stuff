@@ -110,6 +110,13 @@ export async function sendBotError(interaction: ApplicationCommandInteraction, d
 export function set(array: (string | number)[]): (string | number)[];
 
 /**
+ * shuffle an array 🔀
+ * @param array array to shuffle 📃
+ * @returns a shuffled version of the inputted array 📋
+ */
+export function shuffle(array: any[]): any[];
+
+/**
  * strips indents off a string 🔨
  * @param str string to strip indents off of 🗨️
  * @returns string with indents stripped 📄

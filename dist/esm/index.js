@@ -14,6 +14,7 @@ import number from "../../src/functions/number.js";
 import parsePermissions from "../../src/functions/parsePermissions.js";
 import sendBotError from "../../src/functions/sendBotError.js";
 import set from "../../src/functions/set.js";
+import shuffle from "../../src/functions/shuffle.js";
 import strip from "../../src/functions/strip.js";
 import sum from "../../src/functions/sum.js";
 import wait from "../../src/functions/wait.js";
@@ -36,6 +37,7 @@ export {
    parsePermissions,
    sendBotError,
    set,
+   shuffle,
    strip,
    sum,
    wait
