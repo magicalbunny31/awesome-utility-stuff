@@ -297,10 +297,22 @@ module.exports = async (interaction, data) => {
 
 
    try {
-      if ([ `interaction`, `api` ].includes(type))
-         await sendUserError(); // this *could* have a chance of throwing an error (user deleting message, guild deleted..)
+      try {
+         // attempt to defer the reply ephemerally, if not then assume the interaction has been replied to already
+         await interaction.deferReply({
+            ephemeral: true
+         });
 
-      throw noop; // throw to catch
+      } catch {
+         noop;
+
+      } finally {
+         if ([ `interaction`, `api` ].includes(type))
+            await sendUserError(); // this *could* have a chance of throwing an error (user deleting message, guild deleted..)
+
+         throw noop; // throw to catch
+      };
+
 
    } catch {
       await sendServerError();
