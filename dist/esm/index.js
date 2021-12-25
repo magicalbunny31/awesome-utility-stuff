@@ -12,6 +12,7 @@ import formatPermission from "../../src/functions/formatPermission.js";
 import httpStatusInfo from "../../src/functions/httpStatusInfo.js";
 import noop from "../../src/functions/noop.js";
 import number from "../../src/functions/number.js";
+import partition from "../../src/functions/partition.js";
 import sendBotError from "../../src/functions/sendBotError.js";
 import set from "../../src/functions/set.js";
 import shuffle from "../../src/functions/shuffle.js";
@@ -35,6 +36,7 @@ export {
    httpStatusInfo,
    noop,
    number,
+   partition,
    sendBotError,
    set,
    shuffle,

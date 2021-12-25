@@ -97,6 +97,15 @@ export function noop(): void;
 export function number(min: number, max: number): number;
 
 /**
+ * similar to Array.filter(), except elements that don't pass the condition are returned too 🔁
+ * @param array array to partition 📃
+ * @param condition condition to evaluate for each element ❓
+ * @example partition([ 1, 3, 5, 7, 9 ], num => num < 5); // [[ 1, 3 ], [ 5, 7, 9 ]]
+ * @returns Array[0]: pass; Array[1]: fail - try destructuring them! 📄
+ */
+export function partition(array: any[], condition: (value: any, index: number, array: any[]) => value is any): [ any[], any[] ];
+
+/**
  * send an error response ❗
  * @param interaction interaction to edit 🗨️
  * @param data data to send for this error 📋

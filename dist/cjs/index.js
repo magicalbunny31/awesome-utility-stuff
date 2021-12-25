@@ -12,6 +12,7 @@ const formatPermission = require("../../src/functions/formatPermission.js");
 const httpStatusInfo = require("../../src/functions/httpStatusInfo.js");
 const noop = require("../../src/functions/noop.js");
 const number = require("../../src/functions/number.js");
+const partition = require("../../src/functions/partition.js");
 const sendBotError = require("../../src/functions/sendBotError.js");
 const set = require("../../src/functions/set.js");
 const shuffle = require("../../src/functions/shuffle.js");
@@ -35,6 +36,7 @@ module.exports = {
    httpStatusInfo,
    noop,
    number,
+   partition,
    sendBotError,
    set,
    shuffle,
