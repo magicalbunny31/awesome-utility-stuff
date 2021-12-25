@@ -114,6 +114,9 @@ module.exports = {
    "globe":        "<:globe:901948628015415346>",
    "bar_chart":    "<:bar_chart:910679360460165130>",
 
+   "credit_card": "<:credit_card:924394512065892412>",
+   "moneybag":    "<:moneybag:924394645419618344>",
+
 
    "awoo":        [ "<:awoo:704359905502560257>", "<:awoo:809131060930936933>" ],
    "furdancing":  "<a:furdancing:699524108203065416>",
