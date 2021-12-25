@@ -8,10 +8,10 @@ const emojis = require("../../src/data/emojis.js");
 
 // functions
 const choice = require("../../src/functions/choice.js");
+const formatPermission = require("../../src/functions/formatPermission.js");
 const httpStatusInfo = require("../../src/functions/httpStatusInfo.js");
 const noop = require("../../src/functions/noop.js");
 const number = require("../../src/functions/number.js");
-const parsePermissions = require("../../src/functions/parsePermissions.js");
 const sendBotError = require("../../src/functions/sendBotError.js");
 const set = require("../../src/functions/set.js");
 const shuffle = require("../../src/functions/shuffle.js");
@@ -31,10 +31,10 @@ module.exports = {
 
    // functions
    choice,
+   formatPermission,
    httpStatusInfo,
    noop,
    number,
-   parsePermissions,
    sendBotError,
    set,
    shuffle,

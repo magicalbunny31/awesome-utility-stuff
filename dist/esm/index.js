@@ -8,10 +8,10 @@ import emojis from "../../src/data/emojis.js";
 
 // functions
 import choice from "../../src/functions/choice.js";
+import formatPermission from "../../src/functions/formatPermission.js";
 import httpStatusInfo from "../../src/functions/httpStatusInfo.js";
 import noop from "../../src/functions/noop.js";
 import number from "../../src/functions/number.js";
-import parsePermissions from "../../src/functions/parsePermissions.js";
 import sendBotError from "../../src/functions/sendBotError.js";
 import set from "../../src/functions/set.js";
 import shuffle from "../../src/functions/shuffle.js";
@@ -31,10 +31,10 @@ export {
 
    // functions
    choice,
+   formatPermission,
    httpStatusInfo,
    noop,
    number,
-   parsePermissions,
    sendBotError,
    set,
    shuffle,

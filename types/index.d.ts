@@ -65,6 +65,15 @@ export function choice(array: any[]): any
 export function choice(array: any[], choices: number): any[]
 
 /**
+ * formats a permission to a readable string
+ * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
+ * @param permissionString permission to format
+ * @example formatPermission("BAN_MEMBERS"); // ban members 🚫
+ * @returns a string of a permission that has been formatted
+ */
+export function formatPermission(permissionString: import("discord.js/typings").PermissionString): typeof import("discord.js/typings").PermissionString;
+
+/**
  * covers info on (about) all erroneous status codes 📋
  * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Status 🔗
  * @param api of the api 🦊
@@ -86,15 +95,6 @@ export function noop(): void;
  * @param max maximum number to generate 🔢
  */
 export function number(min: number, max: number): number;
-
-/**
- * formats a permission to a readable string
- * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
- * @param permissionString permission to format
- * @example parsePermissions("BAN_MEMBERS"); // ban members 🚫
- * @returns a string of a permission that has been formatted
- */
-export function parsePermissions(permissionString: import("discord.js/typings").PermissionString): typeof import("discord.js/typings").PermissionString;
 
 /**
  * send an error response ❗
