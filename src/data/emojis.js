@@ -84,12 +84,14 @@ module.exports = {
    "bust_in_silhouette": "<:bust_in_silhouette:809138642089279498>",
    "2_busts_in_silhouette": "<:2_busts_in_silhouette:893204706371993681>",
 
-   "red_question_mark":  "<:red_question_mark:886044896664895508>",
-   "hash_char":          "<:hash_char:889290260952006707>",
-   "special_characters": "<:special_characters:889290261161734154>",
+   "red_question_mark":     "<:red_question_mark:886044896664895508>",
+   "hash_char":             "<:hash_char:889290260952006707>",
+   "special_characters":    "<:special_characters:889290261161734154>",
+   "magnifying_glass_left": "<:magnifying_glass_left:924388808244486254>",
 
    "speaker_medium_volume": "<:speaker_medium_volume:861636339219824660>",
    "speaker_muted":         "<:speaker_muted:886043910823104532>",
+   "camcorder":             "<:camcorder:924387366225981510>",
    "thought_bubble":        "<:thought_bubble:886043910563061801>",
    "spiky_speech_bubble":   "<:spiky_speech_bubble:886043910818918430>",
    "zzz":                   "<:zzz:916715613601275955>",
@@ -100,6 +102,7 @@ module.exports = {
    "envelope_with_arrow":         "<:envelope_with_arrow:846798115184705566>",
    "closed_mailbox":              "<:closed_mailbox:846798115003564092>",
    "closed_mailbox_with_no_mail": "<:closed_mailbox_with_no_mail:846798115172515860>",
+   "page":                        "<:page:924387090890911746>",
 
    "laptop":    "<:laptop:884098085754634280>",
    "phone":     "<:phone:864529940141441035>",
