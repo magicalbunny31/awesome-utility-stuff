@@ -117,6 +117,8 @@ module.exports = {
    "credit_card": "<:credit_card:924394512065892412>",
    "moneybag":    "<:moneybag:924394645419618344>",
 
+   "sparkles": "<:sparkles:924397913667416135>",
+
 
    "awoo":        [ "<:awoo:704359905502560257>", "<:awoo:809131060930936933>" ],
    "furdancing":  "<a:furdancing:699524108203065416>",
