@@ -1,5 +1,7 @@
 /**
  * a bunch of emojis used for my projects 🦊
+ *
+ * **note: some emojis are licensed and/or hold copyright to their respective owners** ❗
  * @returns {string} an emoji in the format <a:name:id> or <:name:id> 🗨️
  */
 module.exports = {
