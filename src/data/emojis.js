@@ -52,6 +52,22 @@ module.exports = {
    "partnered": "<:partnered:914993830867128320>",
    "verified":  "<:verified:914993831815049266>",
 
+   "HypeSquad_Bravery":    "<a:HypeSquad_Bravery:925138043386613810>",
+   "HypeSquad_Brilliance": "<a:HypeSquad_Brilliance:925138043281760318>",
+   "HypeSquad_Balance":    "<a:HypeSquad_Balance:925138043260776449>",
+
+   "Nitro_subscriber": "<a:Nitro_subscriber:925138043290136598>",
+   "Early_supporter":  "<a:Early_supporter:925138043420172370>",
+
+   "HypeSquad_events":             "<a:HypeSquad_events:925138043243987055>",
+   "Partnered_server_owner":       "<a:Partnered_server_owner:925138043076231179>",
+   "Early_verified_bot_developer": "<a:Early_verified_bot_developer:925138043403370527>",
+
+   "Discord_staff":               "<a:Discord_staff:925138043399209030>",
+   "Discord_certified_moderator": "<a:Discord_certified_moderator:925138043374039151>",
+   "Discord_bug_hunter_level_1":  "<a:Discord_bug_hunter_level_1:925138043399188540>",
+   "Discord_bug_hunter_level_2":  "<a:Discord_bug_hunter_level_2:925138172172701716>",
+
    "nodejs":    "<:nodejs:898724888993493063>",
    "npm":       "<:npm:898724889022832690>",
    "discordjs": "<:discordjs:898725765464608780>",
