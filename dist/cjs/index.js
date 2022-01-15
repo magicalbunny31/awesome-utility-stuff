@@ -18,6 +18,7 @@ const set = require("../../src/functions/set.js");
 const shuffle = require("../../src/functions/shuffle.js");
 const strip = require("../../src/functions/strip.js");
 const sum = require("../../src/functions/sum.js");
+const toRawEmoji = require("../../src/functions/toRawEmoji");
 const wait = require("../../src/functions/wait.js");
 
 
@@ -42,5 +43,6 @@ module.exports = {
    shuffle,
    strip,
    sum,
+   toRawEmoji,
    wait
 };

@@ -134,10 +134,17 @@ export function strip(str: string): string;
 
 /**
  * find the sum of an array of numbers 🔢
- * @param {number[]} array array of numbers 📃
- * @returns {number}
+ * @param array array of numbers 📃
  */
 export function sum(array: number[]): number;
+
+/**
+ * discord.js >13.4.x broke emojis in constructors, so here's a helper function! 🔁
+ * @see https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/util/Util.js#L293-L298
+ * @param emoji text emoji string to parse 🦊
+ * @returns an object that matches the discord api emoji format 📋
+ */
+export function toRawEmoji(emoji: string): { animated: boolean, name: string, id: string? }
 
 /**
  * pretty much "pauses" asynchronous code ⏱️

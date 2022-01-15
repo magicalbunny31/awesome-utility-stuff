@@ -18,6 +18,7 @@ import set from "../../src/functions/set.js";
 import shuffle from "../../src/functions/shuffle.js";
 import strip from "../../src/functions/strip.js";
 import sum from "../../src/functions/sum.js";
+import toRawEmoji from "../../src/functions/toRawEmoji.js";
 import wait from "../../src/functions/wait.js";
 
 
@@ -42,5 +43,6 @@ export {
    shuffle,
    strip,
    sum,
+   toRawEmoji,
    wait
 };
