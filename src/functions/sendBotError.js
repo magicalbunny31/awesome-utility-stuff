@@ -13,7 +13,7 @@
  * @param {import("../../types/index").ApplicationCommandInteraction} interaction interaction to edit 🗨️
  * @param {import("../../types/index").BotErrorInfoInteraction | import("../../types/index").BotErrorInfoAPI | import("../../types/index").BotErrorInfoError} data data to send for this error 📋
  */
-module.exports = async (interaction, data) => {
+ module.exports = async (interaction, data) => {
    const { type, colours, webhook: webhookData, prefix, botName, data: errorData } = data;
 
    const [ primary, secondary ] = colours;
@@ -181,7 +181,7 @@ module.exports = async (interaction, data) => {
                   ${suggestion}
 
                   ${choice(responses.owner)}
-                  > **id** › \`${interaction.id}\` ${emojis.furthinking}
+                  > **id** › \`${interaction?.id}\` ${emojis.furthinking}
                `,
                inline: false
             }]
@@ -203,8 +203,8 @@ module.exports = async (interaction, data) => {
                   }\`
                   » **type** › \`automated\`
 
-                  » **date** › ${Formatters.time(Math.round(interaction.createdTimestamp / 1000))}
-                  » **id** › \`${interaction.id}\`
+                  » **date** › ${Formatters.time(Math.round(interaction?.createdTimestamp || Date.now() / 1000))}
+                  ${[ `interaction`, `api` ].includes(type) ? `» **id** › \`${interaction.id}\`` : ``}
                `,
                inline: false
             }]
