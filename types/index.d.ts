@@ -3,15 +3,15 @@
 export class Statuses {
    /**
     * status utilities owo 🗨️
-    * @param statuses array of PresenceData 📋
+    * @param statuses array of ActivitiesOptions 📋
     */
    constructor(statuses: import("discord.js/typings").ActivitiesOptions[]);
 
    /**
     * get a random status ❓
-    * @returns PresenceData 📄
+    * @returns ActivitiesOptions 📄
     */
-   getStatus(): import("discord.js/typings").PresenceData;
+   getStatus(): import("discord.js/typings").ActivitiesOptions;
 };
 
 
