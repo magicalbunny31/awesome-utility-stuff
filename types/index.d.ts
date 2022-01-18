@@ -173,7 +173,7 @@ export type ApplicationCommandInteraction = import("discord.js").CommandInteract
 
 export interface BotErrorInfo {
    type: "interaction" | "api" | "error";
-   colours: [ string, string, string ];
+   colours: string[];
    webhook: {
       id: import("discord.js").Snowflake;
       token: string;
@@ -188,7 +188,7 @@ export interface BotErrorInfoInteraction extends Omit<BotErrorInfo, "type"> {
       interactionType: InteractionType;
       emoji: BotEmoji;
       commandName: string;
-      error: string;
+      error: string | Error;
    };
 };
 
@@ -207,7 +207,7 @@ export interface BotErrorInfoError extends Omit<BotErrorInfo, "type"> {
    type: "error";
    data: {
       origin: string;
-      error: string;
+      error: string | Error;
    };
 };
 
