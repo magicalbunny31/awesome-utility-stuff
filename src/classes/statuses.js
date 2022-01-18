@@ -1,7 +1,7 @@
 module.exports = class Statuses {
    /**
     * status utilities owo 🗨️
-    * @param {import("discord.js/typings").PresenceData[]} statuses array of PresenceData 📋
+    * @param {import("discord.js/typings").ActivitiesOptions[]} statuses array of ActivitiesOptions 📋
     */
    constructor(statuses) {
       this.statuses = statuses;
@@ -10,9 +10,10 @@ module.exports = class Statuses {
 
    /**
     * get a random status ❓
-    * @returns {import("discord.js/typings").PresenceData} PresenceData 📄
+    * @returns {import("discord.js/typings").ActivitiesOptions} ActivitiesOptions 📄
     */
    getStatus() {
-      return this.statuses[Math.floor(Math.random() * this.statuses.length)];
+      const { choice } = require("../../");
+      return choice(this.statuses);
    };
 };
