@@ -5,7 +5,7 @@ export class Statuses {
     * status utilities owo 🗨️
     * @param statuses array of PresenceData 📋
     */
-   constructor(statuses: import("discord.js/typings").PresenceData[]);
+   constructor(statuses: import("discord.js/typings").ActivitiesOptions[]);
 
    /**
     * get a random status ❓
