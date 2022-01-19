@@ -1,6 +1,6 @@
 /**
  * strips indents off a string 🔨
- * @param {string} str string to strip indents off of 🗨️
+ * @param {TemplateTag} str string to strip indents off of 🗨️
  * @returns {string} string with indents stripped 📄
  */
 const { stripIndents } = require("common-tags");

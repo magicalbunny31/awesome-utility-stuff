@@ -130,7 +130,7 @@ export function shuffle(array: any[]): any[];
  * @param str string to strip indents off of 🗨️
  * @returns string with indents stripped 📄
  */
-export function strip(str: string): string;
+export function strip(str: import("common-tags").TemplateTag): string;
 
 /**
  * find the sum of an array of numbers 🔢
