@@ -203,7 +203,7 @@ export interface BotErrorInfoAPI extends Omit<BotErrorInfo, "type"> {
    };
 };
 
-export interface BotErrorInfoError extends Omit<BotErrorInfo, "type"> {
+export interface BotErrorInfoError extends Omit<BotErrorInfo, "type" | "prefix"> {
    type: "error";
    data: {
       origin: string;
