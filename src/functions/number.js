@@ -1,6 +1,6 @@
 /**
  * get a random number! #️⃣
- * @param {number} min minimum number to generate (inclusive) 🔢
+ * @param {number} min minimum number to generate 🔢
  * @param {number} max maximum number to generate 🔢
  * @returns {number}
  */
