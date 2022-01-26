@@ -54,7 +54,7 @@ export const emojis: typeof import("../src/data/emojis.js");
  * @param array array to get a random element from 📃
  * @returns an element of that array 📄
  */
-export function choice(array: any[]): any
+export function choice<T>(array: T[]): T;
 
 /**
  * gets a random element from an array ❓
@@ -62,7 +62,7 @@ export function choice(array: any[]): any
  * @param choices number of choices to get #️⃣
  * @returns an element of that array 📄
  */
-export function choice(array: any[], choices: number): any[]
+export function choice<T>(array: T[], choices: number): T[];
 
 /**
  * formats a permission to a readable string
