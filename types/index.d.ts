@@ -158,9 +158,9 @@ export async function wait(delay: number): Promise<void>;
 
 
 // types
-export type StatusCode = 400 | 401 | 402 | 403 | 404 | 405 | 406 | 407 | 408 | 409 | 410 | 411 | 412 | 413 | 414 | 415 | 416 | 417 | 418 | 421 | 422 | 423 | 424 | 425 | 426 | 428 | 429 | 431 | 451 | 500 | 501 | 502 | 503 | 504 | 505 | 506 | 507 | 508 | 510 | 511;
+type StatusCode = 400 | 401 | 402 | 403 | 404 | 405 | 406 | 407 | 408 | 409 | 410 | 411 | 412 | 413 | 414 | 415 | 416 | 417 | 418 | 421 | 422 | 423 | 424 | 425 | 426 | 428 | 429 | 431 | 451 | 500 | 501 | 502 | 503 | 504 | 505 | 506 | 507 | 508 | 510 | 511;
 
-export type StatusInfo = {
+type StatusInfo = {
    code: StatusCode | "unknown";
    shortDescription: string;
    description: string;
@@ -169,9 +169,9 @@ export type StatusInfo = {
 };
 
 
-export type ApplicationCommandInteraction = import("discord.js").CommandInteraction | import("discord.js").ButtonInteraction | import("discord.js").SelectMenuInteraction;
+type ApplicationCommandInteraction = import("discord.js").CommandInteraction | import("discord.js").ButtonInteraction | import("discord.js").SelectMenuInteraction;
 
-export interface BotErrorInfo {
+interface BotErrorInfo {
    type: "interaction" | "api" | "error";
    colours: string[];
    webhook: {
@@ -182,7 +182,7 @@ export interface BotErrorInfo {
    botName: string;
 };
 
-export interface BotErrorInfoInteraction extends Omit<BotErrorInfo, "type"> {
+interface BotErrorInfoInteraction extends Omit<BotErrorInfo, "type"> {
    type: "interaction";
    data: {
       interactionType: InteractionType;
@@ -192,7 +192,7 @@ export interface BotErrorInfoInteraction extends Omit<BotErrorInfo, "type"> {
    };
 };
 
-export interface BotErrorInfoAPI extends Omit<BotErrorInfo, "type"> {
+interface BotErrorInfoAPI extends Omit<BotErrorInfo, "type"> {
    type: "api";
    data: {
       interactionType: InteractionType;
@@ -203,7 +203,7 @@ export interface BotErrorInfoAPI extends Omit<BotErrorInfo, "type"> {
    };
 };
 
-export interface BotErrorInfoError extends Omit<BotErrorInfo, "type" | "prefix"> {
+interface BotErrorInfoError extends Omit<BotErrorInfo, "type" | "prefix"> {
    type: "error";
    data: {
       origin: string;
@@ -211,9 +211,9 @@ export interface BotErrorInfoError extends Omit<BotErrorInfo, "type" | "prefix">
    };
 };
 
-export type InteractionType = "chat-input" | "user" | "message" | "button" | "select-menu" | "modal";
+type InteractionType = "chat-input" | "user" | "message" | "button" | "select-menu" | "modal";
 
-export enum BotEmoji {
+enum BotEmoji {
    BUN = (await import("../src/data/emojis.js")).bun,
    FOX_KIT = (await import("../src/data/emojis.js")).fox_kit
 };
