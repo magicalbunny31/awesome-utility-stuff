@@ -5,13 +5,13 @@ export class Statuses {
     * status utilities owo 🗨️
     * @param statuses array of ActivitiesOptions 📋
     */
-   constructor(statuses: import("discord.js/typings").ActivitiesOptions[]);
+   constructor(statuses: import("discord.js").ActivitiesOptions[]);
 
    /**
     * get a random status ❓
     * @returns ActivitiesOptions 📄
     */
-   getStatus(): import("discord.js/typings").ActivitiesOptions;
+   getStatus(): import("discord.js").ActivitiesOptions;
 };
 
 
@@ -69,9 +69,9 @@ export function choice<T>(array: T[], choices: number): T[];
  * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
  * @param permissionString permission to format
  * @example formatPermission("BAN_MEMBERS"); // ban members 🚫
- * @returns a string of a permission that has been formatted
+ * @returns a string of a permission that has been formatted 📄
  */
-export function formatPermission(permissionString: import("discord.js/typings").PermissionString): typeof import("discord.js/typings").PermissionString;
+export function formatPermission(permissionString: import("discord.js").PermissionString): string;
 
 /**
  * covers info on (about) all erroneous status codes 📋
