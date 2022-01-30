@@ -1,0 +1,18 @@
+30/jan/2022 - 1.11.0
+
+
+» features   -^^,--,~
+› add changelog 📋
+› add HelpUsage class ❓
+› choice: better types 🗨️
+
+» styles   -^^,--,~
+› toRawEmoji: update @see 🔗
+› number: "inclusive" isn't really needed in description 💎
+
+» code refactoring   -^^,--,~
+› don't export types 📴
+
+» chores   -^^,--,~
+› bump Node.js version 📦
+› improve typings 🔝
