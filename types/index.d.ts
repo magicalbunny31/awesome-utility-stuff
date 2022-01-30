@@ -1,5 +1,181 @@
 // classes
 
+export class HelpUsage {
+   /**
+    * help usage utilities ❓
+    */
+   constructor() {};
+
+   /**
+    * get a random four-digit number string that can be used as a discord tag #️⃣
+    * @returns 🆔
+    */
+   private getDiscriminator(): string;
+
+   /**
+    * get a random seventeen-to-nineteen-digit string that can be used as a discord id #️⃣
+    * @returns 🆔
+    */
+   private getId(): string;
+
+   /**
+    * example names for users 👥
+    */
+   private userNames: string[];
+
+   /**
+    * example names for roles 📃
+    */
+   private roleNames: string[];
+
+   /**
+    * example names for discord text channels 📃
+    */
+   private textChannelNames: string[];
+
+   /**
+    * example names for discord voice channels 📃
+    */
+   private voiceChannelNames: string[];
+
+   /**
+    * example names for discord category channels 📃
+    */
+   private categoryChannelNames: string[];
+
+   /**
+    * returns data that can be resolved into the following: `@user`, `username#tag`, `username`, `id` 👤
+    * @param user the command user 🗨️
+    * @returns `@user`, `username#tag`, `username`, `id` 🦊
+    */
+   userResolvable(user: import("discord.js").User): string;
+
+   /**
+    * returns data that can be resolved into the following: `@user` 🆔
+    * @param} user the command user 🗨️
+    * @returns `@user` 🦊
+    */
+   userMention(user: import("discord.js").User): string;
+
+   /**
+    * returns data that can be resolved into the following: `username#tag` 🆔
+    * @param user the command user 🗨️
+    * @returns `username#tag` 🦊
+    */
+   userTag(user: import("discord.js").User): string;
+
+   /**
+    * returns data that can be resolved into the following: `username` 🆔
+    * @param user the command user 🗨️
+    * @returns `username` 🦊
+    */
+   userUsername(user: import("discord.js").User): string;
+
+   /**
+    * returns data that can be resolved into the following: `@role`, `role name`, `id` 🆔
+    * @param roles this guild's roles, if there is a guild 🗨️
+    * @returns `@role`, `role name`, `id` 🦊
+    */
+   roleResolvable(roles?: import("discord.js").Collection<import("discord.js").Snowflake, import("discord.js").Role>): string;
+
+   /**
+    * returns data that can be resolved into the following: `@role` 🆔
+    * @param roles this guild's roles, if there is a guild 🗨️
+    * @returns `@role` 🦊
+    */
+   roleMention(roles?: import("discord.js").Collection<import("discord.js").Snowflake, import("discord.js").Role>): string;
+
+   /**
+    * returns data that can be resolved into the following: `role name` 🆔
+    * @param roles this guild's roles, if there is a guild 🗨️
+    * @returns `role name` 🦊
+    */
+   roleName(roles?: import("discord.js").Collection<import("discord.js").Snowflake, import("discord.js").Role>): string;
+
+   /**
+    * gets a discord snowflake 🆔
+    * @see https://discord.com/developers/docs/reference#snowflakes
+    * @returns 🆔
+    */
+   id(): string;
+
+   /**
+    * returns data that can be resolved into the following: `text channel name` 🆔
+    * @param channels this guild's channels, if there is a guild 🗨️
+    * @returns `text channel name` 🦊
+    */
+   textChannel(channels?: import("discord.js").Collection<import("discord.js").Snowflake, import("discord.js").GuildChannel>): string;
+
+   /**
+    * returns data that can be resolved into the following: `voice channel name` 🆔
+    * @param channels this guild's channels, if there is a guild 🗨️
+    * @returns `voice channel name` 🦊
+    */
+   voiceChannel(channels?: import("discord.js").Collection<import("discord.js").Snowflake, import("discord.js").GuildChannel>): string;
+
+   /**
+    * returns data that can be resolved into the following: `category channel name` 🆔
+    * @param channels this guild's channels, if there is a guild 🗨️
+    * @returns `category channel name` 🦊
+    */
+   categoryChannel(channels?: import("discord.js").Collection<import("discord.js").Snowflake, import("discord.js").GuildChannel>): string;
+
+   /**
+    * boolean option 🗨️
+    * @returns 💻
+    */
+   boolean(): boolean;
+
+   /**
+    * returns a moderation reason 🗨️
+    * @param type type of moderation reason related to this command 📋
+    * @returns {string} 📃
+    */
+   moderationReason(type: "ban" | "kick" | "timeout" | "revoke-ban"): string;
+
+   /**
+    * from a @discord.js/Collection, get a command's autocomplete choices ✏️
+    * @param interaction this interaction 🗨️
+    * @param commands \@discord.js/Collection of `ApplicationCommand`s 📋
+    * @param commandName name of the command to get autocomplete choices from 🆔
+    * @returns 📄
+    */
+   getAutocompleteChoices(interaction: import("../").ApplicationCommandInteraction, commands: import("discord.js").Collection<string, import("./command").Command>, commandName: string): Promise<import("discord.js").ApplicationCommandData[]>;
+
+   /**
+    * from a @discord.js/Collection, get a random command 🗨️
+    * @param commands \@discord.js/Collection of `ApplicationCommand`s 📋
+    * @returns command name 📄
+    */
+   command(commands: import("discord.js").Collection<string, import("./command").Command>): string;
+
+   /**
+    * from a @discord.js/Collection, get a random command category 🗨️
+    * @param commands \@discord.js/Collection of `ApplicationCommand`s 📋
+    * @returns category name 📄
+    */
+   category(commands: import("discord.js").Collection<string, import("./command").Command>): string;
+
+   /**
+    * from a @discord.js/Collection, get a random command subcategory 🗨️
+    * @param commands \@discord.js/Collection of `ApplicationCommand`s 📋
+    * @returns subcategory name 📄
+    */
+   subcategory(commands: import("discord.js").Collection<string, import("./command").Command>): string;
+
+   /**
+    * random location string for command `/weather` 🌦️
+    * @returns ⛅
+    */
+   location(): string;
+
+   /**
+    * random string to translate to owo for command `/owo` 🦊
+    * @returns 💬
+    */
+   owo(): string;
+};
+
 export class Statuses {
    /**
     * status utilities owo 🗨️

@@ -1,4 +1,5 @@
 // classes
+const HelpUsage = require("../../src/classes/helpUsage.js");
 const Statuses = require("../../src/classes/statuses.js");
 
 // data
@@ -24,6 +25,7 @@ const wait = require("../../src/functions/wait.js");
 
 module.exports = {
    // classes
+   HelpUsage,
    Statuses,
 
    // data

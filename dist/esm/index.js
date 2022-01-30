@@ -1,4 +1,5 @@
 // classes
+import HelpUsage from "../../src/classes/helpUsage.js";
 import Statuses from "../../src/classes/statuses.js";
 
 // data
@@ -24,6 +25,7 @@ import wait from "../../src/functions/wait.js";
 
 export {
    // classes
+   HelpUsage,
    Statuses,
 
    // data
