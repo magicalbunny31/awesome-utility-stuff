@@ -139,7 +139,7 @@ module.exports = class HelpUsage {
     * @param {User} user the command user 🗨️
     * @returns {string} `@user`, `username#tag`, `username`, `id` 🦊
     */
-   userResolvable(user) {
+   static userResolvable(user) {
       const { choice } = require("../../");
 
       const mentions     = [ ...this.#userNames.map(name => `@${name}`),                        `@${user.username}` ];
@@ -160,7 +160,7 @@ module.exports = class HelpUsage {
     * @param {User} user the command user 🗨️
     * @returns {string} `@user` 🦊
     */
-   userMention(user) {
+   static userMention(user) {
       const { choice } = require("../../");
 
       const mentions = [ ...this.#userNames.map(name => `@${name}`), `@${user.username}` ];
@@ -174,7 +174,7 @@ module.exports = class HelpUsage {
     * @param {User} user the command user 🗨️
     * @returns {string} `username#tag` 🦊
     */
-   userTag(user) {
+   static userTag(user) {
       const usernameTags = [ ...this.#userNames.map(name => `${name}#${this.#getDiscriminator()}`), user.tag ];
 
       return getRandomElementFromArray(usernameTags);
@@ -186,7 +186,7 @@ module.exports = class HelpUsage {
     * @param {User} user the command user 🗨️
     * @returns {string} `username` 🦊
     */
-   userUsername(user) {
+   static userUsername(user) {
       const usernames = [ ...this.#userNames, user.username ];
 
       return getRandomElementFromArray(usernames);
@@ -198,7 +198,7 @@ module.exports = class HelpUsage {
     * @param {Collection<Snowflake, Role>} [roles] this guild's roles, if there is a guild 🗨️
     * @returns {string} `@role`, `role name`, `id` 🦊
     */
-   roleResolvable(roles) {
+   static roleResolvable(roles) {
       const { choice } = require("../../");
 
       const mentions =
@@ -224,7 +224,7 @@ module.exports = class HelpUsage {
     * @param {Collection<Snowflake, Role>} [roles] this guild's roles, if there is a guild 🗨️
     * @returns {string} `@role` 🦊
     */
-   roleMention(roles) {
+   static roleMention(roles) {
       const { choice } = require("../../");
 
       const mentions =
@@ -241,7 +241,7 @@ module.exports = class HelpUsage {
     * @param {Collection<Snowflake, Role>} [roles] this guild's roles, if there is a guild 🗨️
     * @returns {string} `role name` 🦊
     */
-   roleName(roles) {
+   static roleName(roles) {
       const { choice } = require("../../");
 
       const names =
@@ -268,7 +268,7 @@ module.exports = class HelpUsage {
     * @param {Collection<Snowflake, GuildChannel>} [channels] this guild's channels, if there is a guild 🗨️
     * @returns {string} `text channel name` 🦊
     */
-   textChannel(channels) {
+   static textChannel(channels) {
       const { choice } = require("../../");
 
       const textChannels =
@@ -285,7 +285,7 @@ module.exports = class HelpUsage {
     * @param {Collection<Snowflake, GuildChannel>} [channels] this guild's channels, if there is a guild 🗨️
     * @returns {string} `voice channel name` 🦊
     */
-   voiceChannel(channels) {
+   static voiceChannel(channels) {
       const { choice } = require("../../");
 
       const voiceChannels =
@@ -302,7 +302,7 @@ module.exports = class HelpUsage {
     * @param {Collection<Snowflake, GuildChannel>} [channels] this guild's channels, if there is a guild 🗨️
     * @returns {string} `category channel name` 🦊
     */
-   categoryChannel(channels) {
+   static categoryChannel(channels) {
       const { choice } = require("../../");
 
       const categoryChannels =
@@ -318,7 +318,7 @@ module.exports = class HelpUsage {
     * boolean option 🗨️
     * @returns {boolean} 💻
     */
-   boolean() {
+   static boolean() {
       const { choice } = require("../../");
 
       return choice([ true, false ]);
@@ -330,7 +330,7 @@ module.exports = class HelpUsage {
     * @param {"ban" | "kick" | "timeout" | "revoke-ban"} type type of moderation reason related to this command 📋
     * @returns {string} 📃
     */
-   moderationReason(type) {
+   static moderationReason(type) {
       const { choice } = require("../../");
 
       if (type === `ban` || type === `kick`)
@@ -361,7 +361,7 @@ module.exports = class HelpUsage {
     * @param {string} commandName name of the command to get autocomplete choices from 🆔
     * @returns {import("discord.js").ApplicationCommandData[]} 📄
     */
-   async getAutocompleteChoices(interaction, commands, commandName) {
+   static async getAutocompleteChoices(interaction, commands, commandName) {
       const command = commands.get(commandName);
 
       const autocompleteChoicesData = await command?.getAutocompleteChoices(interaction);
@@ -376,7 +376,7 @@ module.exports = class HelpUsage {
     * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
     * @returns {string} command name 📄
     */
-   command(commands) {
+   static command(commands) {
       return `/${commands.random().name}`;
    };
 
@@ -386,7 +386,7 @@ module.exports = class HelpUsage {
     * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
     * @returns {string} category name 📄
     */
-   category(commands) {
+   static category(commands) {
       const { choice } = require("../../");
 
       return choice([ ...new Set(commands.filter(cmd => cmd.category).map(cmd => cmd.category)) ]);
@@ -398,7 +398,7 @@ module.exports = class HelpUsage {
     * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
     * @returns {string} subcategory name 📄
     */
-   subcategory(commands) {
+   static subcategory(commands) {
       const { choice } = require("../../");
 
       return choice([ ...new Set(commands.filter(cmd => cmd.subcategory).map(cmd => cmd.subcategory)) ]);
@@ -409,7 +409,7 @@ module.exports = class HelpUsage {
     * random location string for command `/weather` 🌦️
     * @returns {string} ⛅
     */
-   location() {
+   static location() {
       const { choice } = require("../../");
 
       return choice([
@@ -424,7 +424,7 @@ module.exports = class HelpUsage {
     * random string to translate to owo for command `/owo` 🦊
     * @returns {string} 💬
     */
-   owo() {
+   static owo() {
       const { choice } = require("../../");
 
       return choice([

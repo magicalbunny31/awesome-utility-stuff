@@ -16,3 +16,11 @@
 » chores   -^^,--,~
 › bump Node.js version 📦
 › improve typings 🔝
+
+
+
+02/feb/2022 - 1.12.0
+
+
+» features   -^^,--,~
+› HelpUsage: prefer static methods
