@@ -12,7 +12,7 @@ module.exports = class HelpUsage {
     * get a random four-digit number string that can be used as a discord tag #️⃣
     * @returns {string} 🆔
     */
-   #getDiscriminator() {
+   static #getDiscriminator() {
       const generateDiscriminator = () => {
          let tag = Math.random().toString().slice(2, 6);
          if (!+tag) tag = generateDiscriminator(); // re-roll if this tag resolves in `#0000`
@@ -27,7 +27,7 @@ module.exports = class HelpUsage {
     * get a random seventeen-to-nineteen-digit string that can be used as a discord id #️⃣
     * @returns {string} 🆔
     */
-   #getId() {
+   static #getId() {
       const { number } = require("../../");
 
       const generateId = () => {
@@ -53,7 +53,7 @@ module.exports = class HelpUsage {
    /**
     * example names for users 👥
     */
-   #userNames = [
+   static #userNames = [
       /* ⬇⬇⬇ my bots ⬇⬇⬇ */
       `bun 🐰🐾`, `fox kit 🦊🐾`, `berry bot`, `The Lobster Bot`, `aviflight558`,
       /* ⬇⬇⬇ fwends ⬇⬇⬇ */
@@ -76,7 +76,7 @@ module.exports = class HelpUsage {
    /**
     * example names for roles 📃
     */
-   #roleNames = [
+   static #roleNames = [
       /* ⬇⬇⬇ typical role names ⬇⬇⬇ */
       `administrator`,  `administrators`,  `Administrator`,  `Administrators`,  `ADMINISTRATOR`,  `ADMINISTRATORS`,
       `admin`,          `admins`,          `Admin`,          `Admins`,          `ADMIN`,          `ADMINS`,
@@ -101,7 +101,7 @@ module.exports = class HelpUsage {
    /**
     * example names for discord text channels 📃
     */
-   #textChannelNames = [
+   static #textChannelNames = [
       /* ⬇⬇⬇ typical channel names ⬇⬇⬇ */
       `rules`,   `announcements`,  `general`,     `off-topic`, `memes`,
       `bot`,     `media`,          `art`,         `spam`,      `bugs-and-help`,
@@ -115,7 +115,7 @@ module.exports = class HelpUsage {
    /**
     * example names for discord voice channels 📃
     */
-   #voiceChannelNames = [
+   static #voiceChannelNames = [
       /* ⬇⬇⬇ typical channel names ⬇⬇⬇ */
       `general`, `off topic`, `stage`,  `voice`, `music`,
       `afk`,     `lobby`,     `gaming`, `atc`,   `the bar`
@@ -125,7 +125,7 @@ module.exports = class HelpUsage {
    /**
     * example names for discord category channels 📃
     */
-   #categoryChannelNames = [
+   static #categoryChannelNames = [
       /* ⬇⬇⬇ typical channel names ⬇⬇⬇ */
       `Text Channels`,     `Voice Channels`,     `bunker`,        `misc`,    `staff`,
       `Information`,       `archived`,           `ANNOUNCEMENTS`, `uwu`,     `Other`,

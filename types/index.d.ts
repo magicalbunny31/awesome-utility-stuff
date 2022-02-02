@@ -10,38 +10,38 @@ export class HelpUsage {
     * get a random four-digit number string that can be used as a discord tag #️⃣
     * @returns 🆔
     */
-   private getDiscriminator(): string;
+   private static getDiscriminator(): string;
 
    /**
     * get a random seventeen-to-nineteen-digit string that can be used as a discord id #️⃣
     * @returns 🆔
     */
-   private getId(): string;
+   private static getId(): string;
 
    /**
     * example names for users 👥
     */
-   private userNames: string[];
+   private static userNames: string[];
 
    /**
     * example names for roles 📃
     */
-   private roleNames: string[];
+   private static roleNames: string[];
 
    /**
     * example names for discord text channels 📃
     */
-   private textChannelNames: string[];
+   private static textChannelNames: string[];
 
    /**
     * example names for discord voice channels 📃
     */
-   private voiceChannelNames: string[];
+   private static voiceChannelNames: string[];
 
    /**
     * example names for discord category channels 📃
     */
-   private categoryChannelNames: string[];
+   private static categoryChannelNames: string[];
 
    /**
     * returns data that can be resolved into the following: `@user`, `username#tag`, `username`, `id` 👤
