@@ -24,3 +24,13 @@
 
 » features   -^^,--,~
 › HelpUsage: prefer static methods
+
+
+
+05/feb/2022 - 1.12.1
+
+» features   -^^,--,~
+› set: better types
+
+» code refactoring   -^^,--,~
+› rename to "help" and convert into named functions

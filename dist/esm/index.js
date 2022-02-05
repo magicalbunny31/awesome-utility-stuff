@@ -1,5 +1,4 @@
 // classes
-import HelpUsage from "../../src/classes/helpUsage.js";
 import Statuses from "../../src/classes/statuses.js";
 
 // data
@@ -10,6 +9,7 @@ import emojis from "../../src/data/emojis.js";
 // functions
 import choice from "../../src/functions/choice.js";
 import formatPermission from "../../src/functions/formatPermission.js";
+import help from "../../src/functions/help.js";
 import httpStatusInfo from "../../src/functions/httpStatusInfo.js";
 import noop from "../../src/functions/noop.js";
 import number from "../../src/functions/number.js";
@@ -25,7 +25,6 @@ import wait from "../../src/functions/wait.js";
 
 export {
    // classes
-   HelpUsage,
    Statuses,
 
    // data
@@ -36,6 +35,7 @@ export {
    // functions
    choice,
    formatPermission,
+   help,
    httpStatusInfo,
    noop,
    number,

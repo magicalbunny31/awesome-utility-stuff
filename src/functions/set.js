@@ -1,6 +1,6 @@
 /**
  * remove duplicates from an array of strings/numbers 📤
- * @param {(string | number)[]} array array of strings/numbers 📃
- * @returns {(string | number)[]}
+ * @param {any[]} array array of strings/numbers 📃
+ * @returns {any[]} 📄
  */
 module.exports = array => [ ...new Set(array) ];

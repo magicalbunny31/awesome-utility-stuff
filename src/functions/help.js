@@ -1,33 +1,31 @@
 const { User, Collection, GuildChannel, Snowflake, Role } = require("discord.js");
 
 
-module.exports = class HelpUsage {
-   /**
-    * help usage utilities ❓
-    */
-   constructor() {};
-
-
+/**
+ * help usage utilities ❓
+ */
+module.exports = {
    /**
     * get a random four-digit number string that can be used as a discord tag #️⃣
     * @returns {string} 🆔
     */
-   static #getDiscriminator() {
+   getDiscriminator: () => {
       const generateDiscriminator = () => {
          let tag = Math.random().toString().slice(2, 6);
-         if (!+tag) tag = generateDiscriminator(); // re-roll if this tag resolves in `#0000`
+         if (!+tag) tag = generateDiscriminator(); // re-roll if this tag resolves in `0000`
 
          return tag;
       };
       return generateDiscriminator();
-   };
+   },
 
 
    /**
-    * get a random seventeen-to-nineteen-digit string that can be used as a discord id #️⃣
+    * get a discord snowflake 🆔
+    * @see https://discord.com/developers/docs/reference#snowflakes
     * @returns {string} 🆔
     */
-   static #getId() {
+   getId: () => {
       const { number } = require("../../");
 
       const generateId = () => {
@@ -47,13 +45,13 @@ module.exports = class HelpUsage {
          return id;
       };
       return generateId();
-   };
+   },
 
 
    /**
     * example names for users 👥
     */
-   static #userNames = [
+   userNames: [
       /* ⬇⬇⬇ my bots ⬇⬇⬇ */
       `bun 🐰🐾`, `fox kit 🦊🐾`, `berry bot`, `The Lobster Bot`, `aviflight558`,
       /* ⬇⬇⬇ fwends ⬇⬇⬇ */
@@ -70,13 +68,13 @@ module.exports = class HelpUsage {
       `Jenna`,  `Kaltag`, `Kirby`, `Kodi`,  `Mel`,   `Dipsy`, `Morse`,  `Muk`,    `Luk`,    `Muru`,
       `Nava`,   `Niju`,   `Nikki`, `Nuk`,   `Yak`,   `Sumac`, `Ralph`,  `Saba`,   `Silver`, `Star`,
       `Steele`, `Stella`, `Tana`,  `Vike`,  `Wild Joe`
-   ];
+   ],
 
 
    /**
     * example names for roles 📃
     */
-   static #roleNames = [
+   roleNames: [
       /* ⬇⬇⬇ typical role names ⬇⬇⬇ */
       `administrator`,  `administrators`,  `Administrator`,  `Administrators`,  `ADMINISTRATOR`,  `ADMINISTRATORS`,
       `admin`,          `admins`,          `Admin`,          `Admins`,          `ADMIN`,          `ADMINS`,
@@ -95,13 +93,13 @@ module.exports = class HelpUsage {
       `Staff`,         `Strawberry Squad`, `Mulberry Marauder`, `Blackberry Bunch`, `Blueberry Brigade`, `Ripe Berries`,
       `The Berry Pet`, `Chat Reviver`,     `QoTD`,              `Developer`,        `god`,               `guests`,
       `The Crew`,      `Unpaid Interns`,   `VIP`
-   ];
+   ],
 
 
    /**
     * example names for discord text channels 📃
     */
-   static #textChannelNames = [
+   textChannelNames: [
       /* ⬇⬇⬇ typical channel names ⬇⬇⬇ */
       `rules`,   `announcements`,  `general`,     `off-topic`, `memes`,
       `bot`,     `media`,          `art`,         `spam`,      `bugs-and-help`,
@@ -109,29 +107,29 @@ module.exports = class HelpUsage {
       `events`,  `giveaways`,      `news`,        `sport`,     `qotd`,
       `no-mic`,  `streams`,        `fan-art`,     `server`,    `changelog`,
       `website`, `developer`,      `discord`,     `wumpus`,    `music`
-   ];
+   ],
 
 
    /**
     * example names for discord voice channels 📃
     */
-   static #voiceChannelNames = [
+   voiceChannelNames: [
       /* ⬇⬇⬇ typical channel names ⬇⬇⬇ */
       `general`, `off topic`, `stage`,  `voice`, `music`,
       `afk`,     `lobby`,     `gaming`, `atc`,   `the bar`
-   ];
+   ],
 
 
    /**
     * example names for discord category channels 📃
     */
-   static #categoryChannelNames = [
+   categoryChannelNames: [
       /* ⬇⬇⬇ typical channel names ⬇⬇⬇ */
       `Text Channels`,     `Voice Channels`,     `bunker`,        `misc`,    `staff`,
       `Information`,       `archived`,           `ANNOUNCEMENTS`, `uwu`,     `Other`,
       `General Chatrooms`, `server information`, `Parties`,       `English`, `gamenight`,
       `media 📹`,          `games 🎮`,          `fox 🦊`,        `dev 🤖`, `voice 🔉`
-   ];
+   ],
 
 
    /**
@@ -139,20 +137,20 @@ module.exports = class HelpUsage {
     * @param {User} user the command user 🗨️
     * @returns {string} `@user`, `username#tag`, `username`, `id` 🦊
     */
-   static userResolvable(user) {
+   userResolvable: user => {
       const { choice } = require("../../");
 
-      const mentions     = [ ...this.#userNames.map(name => `@${name}`),                        `@${user.username}` ];
-      const usernameTags = [ ...this.#userNames.map(name => `${name}#${this.#getDiscriminator()}`), user.tag        ];
-      const usernames    = [ ...this.#userNames,                                                    user.username   ];
+      const mentions     = [ ...this.userNames.map(name => `@${name}`),                        `@${user.username}` ];
+      const usernameTags = [ ...this.userNames.map(name => `${name}#${this.getDiscriminator()}`), user.tag        ];
+      const usernames    = [ ...this.userNames,                                                    user.username   ];
 
       const mention     = choice(mentions);
       const usernameTag = choice(usernameTags);
       const username    = choice(usernames);
-      const id          = this.#getId();
+      const id          = this.getId();
 
       return choice([ mention, username, usernameTag, id ]);
-   };
+   },
 
 
    /**
@@ -160,13 +158,13 @@ module.exports = class HelpUsage {
     * @param {User} user the command user 🗨️
     * @returns {string} `@user` 🦊
     */
-   static userMention(user) {
+   userMention: user => {
       const { choice } = require("../../");
 
-      const mentions = [ ...this.#userNames.map(name => `@${name}`), `@${user.username}` ];
+      const mentions = [ ...this.userNames.map(name => `@${name}`), `@${user.username}` ];
 
       return choice(mentions);
-   };
+   },
 
 
    /**
@@ -174,11 +172,13 @@ module.exports = class HelpUsage {
     * @param {User} user the command user 🗨️
     * @returns {string} `username#tag` 🦊
     */
-   static userTag(user) {
-      const usernameTags = [ ...this.#userNames.map(name => `${name}#${this.#getDiscriminator()}`), user.tag ];
+   userTag: user => {
+      const { choice } = require("../../");
 
-      return getRandomElementFromArray(usernameTags);
-   };
+      const usernameTags = [ ...this.userNames.map(name => `${name}#${this.getDiscriminator()}`), user.tag ];
+
+      return choice(usernameTags);
+   },
 
 
    /**
@@ -186,11 +186,13 @@ module.exports = class HelpUsage {
     * @param {User} user the command user 🗨️
     * @returns {string} `username` 🦊
     */
-   static userUsername(user) {
-      const usernames = [ ...this.#userNames, user.username ];
+   userUsername: user => {
+      const { choice } = require("../../");
 
-      return getRandomElementFromArray(usernames);
-   };
+      const usernames = [ ...this.userNames, user.username ];
+
+      return choice(usernames);
+   },
 
 
    /**
@@ -198,25 +200,25 @@ module.exports = class HelpUsage {
     * @param {Collection<Snowflake, Role>} [roles] this guild's roles, if there is a guild 🗨️
     * @returns {string} `@role`, `role name`, `id` 🦊
     */
-   static roleResolvable(roles) {
+   roleResolvable: roles => {
       const { choice } = require("../../");
 
       const mentions =
          roles
-            ? [ ...this.#roleNames.map(name => `@${name}`), ...roles.filter(role => role.rawPosition).map(role => `@${role.name}`) ]
-            : this.#roleNames.map(name => `@${name}`);
+            ? [ ...this.roleNames.map(name => `@${name}`), ...roles.filter(role => role.rawPosition).map(role => `@${role.name}`) ]
+            : this.roleNames.map(name => `@${name}`);
 
       const names =
          roles
-            ? [ ...this.#roleNames, ...roles.filter(role => role.rawPosition).map(role => role.name) ]
-            : this.#roleNames;
+            ? [ ...this.roleNames, ...roles.filter(role => role.rawPosition).map(role => role.name) ]
+            : this.roleNames;
 
       const mention = choice(mentions);
       const name    = choice(names);
-      const id      = this.#getId();
+      const id      = this.getId();
 
       return choice([ mention, name, id ]);
-   };
+   },
 
 
    /**
@@ -224,16 +226,16 @@ module.exports = class HelpUsage {
     * @param {Collection<Snowflake, Role>} [roles] this guild's roles, if there is a guild 🗨️
     * @returns {string} `@role` 🦊
     */
-   static roleMention(roles) {
+   roleMention: roles => {
       const { choice } = require("../../");
 
       const mentions =
          roles
-            ? [ ...this.#roleNames.map(name => `@${name}`), ...roles.filter(role => role.rawPosition).map(role => `@${role.name}`) ]
-            : this.#roleNames.map(name => `@${name}`);
+            ? [ ...this.roleNames.map(name => `@${name}`), ...roles.filter(role => role.rawPosition).map(role => `@${role.name}`) ]
+            : this.roleNames.map(name => `@${name}`);
 
       return choice(mentions);
-   };
+   },
 
 
    /**
@@ -241,26 +243,16 @@ module.exports = class HelpUsage {
     * @param {Collection<Snowflake, Role>} [roles] this guild's roles, if there is a guild 🗨️
     * @returns {string} `role name` 🦊
     */
-   static roleName(roles) {
+   roleName: roles => {
       const { choice } = require("../../");
 
       const names =
          roles
-            ? [ ...this.#roleNames, ...roles.filter(role => role.rawPosition).map(role => role.name) ]
-            : this.#roleNames;
+            ? [ ...this.roleNames, ...roles.filter(role => role.rawPosition).map(role => role.name) ]
+            : this.roleNames;
 
       return choice(names);
-   };
-
-
-   /**
-    * gets a discord snowflake 🆔
-    * @see https://discord.com/developers/docs/reference#snowflakes
-    * @returns {string} 🆔
-    */
-   id() {
-      return this.#getId();
-   };
+   },
 
 
    /**
@@ -268,16 +260,16 @@ module.exports = class HelpUsage {
     * @param {Collection<Snowflake, GuildChannel>} [channels] this guild's channels, if there is a guild 🗨️
     * @returns {string} `text channel name` 🦊
     */
-   static textChannel(channels) {
+   textChannel: channels => {
       const { choice } = require("../../");
 
       const textChannels =
          channels
-            ? [ ...this.#textChannelNames.map(name => `#${name}`), ...channels.filter(channel => channel.type === `GUILD_TEXT`).map(channel => `#${channel.name}`) ]
-            : this.#textChannelNames.map(name => `#${name}`);
+            ? [ ...this.textChannelNames.map(name => `#${name}`), ...channels.filter(channel => channel.type === `GUILD_TEXT`).map(channel => `#${channel.name}`) ]
+            : this.textChannelNames.map(name => `#${name}`);
 
       return choice(textChannels);
-   };
+   },
 
 
    /**
@@ -285,16 +277,16 @@ module.exports = class HelpUsage {
     * @param {Collection<Snowflake, GuildChannel>} [channels] this guild's channels, if there is a guild 🗨️
     * @returns {string} `voice channel name` 🦊
     */
-   static voiceChannel(channels) {
+   voiceChannel: channels => {
       const { choice } = require("../../");
 
       const voiceChannels =
          channels
-            ? [ ...this.#voiceChannelNames.map(name => `🔉 ${name}`), ...channels.filter(channel => channel.type === `GUILD_VOICE` || channel.type === `GUILD_STAGE_VOICE`).map(channel => `🔉 ${channel.name}`) ]
-            : this.#voiceChannelNames.map(name => `🔉 ${name}`);
+            ? [ ...this.voiceChannelNames.map(name => `🔉 ${name}`), ...channels.filter(channel => channel.type === `GUILD_VOICE` || channel.type === `GUILD_STAGE_VOICE`).map(channel => `🔉 ${channel.name}`) ]
+            : this.voiceChannelNames.map(name => `🔉 ${name}`);
 
       return choice(voiceChannels);
-   };
+   },
 
 
    /**
@@ -302,27 +294,27 @@ module.exports = class HelpUsage {
     * @param {Collection<Snowflake, GuildChannel>} [channels] this guild's channels, if there is a guild 🗨️
     * @returns {string} `category channel name` 🦊
     */
-   static categoryChannel(channels) {
+   categoryChannel: channels => {
       const { choice } = require("../../");
 
       const categoryChannels =
          channels ?
-            [ ...this.#categoryChannelNames, ...channels.filter(channel => channel.type === `GUILD_CATEGORY`).map(channel => channel.name) ] :
-            this.#categoryChannelNames;
+            [ ...this.categoryChannelNames, ...channels.filter(channel => channel.type === `GUILD_CATEGORY`).map(channel => channel.name) ] :
+            this.categoryChannelNames;
 
       return choice(categoryChannels);
-   };
+   },
 
 
    /**
     * boolean option 🗨️
     * @returns {boolean} 💻
     */
-   static boolean() {
+   boolean: () => {
       const { choice } = require("../../");
 
       return choice([ true, false ]);
-   };
+   },
 
 
    /**
@@ -330,7 +322,7 @@ module.exports = class HelpUsage {
     * @param {"ban" | "kick" | "timeout" | "revoke-ban"} type type of moderation reason related to this command 📋
     * @returns {string} 📃
     */
-   static moderationReason(type) {
+   moderationReason: type => {
       const { choice } = require("../../");
 
       if (type === `ban` || type === `kick`)
@@ -351,24 +343,24 @@ module.exports = class HelpUsage {
             `sorry :(`, `appealed`,  `time up`, `Last chance.`,  `yeah!!`,
             `man`,      `deez nuts`, `why`,     `i was told to`, `asked for it`
          ]);
-   };
+   },
 
 
    /**
     * from a @discord.js/Collection, get a command's autocomplete choices ✏️
-    * @param {import("../../").ApplicationCommandInteraction} interaction this interaction 🗨️
+    * @param {import("../../types").ApplicationCommandInteraction} interaction this interaction 🗨️
     * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
     * @param {string} commandName name of the command to get autocomplete choices from 🆔
     * @returns {import("discord.js").ApplicationCommandData[]} 📄
     */
-   static async getAutocompleteChoices(interaction, commands, commandName) {
+   getAutocompleteChoices: async (interaction, commands, commandName) => {
       const command = commands.get(commandName);
 
       const autocompleteChoicesData = await command?.getAutocompleteChoices(interaction);
       const autocompleteChoices = autocompleteChoicesData?.map(choice => choice.name);
 
       return autocompleteChoices;
-   };
+   },
 
 
    /**
@@ -376,9 +368,9 @@ module.exports = class HelpUsage {
     * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
     * @returns {string} command name 📄
     */
-   static command(commands) {
+   command: commands => {
       return `/${commands.random().name}`;
-   };
+   },
 
 
    /**
@@ -386,11 +378,11 @@ module.exports = class HelpUsage {
     * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
     * @returns {string} category name 📄
     */
-   static category(commands) {
-      const { choice } = require("../../");
+   category: commands => {
+      const { choice, set } = require("../../");
 
-      return choice([ ...new Set(commands.filter(cmd => cmd.category).map(cmd => cmd.category)) ]);
-   };
+      return choice(set(commands.filter(cmd => cmd.category).map(cmd => cmd.category)));
+   },
 
 
    /**
@@ -398,18 +390,18 @@ module.exports = class HelpUsage {
     * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
     * @returns {string} subcategory name 📄
     */
-   static subcategory(commands) {
-      const { choice } = require("../../");
+   subcategory: commands => {
+      const { choice, set } = require("../../");
 
-      return choice([ ...new Set(commands.filter(cmd => cmd.subcategory).map(cmd => cmd.subcategory)) ]);
-   };
+      return choice(set(commands.filter(cmd => cmd.subcategory).map(cmd => cmd.subcategory)));
+   },
 
 
    /**
     * random location string for command `/weather` 🌦️
     * @returns {string} ⛅
     */
-   static location() {
+   location: () => {
       const { choice } = require("../../");
 
       return choice([
@@ -417,19 +409,19 @@ module.exports = class HelpUsage {
          `Wellington, NZ`,   `Toronto, CA`,     `Nome, US`,          `Paris, AR, US`,  `Brooklyn, NY, US`,
          `Portland, OR, US`, `Chicago, IL, US`, `New York City, US`, `Hamburg, DE`,    `Alicante, ES`
       ]);
-   };
+   },
 
 
    /**
     * random string to translate to owo for command `/owo` 🦊
     * @returns {string} 💬
     */
-   static owo() {
+   owo: () => {
       const { choice } = require("../../");
 
       return choice([
          `hello?`, `finally, some good frickin' uwu`, `anyone want to help`, `i'm a furry!`,  `help help`,
          `no`,     `i love you`,                      `very good!`,          `i like cheese`, `you are awesome`
       ]);
-   };
+   }
 };
