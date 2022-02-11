@@ -1,8 +1,8 @@
 /**
- * discord.js >13.4.x broke emojis in constructors, so here's a helper function! 🔁
- * @see https://github.com/discordjs/discord.js/blob/main/packages/discord.js/src/util/Util.js#L294-L299
+ * get a partial emoji object with `id`, `name` and `animated` - perfect for message components! 🔁
+ * @see https://discord.com/developers/docs/resources/emoji#emoji-object
  * @param {string} emoji text emoji string to parse 🦊
- * @returns {{ animated: boolean, name: string, id: string? }} an object that matches the discord api emoji format 📋
+ * @returns {{ animated: boolean, name: string, id: string? }} object that matches the discord api emoji format 📋
  */
 module.exports = emoji => {
    if (emoji.includes(`%`)) emoji = decodeURIComponent(emoji);

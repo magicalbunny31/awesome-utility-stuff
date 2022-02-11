@@ -34,3 +34,10 @@
 
 » code refactoring   -^^,--,~
 › rename to "help" and convert into named functions
+
+
+
+11/feb/2022 - 1.13.0
+
+» features   -^^,--,~
+› toRawEmoji: rename to partialEmoji 🔁
