@@ -13,13 +13,13 @@ const help = require("../../src/functions/help.js");
 const httpStatusInfo = require("../../src/functions/httpStatusInfo.js");
 const noop = require("../../src/functions/noop.js");
 const number = require("../../src/functions/number.js");
+const partialEmoji = require("../../src/functions/partialEmoji");
 const partition = require("../../src/functions/partition.js");
 const sendBotError = require("../../src/functions/sendBotError.js");
 const set = require("../../src/functions/set.js");
 const shuffle = require("../../src/functions/shuffle.js");
 const strip = require("../../src/functions/strip.js");
 const sum = require("../../src/functions/sum.js");
-const toRawEmoji = require("../../src/functions/toRawEmoji");
 const wait = require("../../src/functions/wait.js");
 
 
@@ -39,12 +39,12 @@ module.exports = {
    httpStatusInfo,
    noop,
    number,
+   partialEmoji,
    partition,
    sendBotError,
    set,
    shuffle,
    strip,
    sum,
-   toRawEmoji,
    wait
 };

@@ -13,13 +13,13 @@ import help from "../../src/functions/help.js";
 import httpStatusInfo from "../../src/functions/httpStatusInfo.js";
 import noop from "../../src/functions/noop.js";
 import number from "../../src/functions/number.js";
+import partialEmoji from "../../src/functions/partialEmoji.js";
 import partition from "../../src/functions/partition.js";
 import sendBotError from "../../src/functions/sendBotError.js";
 import set from "../../src/functions/set.js";
 import shuffle from "../../src/functions/shuffle.js";
 import strip from "../../src/functions/strip.js";
 import sum from "../../src/functions/sum.js";
-import toRawEmoji from "../../src/functions/toRawEmoji.js";
 import wait from "../../src/functions/wait.js";
 
 
@@ -40,11 +40,11 @@ export {
    noop,
    number,
    partition,
+   partialEmoji,
    sendBotError,
    set,
    shuffle,
    strip,
    sum,
-   toRawEmoji,
    wait
 };
