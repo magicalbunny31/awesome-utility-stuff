@@ -41,3 +41,10 @@
 
 » features   -^^,--,~
 › toRawEmoji: rename to partialEmoji 🔁
+
+
+
+16/feb/2022 - 1.13.1
+
+» features   -^^,--,~
+› sendBotError: don't add slash to message or user commands 🤖

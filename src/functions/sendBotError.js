@@ -13,7 +13,7 @@
  * @param {import("../../types/index").ApplicationCommandInteraction} interaction interaction to edit 🗨️
  * @param {import("../../types/index").BotErrorInfoInteraction | import("../../types/index").BotErrorInfoAPI | import("../../types/index").BotErrorInfoError} data data to send for this error 📋
  */
- module.exports = async (interaction, data) => {
+module.exports = async (interaction, data) => {
    const { type, colours, webhook: webhookData, prefix, botName, data: errorData } = data;
 
    const [ primary, secondary ] = colours;
@@ -28,9 +28,9 @@
    // random responses
    const responses = {
       executing: [
-         `executing..`, `executing command..`, `executing command ${errorData.emoji} \`${prefix}${errorData.commandName}\`..`,
-         `running..`, `running command..`, `running command ${errorData.emoji} \`${prefix}${errorData.commandName}\`..`,
-         `using..`, `using command..`, `using command ${errorData.emoji} \`${prefix}${errorData.commandName}\`..`
+         `executing..`, `executing command..`, `executing command ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
+         `running..`, `running command..`, `running command ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
+         `using..`, `using command..`, `using command ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`
       ],
 
       waiting: [
@@ -53,7 +53,7 @@
       nearlyThere: [
          `nearly there..`, `so close!`, `completion is imminent!`,
          `about to finish!`, `one more step..`, `can't wait to see the end result~`,
-         `one second away from completion!`, `${errorData.emoji} \`${prefix}${errorData.commandName}\` is about to return something!`,
+         `one second away from completion!`, `${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\` is about to return something!`,
          `pre-finish party! ${emojis.yaya}`, `i'm stoked for the result!`, `look! it's happening!`,
          `just one more second!`, `woah!`, `i'm excited for this!`
       ],
@@ -104,15 +104,15 @@
       ],
 
       error: [
-         `something awful happened with ${errorData.emoji} \`${prefix}${errorData.commandName}\`..`,
-         `a error occurred while i tried to run ${errorData.emoji} \`${prefix}${errorData.commandName}\`..`,
-         `i came across an error with ${errorData.emoji} \`${prefix}${errorData.commandName}\`..`,
-         `command ${errorData.emoji} \`${prefix}${errorData.commandName}\` gave me an error..`,
-         `i found an uncaught exception with ${errorData.emoji} \`${prefix}${errorData.commandName}\`..`,
-         `a mistake was found with ${errorData.emoji} \`${prefix}${errorData.commandName}\`..`,
-         `the command ${errorData.emoji} \`${prefix}${errorData.commandName}\` is a fallacy! it doesn't work!`,
-         `i regret to inform you but ${errorData.emoji} \`${prefix}${errorData.commandName}\` is erroring right now..`,
-         `sorry, but ${errorData.emoji} \`${prefix}${errorData.commandName}\` is currently broken..`
+         `something awful happened with ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
+         `a error occurred while i tried to run ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
+         `i came across an error with ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
+         `command ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\` gave me an error..`,
+         `i found an uncaught exception with ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
+         `a mistake was found with ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
+         `the command ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\` is a fallacy! it doesn't work!`,
+         `i regret to inform you but ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\` is erroring right now..`,
+         `sorry, but ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\` is currently broken..`
       ],
 
       suggestion: [
