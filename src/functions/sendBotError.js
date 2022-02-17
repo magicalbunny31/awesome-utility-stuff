@@ -203,7 +203,7 @@ module.exports = async (interaction, data) => {
                   }\`
                   » **type** › \`automated\`
 
-                  » **date** › ${Formatters.time(Math.round(interaction?.createdTimestamp || Date.now() / 1000))}
+                  » **date** › ${Formatters.time(Math.round((interaction?.createdTimestamp || Date.now()) / 1000))}
                   ${[ `interaction`, `api` ].includes(type) ? `» **id** › \`${interaction.id}\`` : ``}
                `,
                inline: false

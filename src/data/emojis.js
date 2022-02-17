@@ -198,10 +198,11 @@ module.exports = {
    "shhh":                             "<:shhh:925626130508165181>",
 
 
-   "red":    "<:red:740975719894614039>",
-   "orange": "<:orange:740975783492714517>",
-   "yellow": "<:yellow:740975805680713759>",
-   "green":  "<:green:740975825964236850>",
-   "blue":   "<:blue:740975841378304021>",
-   "purple": "<:purple:740975863595794466>"
+   "red_paws":    "<:red_paws:944005630690197586>",
+   "orange_paws": "<:orange_paws:944006240080650261>",
+   "yellow_paws": "<:yellow_paws:944006322133794856>",
+   "green_paws":  "<:green_paws:944006330467905556>",
+   "blue_paws":   "<:blue_paws:944006339565330472>",
+   "purple_paws": "<:purple_paws:944006349421961248>",
+   "pink_paws":   "<:pink_paws:944006359433752588>"
 };

@@ -48,3 +48,13 @@
 
 » features   -^^,--,~
 › sendBotError: don't add slash to message or user commands 🤖
+
+
+
+17/feb/2022 - 1.13.2
+
+» features   -^^,--,~
+› emojis: new emojis 🐾
+
+» bug fixes   -^^,--,~
+› sendBotError: fix message timestamp formatting 🕒
