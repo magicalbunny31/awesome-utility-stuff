@@ -248,7 +248,9 @@ module.exports = async (interaction, data) => {
          `;
 
          await interaction.editReply({
-            embeds: [ embeds.user[0] ]
+            content: null,
+            embeds: [ embeds.user[0] ],
+            components: []
          });
 
          await wait(1000);
@@ -266,7 +268,9 @@ module.exports = async (interaction, data) => {
          `;
 
          await interaction.editReply({
-            embeds: [ embeds.user[0] ]
+            content: null,
+            embeds: [ embeds.user[0] ],
+            components: []
          });
 
          await wait(1000);
@@ -280,7 +284,9 @@ module.exports = async (interaction, data) => {
       `;
 
       await interaction.editReply({
-         embeds: embeds.user
+         content: null,
+         embeds: embeds.user,
+         components: []
       });
    };
 

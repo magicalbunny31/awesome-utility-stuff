@@ -32,8 +32,8 @@ export class Statuses {
 export const badWords: typeof import("../src/data/badWords.js");
 
 /**
- * regex to match emojis in unicode 14.0 🦊
- * @returns regex to match emojis in unicode 14.0 🦊
+ * regular expression to match emojis in unicode 14.0 🦊
+ * @returns regular expression to match emojis in unicode 14.0 🦊
  */
 export const emoji: RegExp;
 
@@ -42,6 +42,12 @@ export const emoji: RegExp;
  * @returns an emoji in the format <a:name:id> or <:name:id> 🗨️
  */
 export const emojis: typeof import("../src/data/emojis.js");
+
+/**
+ * my regular expression to match http(s) urls 🦊
+ * @returns regular expression to match http(s) urls 🦊
+ */
+export const url: RegExp;
 
 
 

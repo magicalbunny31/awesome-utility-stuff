@@ -58,3 +58,17 @@
 
 » bug fixes   -^^,--,~
 › sendBotError: fix message timestamp formatting 🕒
+
+
+
+18/feb/2022 - 1.14.0
+
+» features   -^^,--,~
+› data: add url 🔗
+› sendBotError: remove message content and components from error message 🛑
+
+» bug fixes   -^^,--,~
+› emoji: add missing (though redundant) type in file 💬
+
+» styles​ ​ ​ -^^,--,~
+› prefer "regular expression" over "regex" 📄
