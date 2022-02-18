@@ -5,6 +5,7 @@ import Statuses from "../../src/classes/statuses.js";
 import badWords from "../../src/data/badWords.js";
 import emoji from "../../src/data/emoji.js";
 import emojis from "../../src/data/emojis.js";
+import url from "../../src/data/url.js";
 
 // functions
 import choice from "../../src/functions/choice.js";
@@ -31,6 +32,7 @@ export {
    badWords,
    emoji,
    emojis,
+   url,
 
    // functions
    choice,

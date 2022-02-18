@@ -5,6 +5,7 @@ const Statuses = require("../../src/classes/statuses.js");
 const badWords = require("../../src/data/badWords.js");
 const emoji = require("../../src/data/emoji.js");
 const emojis = require("../../src/data/emojis.js");
+const url = require("../../src/data/url.js");
 
 // functions
 const choice = require("../../src/functions/choice.js");
@@ -31,6 +32,7 @@ module.exports = {
    badWords,
    emoji,
    emojis,
+   url,
 
    // functions
    choice,
