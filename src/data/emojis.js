@@ -90,6 +90,8 @@ module.exports = {
    "robot":              "<:robot:792517131920211989>",
    "bomb":               "<:bomb:792165588209762325>",
 
+   "arrow_up":    "<:arrow_up:944670056862875708>",
+   "arrow_down":  "<:arrow_down:944670056846094406>",
    "arrow_left":  "<:arrow_left:792165506794127460>",
    "arrow_right": "<:arrow_right:792165506886271007>",
    "back":        "<:back:809123924977778690>",

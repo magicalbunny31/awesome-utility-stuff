@@ -72,3 +72,10 @@
 
 » styles​ ​ ​ -^^,--,~
 › prefer "regular expression" over "regex" 📄
+
+
+
+19/feb/2022 - 1.14.1
+
+» features   -^^,--,~
+› emojis: added emojis 🦊
