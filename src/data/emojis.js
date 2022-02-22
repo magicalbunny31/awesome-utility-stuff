@@ -14,8 +14,10 @@ module.exports = {
    "furry_pride":  "<:furry_pride:797613808147365898>",
    "rainbow_flag": "<:rainbow_flag:792165589526904832>",
 
-   "fox":    "<:fox:792165588180795414>",
-   "rabbit": "<:rabbit:874677500679192606>",
+   "rabbit":            "<:rabbit:874677500679192606>",
+   "fox":               "<:fox:792165588180795414>",
+   "wolf":              "<:wolf:945731994233471016>",
+   "deer_with_antlers": "<:deer_with_antlers:945732149359812648>",
 
    "yes":    "<:yes:792173102146519051>",
    "no":     "<:no:792173102377205811>",
