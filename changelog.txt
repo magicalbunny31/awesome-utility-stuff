@@ -86,3 +86,10 @@
 
 » features   -^^,--,~
 › emojis: added emojis 🦊
+
+
+
+24/feb/2022 - 1.14.3
+
+» features   -^^,--,~
+› emojis: added emojis 🦊
