@@ -141,13 +141,13 @@ module.exports = {
       const { choice } = require("../../");
 
       const mentions     = [ ...userNames.map(name => `@${name}`),                        `@${user.username}` ];
-      const usernameTags = [ ...userNames.map(name => `${name}#${getDiscriminator()}`), user.tag        ];
+      const usernameTags = [ ...userNames.map(name => `${name}#${this.getDiscriminator()}`),  user.tag        ];
       const usernames    = [ ...userNames,                                                    user.username   ];
 
       const mention     = choice(mentions);
       const usernameTag = choice(usernameTags);
       const username    = choice(usernames);
-      const id          = getId();
+      const id          = this.getId();
 
       return choice([ mention, username, usernameTag, id ]);
    },
@@ -175,7 +175,7 @@ module.exports = {
    userTag: function(user) {
       const { choice } = require("../../");
 
-      const usernameTags = [ ...userNames.map(name => `${name}#${getDiscriminator()}`), user.tag ];
+      const usernameTags = [ ...userNames.map(name => `${name}#${this.getDiscriminator()}`), user.tag ];
 
       return choice(usernameTags);
    },
@@ -215,7 +215,7 @@ module.exports = {
 
       const mention = choice(mentions);
       const name    = choice(names);
-      const id      = getId();
+      const id      = this.getId();
 
       return choice([ mention, name, id ]);
    },
