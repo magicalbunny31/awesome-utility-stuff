@@ -108,6 +108,7 @@
 » bug fixes   -^^,--,~
 › help: discard `this` scope, just use variables 💬
 › help: no arrow functions (see 1.14.4) ➡️
+› help: no `this`, use `module.exports` 📋
 
 » reverts   -^^,--,~
 › revert "v1.14.4 🎉🐾" (eb765c9) 🔁
