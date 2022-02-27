@@ -97,31 +97,6 @@ export namespace help {
    export function getId(): string;
 
    /**
-    * example names for users 👥
-    */
-   export const userNames: string[];
-
-   /**
-    * example names for roles 📃
-    */
-   export const roleNames: string[];
-
-   /**
-    * example names for discord text channels 📃
-    */
-   export const textChannelNames: string[];
-
-   /**
-    * example names for discord voice channels 📃
-    */
-   export const voiceChannelNames: string[];
-
-   /**
-    * example names for discord category channels 📃
-    */
-   export const categoryChannelNames: string[];
-
-   /**
     * returns data that can be resolved into the following: `@user`, `username#tag`, `username`, `id` 👤
     * @param user the command user 🗨️
     * @returns `@user`, `username#tag`, `username`, `id` 🦊

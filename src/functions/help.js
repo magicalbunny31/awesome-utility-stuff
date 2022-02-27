@@ -2,6 +2,90 @@ const { User, Collection, GuildChannel, Snowflake, Role } = require("discord.js"
 
 
 /**
+ * example names for users 👥
+ */
+const userNames = [
+   /* ⬇⬇⬇ my bots ⬇⬇⬇ */
+   `bun 🐰🐾`, `fox kit 🦊🐾`, `berry bot`, `The Lobster Bot`, `aviflight558`,
+   /* ⬇⬇⬇ fwends ⬇⬇⬇ */
+   `Aviation 🛫`, `Bear 🐻`,  `ChLu`,   `ema 🐱`,  `fricking j`, `lucy`,    `Lobster 🦞`, `Shadow ⚫`,     `Toasty 🍞`, `Ash`,
+   `Dragun 🐉`,   `Otter 🦦`, `fox 🦊`, `blox ⏹`, `blu 💠`,    `boba 🍵`, `dor 🚪`,     `dork 🤓`,       `epic 😎`,   `fard 📘`,
+   `boop 🦊`,     `Inky 🦑`,  `jooj`,   `juuz 🍊`,  `kito 🔪`,   `lil`,     `kenny`,      `Strawberry 🍓`, `keith`,      `hugo 🧨`,
+   `yas ✅`,      `sylveon`,
+   /* ⬇⬇⬇ bunnies ⬇⬇⬇ */
+   `Brownie`, `Cutie`, `Shadoku`, `Whiteflake`, `Puffy`, `Kodiak`, `Zingo`,
+   /* ⬇⬇⬇ other ⬇⬇⬇ */
+   `Romeo 🦊`, `FOX 🦊🦊🦊`, `winterwolf 🐺`, `folf 🦊🐺`, `bunny 🐰`,
+   /* ⬇⬇⬇ balto characters ⬇⬇⬇ */
+   `Aleu`,   `Aniu`,   `Balto`, `Boris`, `Dingo`, `Dixie`, `Sylvie`, `Dakota`, `Doc`,    `Dusty`,
+   `Jenna`,  `Kaltag`, `Kirby`, `Kodi`,  `Mel`,   `Dipsy`, `Morse`,  `Muk`,    `Luk`,    `Muru`,
+   `Nava`,   `Niju`,   `Nikki`, `Nuk`,   `Yak`,   `Sumac`, `Ralph`,  `Saba`,   `Silver`, `Star`,
+   `Steele`, `Stella`, `Tana`,  `Vike`,  `Wild Joe`
+];
+
+
+/**
+ * example names for roles 📃
+ */
+const roleNames = [
+   /* ⬇⬇⬇ typical role names ⬇⬇⬇ */
+   `administrator`,  `administrators`,  `Administrator`,  `Administrators`,  `ADMINISTRATOR`,  `ADMINISTRATORS`,
+   `admin`,          `admins`,          `Admin`,          `Admins`,          `ADMIN`,          `ADMINS`,
+   `moderator`,      `moderators`,      `Moderator`,      `Moderators`,      `MODERATOR`,      `MODERATORS`,
+   `mod`,            `mods`,            `Mod`,            `Mods`,            `MOD`,            `MODS`,
+   `member`,         `members`,         `Member`,         `Members`,         `MEMBER`,         `MEMBERS`,
+   `server booster`, `server boosters`, `Server Booster`, `Server Boosters`, `SERVER BOOSTER`, `SERVER BOOSTERS`,
+   `bot`,            `bots`,            `Bot`,            `Bots`,            `BOT`,            `BOTS`,
+   `muted`,                             `Muted`,                             `MUTED`,
+   /* ⬇⬇⬇ Bunny FurFest 🐰🐾 ⬇⬇⬇ */
+   `owner 🐰🦊🐺🦌`, `gofurs 👥`,     `[lvl 15] furry tamer 🦊`, `[lvl 5] terran 🎋`, `attendees 👥`,
+   `newcomers 👥`,    `helpstaff~ 🤖`, `lewdies`,                  `uwu`,
+   /* ⬇⬇⬇ BFF: Room Party 621 🐰🦊🐺🦌 ⬇⬇⬇ */
+   `literal fox lord 🦊`, `party host 🎉`, `banished to the fort 🏰`, `checking in 📝`, `outsiders 🤖`, `isolation gang 🏡`,
+   /* ⬇⬇⬇ other roles i found ⬇⬇⬇ */
+   `Staff`,         `Strawberry Squad`, `Mulberry Marauder`, `Blackberry Bunch`, `Blueberry Brigade`, `Ripe Berries`,
+   `The Berry Pet`, `Chat Reviver`,     `QoTD`,              `Developer`,        `god`,               `guests`,
+   `The Crew`,      `Unpaid Interns`,   `VIP`
+];
+
+
+/**
+ * example names for discord text channels 📃
+ */
+const textChannelNames = [
+   /* ⬇⬇⬇ typical channel names ⬇⬇⬇ */
+   `rules`,   `announcements`,  `general`,     `off-topic`, `memes`,
+   `bot`,     `media`,          `art`,         `spam`,      `bugs-and-help`,
+   `faq`,     `general-banter`, `screenshots`, `support`,   `info`,
+   `events`,  `giveaways`,      `news`,        `sport`,     `qotd`,
+   `no-mic`,  `streams`,        `fan-art`,     `server`,    `changelog`,
+   `website`, `developer`,      `discord`,     `wumpus`,    `music`
+];
+
+
+/**
+ * example names for discord voice channels 📃
+ */
+const voiceChannelNames = [
+   /* ⬇⬇⬇ typical channel names ⬇⬇⬇ */
+   `general`, `off topic`, `stage`,  `voice`, `music`,
+   `afk`,     `lobby`,     `gaming`, `atc`,   `the bar`
+];
+
+
+/**
+ * example names for discord category channels 📃
+ */
+const categoryChannelNames = [
+   /* ⬇⬇⬇ typical channel names ⬇⬇⬇ */
+   `Text Channels`,     `Voice Channels`,     `bunker`,        `misc`,    `staff`,
+   `Information`,       `archived`,           `ANNOUNCEMENTS`, `uwu`,     `Other`,
+   `General Chatrooms`, `server information`, `Parties`,       `English`, `gamenight`,
+   `media 📹`,          `games 🎮`,          `fox 🦊`,        `dev 🤖`, `voice 🔉`
+];
+
+
+/**
  * help usage utilities ❓
  */
 module.exports = {
@@ -49,90 +133,6 @@ module.exports = {
 
 
    /**
-    * example names for users 👥
-    */
-   userNames: [
-      /* ⬇⬇⬇ my bots ⬇⬇⬇ */
-      `bun 🐰🐾`, `fox kit 🦊🐾`, `berry bot`, `The Lobster Bot`, `aviflight558`,
-      /* ⬇⬇⬇ fwends ⬇⬇⬇ */
-      `Aviation 🛫`, `Bear 🐻`,  `ChLu`,   `ema 🐱`,  `fricking j`, `lucy`,    `Lobster 🦞`, `Shadow ⚫`,     `Toasty 🍞`, `Ash`,
-      `Dragun 🐉`,   `Otter 🦦`, `fox 🦊`, `blox ⏹`, `blu 💠`,    `boba 🍵`, `dor 🚪`,     `dork 🤓`,       `epic 😎`,   `fard 📘`,
-      `boop 🦊`,     `Inky 🦑`,  `jooj`,   `juuz 🍊`,  `kito 🔪`,   `lil`,     `kenny`,      `Strawberry 🍓`, `keith`,      `hugo 🧨`,
-      `yas ✅`,      `sylveon`,
-      /* ⬇⬇⬇ bunnies ⬇⬇⬇ */
-      `Brownie`, `Cutie`, `Shadoku`, `Whiteflake`, `Puffy`, `Kodiak`, `Zingo`,
-      /* ⬇⬇⬇ other ⬇⬇⬇ */
-      `Romeo 🦊`, `FOX 🦊🦊🦊`, `winterwolf 🐺`, `folf 🦊🐺`, `bunny 🐰`,
-      /* ⬇⬇⬇ balto characters ⬇⬇⬇ */
-      `Aleu`,   `Aniu`,   `Balto`, `Boris`, `Dingo`, `Dixie`, `Sylvie`, `Dakota`, `Doc`,    `Dusty`,
-      `Jenna`,  `Kaltag`, `Kirby`, `Kodi`,  `Mel`,   `Dipsy`, `Morse`,  `Muk`,    `Luk`,    `Muru`,
-      `Nava`,   `Niju`,   `Nikki`, `Nuk`,   `Yak`,   `Sumac`, `Ralph`,  `Saba`,   `Silver`, `Star`,
-      `Steele`, `Stella`, `Tana`,  `Vike`,  `Wild Joe`
-   ],
-
-
-   /**
-    * example names for roles 📃
-    */
-   roleNames: [
-      /* ⬇⬇⬇ typical role names ⬇⬇⬇ */
-      `administrator`,  `administrators`,  `Administrator`,  `Administrators`,  `ADMINISTRATOR`,  `ADMINISTRATORS`,
-      `admin`,          `admins`,          `Admin`,          `Admins`,          `ADMIN`,          `ADMINS`,
-      `moderator`,      `moderators`,      `Moderator`,      `Moderators`,      `MODERATOR`,      `MODERATORS`,
-      `mod`,            `mods`,            `Mod`,            `Mods`,            `MOD`,            `MODS`,
-      `member`,         `members`,         `Member`,         `Members`,         `MEMBER`,         `MEMBERS`,
-      `server booster`, `server boosters`, `Server Booster`, `Server Boosters`, `SERVER BOOSTER`, `SERVER BOOSTERS`,
-      `bot`,            `bots`,            `Bot`,            `Bots`,            `BOT`,            `BOTS`,
-      `muted`,                             `Muted`,                             `MUTED`,
-      /* ⬇⬇⬇ Bunny FurFest 🐰🐾 ⬇⬇⬇ */
-      `owner 🐰🦊🐺🦌`, `gofurs 👥`,     `[lvl 15] furry tamer 🦊`, `[lvl 5] terran 🎋`, `attendees 👥`,
-      `newcomers 👥`,    `helpstaff~ 🤖`, `lewdies`,                  `uwu`,
-      /* ⬇⬇⬇ BFF: Room Party 621 🐰🦊🐺🦌 ⬇⬇⬇ */
-      `literal fox lord 🦊`, `party host 🎉`, `banished to the fort 🏰`, `checking in 📝`, `outsiders 🤖`, `isolation gang 🏡`,
-      /* ⬇⬇⬇ other roles i found ⬇⬇⬇ */
-      `Staff`,         `Strawberry Squad`, `Mulberry Marauder`, `Blackberry Bunch`, `Blueberry Brigade`, `Ripe Berries`,
-      `The Berry Pet`, `Chat Reviver`,     `QoTD`,              `Developer`,        `god`,               `guests`,
-      `The Crew`,      `Unpaid Interns`,   `VIP`
-   ],
-
-
-   /**
-    * example names for discord text channels 📃
-    */
-   textChannelNames: [
-      /* ⬇⬇⬇ typical channel names ⬇⬇⬇ */
-      `rules`,   `announcements`,  `general`,     `off-topic`, `memes`,
-      `bot`,     `media`,          `art`,         `spam`,      `bugs-and-help`,
-      `faq`,     `general-banter`, `screenshots`, `support`,   `info`,
-      `events`,  `giveaways`,      `news`,        `sport`,     `qotd`,
-      `no-mic`,  `streams`,        `fan-art`,     `server`,    `changelog`,
-      `website`, `developer`,      `discord`,     `wumpus`,    `music`
-   ],
-
-
-   /**
-    * example names for discord voice channels 📃
-    */
-   voiceChannelNames: [
-      /* ⬇⬇⬇ typical channel names ⬇⬇⬇ */
-      `general`, `off topic`, `stage`,  `voice`, `music`,
-      `afk`,     `lobby`,     `gaming`, `atc`,   `the bar`
-   ],
-
-
-   /**
-    * example names for discord category channels 📃
-    */
-   categoryChannelNames: [
-      /* ⬇⬇⬇ typical channel names ⬇⬇⬇ */
-      `Text Channels`,     `Voice Channels`,     `bunker`,        `misc`,    `staff`,
-      `Information`,       `archived`,           `ANNOUNCEMENTS`, `uwu`,     `Other`,
-      `General Chatrooms`, `server information`, `Parties`,       `English`, `gamenight`,
-      `media 📹`,          `games 🎮`,          `fox 🦊`,        `dev 🤖`, `voice 🔉`
-   ],
-
-
-   /**
     * returns data that can be resolved into the following: `@user`, `username#tag`, `username`, `id` 👤
     * @param {User} user the command user 🗨️
     * @returns {string} `@user`, `username#tag`, `username`, `id` 🦊
@@ -140,14 +140,14 @@ module.exports = {
    userResolvable: user => {
       const { choice } = require("../../");
 
-      const mentions     = [ ...this.userNames.map(name => `@${name}`),                        `@${user.username}` ];
-      const usernameTags = [ ...this.userNames.map(name => `${name}#${this.getDiscriminator()}`), user.tag        ];
-      const usernames    = [ ...this.userNames,                                                    user.username   ];
+      const mentions     = [ ...userNames.map(name => `@${name}`),                        `@${user.username}` ];
+      const usernameTags = [ ...userNames.map(name => `${name}#${getDiscriminator()}`), user.tag        ];
+      const usernames    = [ ...userNames,                                                    user.username   ];
 
       const mention     = choice(mentions);
       const usernameTag = choice(usernameTags);
       const username    = choice(usernames);
-      const id          = this.getId();
+      const id          = getId();
 
       return choice([ mention, username, usernameTag, id ]);
    },
@@ -161,7 +161,7 @@ module.exports = {
    userMention: user => {
       const { choice } = require("../../");
 
-      const mentions = [ ...this.userNames.map(name => `@${name}`), `@${user.username}` ];
+      const mentions = [ ...userNames.map(name => `@${name}`), `@${user.username}` ];
 
       return choice(mentions);
    },
@@ -175,7 +175,7 @@ module.exports = {
    userTag: user => {
       const { choice } = require("../../");
 
-      const usernameTags = [ ...this.userNames.map(name => `${name}#${this.getDiscriminator()}`), user.tag ];
+      const usernameTags = [ ...userNames.map(name => `${name}#${getDiscriminator()}`), user.tag ];
 
       return choice(usernameTags);
    },
@@ -189,7 +189,7 @@ module.exports = {
    userUsername: user => {
       const { choice } = require("../../");
 
-      const usernames = [ ...this.userNames, user.username ];
+      const usernames = [ ...userNames, user.username ];
 
       return choice(usernames);
    },
@@ -205,17 +205,17 @@ module.exports = {
 
       const mentions =
          roles
-            ? [ ...this.roleNames.map(name => `@${name}`), ...roles.filter(role => role.rawPosition).map(role => `@${role.name}`) ]
-            : this.roleNames.map(name => `@${name}`);
+            ? [ ...roleNames.map(name => `@${name}`), ...roles.filter(role => role.rawPosition).map(role => `@${role.name}`) ]
+            : roleNames.map(name => `@${name}`);
 
       const names =
          roles
-            ? [ ...this.roleNames, ...roles.filter(role => role.rawPosition).map(role => role.name) ]
-            : this.roleNames;
+            ? [ ...roleNames, ...roles.filter(role => role.rawPosition).map(role => role.name) ]
+            : roleNames;
 
       const mention = choice(mentions);
       const name    = choice(names);
-      const id      = this.getId();
+      const id      = getId();
 
       return choice([ mention, name, id ]);
    },
@@ -231,8 +231,8 @@ module.exports = {
 
       const mentions =
          roles
-            ? [ ...this.roleNames.map(name => `@${name}`), ...roles.filter(role => role.rawPosition).map(role => `@${role.name}`) ]
-            : this.roleNames.map(name => `@${name}`);
+            ? [ ...roleNames.map(name => `@${name}`), ...roles.filter(role => role.rawPosition).map(role => `@${role.name}`) ]
+            : roleNames.map(name => `@${name}`);
 
       return choice(mentions);
    },
@@ -248,8 +248,8 @@ module.exports = {
 
       const names =
          roles
-            ? [ ...this.roleNames, ...roles.filter(role => role.rawPosition).map(role => role.name) ]
-            : this.roleNames;
+            ? [ ...roleNames, ...roles.filter(role => role.rawPosition).map(role => role.name) ]
+            : roleNames;
 
       return choice(names);
    },
@@ -265,8 +265,8 @@ module.exports = {
 
       const textChannels =
          channels
-            ? [ ...this.textChannelNames.map(name => `#${name}`), ...channels.filter(channel => channel.type === `GUILD_TEXT`).map(channel => `#${channel.name}`) ]
-            : this.textChannelNames.map(name => `#${name}`);
+            ? [ ...textChannelNames.map(name => `#${name}`), ...channels.filter(channel => channel.type === `GUILD_TEXT`).map(channel => `#${channel.name}`) ]
+            : textChannelNames.map(name => `#${name}`);
 
       return choice(textChannels);
    },
@@ -282,8 +282,8 @@ module.exports = {
 
       const voiceChannels =
          channels
-            ? [ ...this.voiceChannelNames.map(name => `🔉 ${name}`), ...channels.filter(channel => channel.type === `GUILD_VOICE` || channel.type === `GUILD_STAGE_VOICE`).map(channel => `🔉 ${channel.name}`) ]
-            : this.voiceChannelNames.map(name => `🔉 ${name}`);
+            ? [ ...voiceChannelNames.map(name => `🔉 ${name}`), ...channels.filter(channel => channel.type === `GUILD_VOICE` || channel.type === `GUILD_STAGE_VOICE`).map(channel => `🔉 ${channel.name}`) ]
+            : voiceChannelNames.map(name => `🔉 ${name}`);
 
       return choice(voiceChannels);
    },
@@ -299,8 +299,8 @@ module.exports = {
 
       const categoryChannels =
          channels ?
-            [ ...this.categoryChannelNames, ...channels.filter(channel => channel.type === `GUILD_CATEGORY`).map(channel => channel.name) ] :
-            this.categoryChannelNames;
+            [ ...categoryChannelNames, ...channels.filter(channel => channel.type === `GUILD_CATEGORY`).map(channel => channel.name) ] :
+            categoryChannelNames;
 
       return choice(categoryChannels);
    },
