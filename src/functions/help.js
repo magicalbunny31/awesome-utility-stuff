@@ -9,7 +9,7 @@ module.exports = {
     * get a random four-digit number string that can be used as a discord tag #️⃣
     * @returns {string} 🆔
     */
-   getDiscriminator: () => {
+    getDiscriminator: function() {
       const generateDiscriminator = () => {
          let tag = Math.random().toString().slice(2, 6);
          if (!+tag) tag = generateDiscriminator(); // re-roll if this tag resolves in `0000`
@@ -25,7 +25,7 @@ module.exports = {
     * @see https://discord.com/developers/docs/reference#snowflakes
     * @returns {string} 🆔
     */
-   getId: () => {
+    getId: function() {
       const { number } = require("../../");
 
       const generateId = () => {
@@ -137,7 +137,7 @@ module.exports = {
     * @param {User} user the command user 🗨️
     * @returns {string} `@user`, `username#tag`, `username`, `id` 🦊
     */
-   userResolvable: user => {
+   userResolvable: function(user) {
       const { choice } = require("../../");
 
       const mentions     = [ ...this.userNames.map(name => `@${name}`),                        `@${user.username}` ];
@@ -158,7 +158,7 @@ module.exports = {
     * @param {User} user the command user 🗨️
     * @returns {string} `@user` 🦊
     */
-   userMention: user => {
+   userMention: function(user) {
       const { choice } = require("../../");
 
       const mentions = [ ...this.userNames.map(name => `@${name}`), `@${user.username}` ];
@@ -172,7 +172,7 @@ module.exports = {
     * @param {User} user the command user 🗨️
     * @returns {string} `username#tag` 🦊
     */
-   userTag: user => {
+   userTag: function(user) {
       const { choice } = require("../../");
 
       const usernameTags = [ ...this.userNames.map(name => `${name}#${this.getDiscriminator()}`), user.tag ];
@@ -186,7 +186,7 @@ module.exports = {
     * @param {User} user the command user 🗨️
     * @returns {string} `username` 🦊
     */
-   userUsername: user => {
+   userUsername: function(user) {
       const { choice } = require("../../");
 
       const usernames = [ ...this.userNames, user.username ];
@@ -200,7 +200,7 @@ module.exports = {
     * @param {Collection<Snowflake, Role>} [roles] this guild's roles, if there is a guild 🗨️
     * @returns {string} `@role`, `role name`, `id` 🦊
     */
-   roleResolvable: roles => {
+   roleResolvable: function(roles) {
       const { choice } = require("../../");
 
       const mentions =
@@ -226,7 +226,7 @@ module.exports = {
     * @param {Collection<Snowflake, Role>} [roles] this guild's roles, if there is a guild 🗨️
     * @returns {string} `@role` 🦊
     */
-   roleMention: roles => {
+   roleMention: function(roles) {
       const { choice } = require("../../");
 
       const mentions =
@@ -243,7 +243,7 @@ module.exports = {
     * @param {Collection<Snowflake, Role>} [roles] this guild's roles, if there is a guild 🗨️
     * @returns {string} `role name` 🦊
     */
-   roleName: roles => {
+   roleName: function(roles) {
       const { choice } = require("../../");
 
       const names =
@@ -260,7 +260,7 @@ module.exports = {
     * @param {Collection<Snowflake, GuildChannel>} [channels] this guild's channels, if there is a guild 🗨️
     * @returns {string} `text channel name` 🦊
     */
-   textChannel: channels => {
+   textChannel: function(channels) {
       const { choice } = require("../../");
 
       const textChannels =
@@ -277,7 +277,7 @@ module.exports = {
     * @param {Collection<Snowflake, GuildChannel>} [channels] this guild's channels, if there is a guild 🗨️
     * @returns {string} `voice channel name` 🦊
     */
-   voiceChannel: channels => {
+   voiceChannel: function(channels) {
       const { choice } = require("../../");
 
       const voiceChannels =
@@ -294,7 +294,7 @@ module.exports = {
     * @param {Collection<Snowflake, GuildChannel>} [channels] this guild's channels, if there is a guild 🗨️
     * @returns {string} `category channel name` 🦊
     */
-   categoryChannel: channels => {
+   categoryChannel: function(channels) {
       const { choice } = require("../../");
 
       const categoryChannels =
@@ -310,7 +310,7 @@ module.exports = {
     * boolean option 🗨️
     * @returns {boolean} 💻
     */
-   boolean: () => {
+   boolean: function() {
       const { choice } = require("../../");
 
       return choice([ true, false ]);
@@ -322,7 +322,7 @@ module.exports = {
     * @param {"ban" | "kick" | "timeout" | "revoke-ban"} type type of moderation reason related to this command 📋
     * @returns {string} 📃
     */
-   moderationReason: type => {
+   moderationReason: function(type) {
       const { choice } = require("../../");
 
       if (type === `ban` || type === `kick`)
@@ -353,7 +353,7 @@ module.exports = {
     * @param {string} commandName name of the command to get autocomplete choices from 🆔
     * @returns {import("discord.js").ApplicationCommandData[]} 📄
     */
-   getAutocompleteChoices: async (interaction, commands, commandName) => {
+   getAutocompleteChoices: async function(interaction, commands, commandName) {
       const command = commands.get(commandName);
 
       const autocompleteChoicesData = await command?.getAutocompleteChoices(interaction);
@@ -368,7 +368,7 @@ module.exports = {
     * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
     * @returns {string} command name 📄
     */
-   command: commands => {
+   command: function(commands) {
       return `/${commands.random().name}`;
    },
 
@@ -378,7 +378,7 @@ module.exports = {
     * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
     * @returns {string} category name 📄
     */
-   category: commands => {
+   category: function(commands) {
       const { choice, set } = require("../../");
 
       return choice(set(commands.filter(cmd => cmd.category).map(cmd => cmd.category)));
@@ -390,7 +390,7 @@ module.exports = {
     * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
     * @returns {string} subcategory name 📄
     */
-   subcategory: commands => {
+   subcategory: function(commands) {
       const { choice, set } = require("../../");
 
       return choice(set(commands.filter(cmd => cmd.subcategory).map(cmd => cmd.subcategory)));
@@ -401,7 +401,7 @@ module.exports = {
     * random location string for command `/weather` 🌦️
     * @returns {string} ⛅
     */
-   location: () => {
+   location: function() {
       const { choice } = require("../../");
 
       return choice([
@@ -416,7 +416,7 @@ module.exports = {
     * random string to translate to owo for command `/owo` 🦊
     * @returns {string} 💬
     */
-   owo: () => {
+   owo: function() {
       const { choice } = require("../../");
 
       return choice([

@@ -93,3 +93,10 @@
 
 » features   -^^,--,~
 › emojis: added emojis 🦊
+
+
+
+27/feb/2022 - 1.14.4
+
+» bug fixes   -^^,--,~
+› help: arrow functions aren't bound to scope, so can't use `this` (oops) ➡️
