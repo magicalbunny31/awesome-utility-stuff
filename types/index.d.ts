@@ -56,6 +56,14 @@ export const url: RegExp;
 // functions
 
 /**
+ * automatically create an array with values filled via a function 🔁
+ * @param length how long this array should be #️⃣
+ * @param func function to run for each element of this array 📃
+ * @returns array with values filled via a function 📄
+ */
+export function autoArray<T>(length: number, func: () => T): T[];
+
+/**
  * gets a random element from an array ❓
  * @param array array to get a random element from 📃
  * @returns an element of that array 📄

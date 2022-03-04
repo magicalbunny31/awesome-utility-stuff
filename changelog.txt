@@ -113,3 +113,10 @@
 » reverts   -^^,--,~
 › revert "v1.14.4 🎉🐾" (eb765c9) 🔁
 › un-revert "v1.14.4 🎉🐾" (eb765c9) (see second bug fix) 🔁🔁
+
+
+
+04/mar/2022 - 1.15.0
+
+» features   -^^,--,~
+› add autoArray 🔁

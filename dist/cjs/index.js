@@ -8,6 +8,7 @@ const emojis = require("../../src/data/emojis.js");
 const url = require("../../src/data/url.js");
 
 // functions
+const autoArray = require("../../src/functions/autoArray.js");
 const choice = require("../../src/functions/choice.js");
 const formatPermission = require("../../src/functions/formatPermission.js");
 const help = require("../../src/functions/help.js");
@@ -35,6 +36,7 @@ module.exports = {
    url,
 
    // functions
+   autoArray,
    choice,
    formatPermission,
    help,

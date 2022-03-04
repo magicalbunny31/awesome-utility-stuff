@@ -8,6 +8,7 @@ import emojis from "../../src/data/emojis.js";
 import url from "../../src/data/url.js";
 
 // functions
+import autoArray from "../../src/functions/autoArray.js";
 import choice from "../../src/functions/choice.js";
 import formatPermission from "../../src/functions/formatPermission.js";
 import help from "../../src/functions/help.js";
@@ -35,6 +36,7 @@ export {
    url,
 
    // functions
+   autoArray,
    choice,
    formatPermission,
    help,
