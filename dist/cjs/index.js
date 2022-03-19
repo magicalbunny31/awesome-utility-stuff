@@ -11,6 +11,7 @@ const url = require("../../src/data/url.js");
 const autoArray = require("../../src/functions/autoArray.js");
 const choice = require("../../src/functions/choice.js");
 const formatPermission = require("../../src/functions/formatPermission.js");
+const getNearestColourPaw = require("../../src/functions/getNearestColourPaw.js");
 const help = require("../../src/functions/help.js");
 const httpStatusInfo = require("../../src/functions/httpStatusInfo.js");
 const noop = require("../../src/functions/noop.js");
@@ -22,6 +23,8 @@ const set = require("../../src/functions/set.js");
 const shuffle = require("../../src/functions/shuffle.js");
 const strip = require("../../src/functions/strip.js");
 const sum = require("../../src/functions/sum.js");
+const toDecimal = require("../../src/functions/toDecimal.js");
+const toHexadecimal = require("../../src/functions/toHexadecimal.js");
 const wait = require("../../src/functions/wait.js");
 
 
@@ -39,6 +42,7 @@ module.exports = {
    autoArray,
    choice,
    formatPermission,
+   getNearestColourPaw,
    help,
    httpStatusInfo,
    noop,
@@ -50,5 +54,7 @@ module.exports = {
    shuffle,
    strip,
    sum,
+   toDecimal,
+   toHexadecimal,
    wait
 };

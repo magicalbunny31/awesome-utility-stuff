@@ -11,5 +11,4 @@ module.exports = stripIndents;
 // believe me, i tried so hard to make my own script!
 // alas, template literals and tagged templates are --way-- too confusing to me for now..
 
-// todo
-// str.join(``).replace(/^[^\S\n]+|[^\S\n]+$|^\n/gm, ``);
+// todo: str.join(``).replace(/^[^\S\n]+|[^\S\n]+$|^\n/gm, ``);

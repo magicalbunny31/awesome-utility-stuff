@@ -11,6 +11,7 @@ import url from "../../src/data/url.js";
 import autoArray from "../../src/functions/autoArray.js";
 import choice from "../../src/functions/choice.js";
 import formatPermission from "../../src/functions/formatPermission.js";
+import getNearestColourPaw from "../../src/functions/getNearestColourPaw.js";
 import help from "../../src/functions/help.js";
 import httpStatusInfo from "../../src/functions/httpStatusInfo.js";
 import noop from "../../src/functions/noop.js";
@@ -22,6 +23,8 @@ import set from "../../src/functions/set.js";
 import shuffle from "../../src/functions/shuffle.js";
 import strip from "../../src/functions/strip.js";
 import sum from "../../src/functions/sum.js";
+import toDecimal from "../../src/functions/toDecimal.js";
+import toHexadecimal from "../../src/functions/toHexadecimal.js";
 import wait from "../../src/functions/wait.js";
 
 
@@ -39,6 +42,7 @@ export {
    autoArray,
    choice,
    formatPermission,
+   getNearestColourPaw,
    help,
    httpStatusInfo,
    noop,
@@ -50,5 +54,7 @@ export {
    shuffle,
    strip,
    sum,
+   toDecimal,
+   toHexadecimal,
    wait
 };

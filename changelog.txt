@@ -120,3 +120,16 @@
 
 » features   -^^,--,~
 › add autoArray 🔁
+
+
+
+19/mar/2022 - 1.16.0
+
+» features   -^^,--,~
+› add getNearestColourPaw 🐾
+› add toDecimal ➡️
+› add toHexadecimal ➡️
+
+» code refactoring   -^^,--,~
+› change partialEmoji's order in types file so that it's in alphabetical order 🔤
+› add TODO comments in strip and sendBotError ✔️

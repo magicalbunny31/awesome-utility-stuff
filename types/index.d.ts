@@ -88,6 +88,13 @@ export function choice<T>(array: T[], choices: number): T[];
 export function formatPermission(permissionString: import("discord.js").PermissionString): string;
 
 /**
+ * get the nearest coloured paw from a hex colour value 🐾
+ * @param hex hex string colour value to use 🎨
+ * @returns nearest coloured paw emoji 🐾
+ */
+export function getNearestColourPaw(hex: string): string;
+
+/**
  * help usage utilities ❓
  */
 export namespace help {
@@ -260,6 +267,14 @@ export function noop(): void;
 export function number(min: number, max: number): number;
 
 /**
+ * get a partial emoji object with `id`, `name` and `animated` - perfect for message components! 🔁
+ * @see https://discord.com/developers/docs/resources/emoji#emoji-object
+ * @param emoji text emoji string to parse 🦊
+ * @returns object that matches the discord api emoji format 📋
+ */
+ export function partialEmoji(emoji: string): { animated: boolean, name: string, id: string? }
+
+/**
  * similar to Array.filter(), except elements that don't pass the condition are returned too 🔁
  * @param array array to partition 📃
  * @param condition condition to evaluate for each element ❓
@@ -303,12 +318,18 @@ export function strip(str: import("common-tags").TemplateTag): string;
 export function sum(array: number[]): number;
 
 /**
- * get a partial emoji object with `id`, `name` and `animated` - perfect for message components! 🔁
- * @see https://discord.com/developers/docs/resources/emoji#emoji-object
- * @param emoji text emoji string to parse 🦊
- * @returns object that matches the discord api emoji format 📋
+ * convert a colour to decimal format ➡️
+ * @param colourToConvert colour to convert 🎨
+ * @returns decimal number (integer) colour value 🎨
  */
-export function partialEmoji(emoji: string): { animated: boolean, name: string, id: string? }
+export async function toDecimal(colourToConvert: any): number;
+
+/**
+ * convert a colour to hexadecimal format ➡️
+ * @param colourToConvert colour to convert 🎨
+ * @returns hex string colour value 🎨
+ */
+export async function toHexadecimal(colourToConvert: any): string;
 
 /**
  * pretty much "pauses" asynchronous code ⏱️

@@ -8,6 +8,9 @@
  */
 
 
+// TODO: this may get a major refactor in the future
+
+
 /**
  * send an error response ❗
  * @param {import("../../types/index").ApplicationCommandInteraction} interaction interaction to edit 🗨️
