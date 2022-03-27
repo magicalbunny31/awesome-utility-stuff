@@ -148,7 +148,8 @@ module.exports = {
    "credit_card": "<:credit_card:924394512065892412>",
    "moneybag":    "<:moneybag:924394645419618344>",
 
-   "sparkles": "<:sparkles:924397913667416135>",
+   "sparkles":         "<:sparkles:924397913667416135>",
+   "two_hearts_orbit": "<:two_hearts_orbit:957751136021000252>",
 
 
    "awoo":        [ "<:awoo:704359905502560257>", "<:awoo:809131060930936933>" ],

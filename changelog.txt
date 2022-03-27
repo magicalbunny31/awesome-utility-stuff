@@ -133,3 +133,9 @@
 » code refactoring   -^^,--,~
 › change partialEmoji's order in types file so that it's in alphabetical order 🔤
 › add TODO comments in strip and sendBotError ✔️
+
+
+27/mar/2022 - 1.16.1
+
+» features   -^^,--,~
+› emojis: added emojis 🦊
