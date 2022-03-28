@@ -135,7 +135,15 @@
 › add TODO comments in strip and sendBotError ✔️
 
 
+
 27/mar/2022 - 1.16.1
 
 » features   -^^,--,~
 › emojis: added emojis 🦊
+
+
+
+28/mar/2022 - 1.17.0
+
+» features   -^^,--,~
+› add createCollectorExpirationTime ⏳

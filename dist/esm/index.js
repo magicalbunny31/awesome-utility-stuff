@@ -10,6 +10,7 @@ import url from "../../src/data/url.js";
 // functions
 import autoArray from "../../src/functions/autoArray.js";
 import choice from "../../src/functions/choice.js";
+import createCollectorExpirationTime from "../../src/functions/createCollectorExpirationTime.js";
 import formatPermission from "../../src/functions/formatPermission.js";
 import getNearestColourPaw from "../../src/functions/getNearestColourPaw.js";
 import help from "../../src/functions/help.js";
@@ -41,6 +42,7 @@ export {
    // functions
    autoArray,
    choice,
+   createCollectorExpirationTime,
    formatPermission,
    getNearestColourPaw,
    help,

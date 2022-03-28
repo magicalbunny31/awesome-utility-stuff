@@ -10,6 +10,7 @@ const url = require("../../src/data/url.js");
 // functions
 const autoArray = require("../../src/functions/autoArray.js");
 const choice = require("../../src/functions/choice.js");
+const createCollectorExpirationTime = require("../../src/functions/createCollectorExpirationTime.js");
 const formatPermission = require("../../src/functions/formatPermission.js");
 const getNearestColourPaw = require("../../src/functions/getNearestColourPaw.js");
 const help = require("../../src/functions/help.js");
@@ -41,6 +42,7 @@ module.exports = {
    // functions
    autoArray,
    choice,
+   createCollectorExpirationTime,
    formatPermission,
    getNearestColourPaw,
    help,

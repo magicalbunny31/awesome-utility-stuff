@@ -79,6 +79,15 @@ export function choice<T>(array: T[]): T;
 export function choice<T>(array: T[], choices: number): T[];
 
 /**
+ * creates a discord.js MessageComponentCollector expiration time from a timestamp ⏳
+ *
+ * this time will be roughly when the interaction's token invalidates ❌
+ * @param timestamp timestamp (in ms) of the interaction ⌚
+ * @returns period of time in 15 minutes from the timestamp but minus 3 seconds for good measure owo 🕑
+ */
+export function createCollectorExpirationTime(timestamp: number): number;
+
+/**
  * formats a permission to a readable string
  * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
  * @param permissionString permission to format
