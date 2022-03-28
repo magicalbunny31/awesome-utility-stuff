@@ -3,4 +3,4 @@
  * @param {number[]} array array of numbers 📃
  * @returns {number}
  */
-module.exports = array => array.reduce((accumulator, current) => accumulator + current);
+module.exports = array => array.reduce((accumulator, current) => accumulator + current, 0);

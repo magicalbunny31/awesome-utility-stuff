@@ -1,6 +1,6 @@
 {
    "name": "@magicalbunny31/awesome-utility-stuff",
-   "version": "1.17.0",
+   "version": "1.17.1",
    "description": "some awesome utilities that i pretty much need or else my code will suck 🐾",
    "scripts": {
       "test-cjs": "node ./test/index.cjs",

@@ -147,3 +147,10 @@
 
 » features   -^^,--,~
 › add createCollectorExpirationTime ⏳
+
+
+
+28/mar/2022 - 1.17.1
+
+» features   -^^,--,~
+› sum: add initial value to #reduce() 🔢
