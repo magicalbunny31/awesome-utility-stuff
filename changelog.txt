@@ -154,3 +154,10 @@
 
 » features   -^^,--,~
 › sum: add initial value to #reduce() 🔢
+
+
+
+09/apr/2022 - 1.17.2
+
+» features   -^^,--,~
+› emojis: added emojis 🦊
