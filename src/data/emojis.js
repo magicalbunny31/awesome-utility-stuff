@@ -11,6 +11,8 @@ module.exports = {
    "fox_kit":      "<:fox_kit:898586067601621102>",
    "fox_paw_wave": "<:fox_paw_wave:848198115148169237>",
 
+   "fox_bot": "<:fox_bot:964995656278224967>",
+
    "furry_pride":  "<:furry_pride:797613808147365898>",
    "rainbow_flag": "<:rainbow_flag:792165589526904832>",
 
