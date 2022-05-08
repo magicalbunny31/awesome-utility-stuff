@@ -168,3 +168,10 @@
 
 » features   -^^,--,~
 › emojis: added emojis 🦊
+
+
+
+08/may/2022 - 1.17.4
+
+» features   -^^,--,~
+› emojis: added emojis 🦊

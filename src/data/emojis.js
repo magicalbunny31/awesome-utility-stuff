@@ -223,5 +223,9 @@ module.exports = {
    "green_paws":  "<a:green_paws:944006330467905556>",
    "blue_paws":   "<a:blue_paws:944006339565330472>",
    "purple_paws": "<a:purple_paws:944006349421961248>",
-   "pink_paws":   "<a:pink_paws:944006359433752588>"
+   "pink_paws":   "<a:pink_paws:944006359433752588>",
+
+
+   "twitter": "<a:twitter:972926164643491900>",
+   "telegram": "<a:telegram:972926164572176465>"
 };
