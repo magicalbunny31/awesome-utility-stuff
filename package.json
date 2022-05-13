@@ -28,7 +28,7 @@
    "dependencies": {
       "color": "^4.2.0",
       "common-tags": "^1.8.2",
-      "discord.js": "^13.6.0",
+      "discord.js": "^13.7.0",
       "nearest-color": "^0.4.4"
    }
 }
