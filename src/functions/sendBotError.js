@@ -1,308 +1,114 @@
 /**
- * hello there, curious user! 👋
- * this thing here was made specifically for bun 🐰🐾 and fox kit 🦊🐾
- * so if you've somehow gotten ahold of this package.. 📦
- * ..and trying to figure out how it all works.. ❓
- * ..it might be hard! sorry heheh 🐰🦊🐺🦌
- * ~ magicalbunny31 🐾
+ * send an error to a webhook ❗
+ * @param {import("@types/index").Interaction} interaction this interaction 🗨️
+ * @param {import("@types/index").WebhookData} webhookData webhook data to send this error to 📋
+ * @param {Error} error the error that happened 📣
  */
-
-
-// TODO: this may get a major refactor in the future
-
-
-/**
- * send an error response ❗
- * @param {import("../../types/index").ApplicationCommandInteraction} interaction interaction to edit 🗨️
- * @param {import("../../types/index").BotErrorInfoInteraction | import("../../types/index").BotErrorInfoAPI | import("../../types/index").BotErrorInfoError} data data to send for this error 📋
- */
-module.exports = async (interaction, data) => {
-   const { type, colours, webhook: webhookData, prefix, botName, data: errorData } = data;
-
-   const [ primary, secondary ] = colours;
-
-
+module.exports = async (interaction, webhookData, error) => {
    // imports
-   const { MessageEmbed, WebhookClient, Formatters } = require("discord.js");
-   const colour = require("color");
-   const { emoji, emojis, choice, httpStatusInfo, noop, number, strip, wait } = require("../../");
+   const { EmbedBuilder, WebhookClient, Formatters } = require("discord.js");
+   const { emojis, choice, noop, strip } = require("../../");
 
 
-   // random responses
-   const responses = {
-      executing: [
-         `executing..`, `executing command..`, `executing command ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
-         `running..`, `running command..`, `running command ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
-         `using..`, `using command..`, `using command ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`
-      ],
-
-      waiting: [
-         `waiting for a response..`, `..is this thing even on?`, `watching really awesome fox videos..`,
-         `questioning life choices..`, `awaiting for a response..`, `..it's still loading`,
-         `continuing waiting..`, `come on, stupid server`, `give it some time, it'll load eventually`,
-         `looking at cute foxes..`, `hold on while this loads..`, `..does the bar below really mean anything?`,
-         `reading the latest discord blog post..`, `loading a command for another user..`, `analysing data..`,
-         `processing some information..`, `relaxing in the sun..`, `debugging my code..`,
-         `taking a quick break..`, `eating cinnamon rolls..`, `petting foxes..`,
-         `reading the database..`, `calling a thread worker..`, `thinking on what to do next..`,
-         `paws ${emojis.pawbs}`, `FOX FOX FOX ${emojis[`FOX`]}`, `${emojis.bugsquash1}${emojis.bugsquash2}${emojis.bugsquash3}`,
-         `${emojis.congaparrot}${emojis.congaparrot}${emojis.congaparrot}${emojis.congaparrot}${emojis.congaparrot}`,
-         `zzz..~ ${emojis.foxsnug}`, `look at this box! ${emojis.foxbox}`, `playing a game..`,
-         `${emojis.default}${emojis.pbjt}${emojis.russian}${emojis.cheer}${emojis.laughing}${emojis.floss}${emojis.juggling}${emojis.dab}`,
-         `${emojis.furdancing}${emojis.furdancing}${emojis.furdancing}${emojis.furdancing}${emojis.furdancing}`,
-         `${emojis.typing}`, `thinking..`, `${emojis.typing} ${botName.replace(emoji, e => `\\${e}`)} is thinking..`
-      ],
-
-      nearlyThere: [
-         `nearly there..`, `so close!`, `completion is imminent!`,
-         `about to finish!`, `one more step..`, `can't wait to see the end result~`,
-         `one second away from completion!`, `${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\` is about to return something!`,
-         `pre-finish party! ${emojis.yaya}`, `i'm stoked for the result!`, `look! it's happening!`,
-         `just one more second!`, `woah!`, `i'm excited for this!`
-      ],
-
-      what: [
-         `huh ${emojis.muh}`, `..huh`, `..huh?`, `..huh?!`, `huh?`,
-         `what just happened?`, `what just happened?!`, `that wasn't supposed to happen`,
-         `hmmph`, `hmmph.`, `hmmph..`, `hmmph!`,
-         `ack`, `ack.`, `ack..`, `ack!`,
-         `eep!`, `eep!!`,
-         `..uh`, `so, uh..`, `..uhm`, `uhm..`,
-         `uh-oh..`, `oh-oh`,
-         `whoops!`,
-         `aw heck`, `aw heck.`, `aw heck..`,
-         `drat`, `drat.`, `drat..`, `drat!`,
-         `it was soo close..`, `not fairrrr..`, `why must it be like this?`, `this is so unfair!`,
-         `but....i..`, `oof ${emojis.yoshifall}`, `oof ${emojis.rip}`, `oof!`,
-         `pff!! ${emojis.pfff}`, `bwah! ${emojis.pfff}`, `bwah! ${emojis[`BWAH`]}`,
-         `whyyyyyy ${emojis.nuuu}`, `ahh! ${emojis.blushy}`,
-         `what ${emojis.hwat}`, `what ${emojis.what}`, `..what`, `..what?`, `..whaat?`, `..what?!`, `whaat?!`, `what?`, `whaat?`,
-         `wait what`, `well....whatever ${emojis.shrug}`,
-         `i guess some things aren't never meant to be ${emojis.shrug}`,
-         `oh noes ${emojis.onoes}`, `oh noes!`,
-         `grr ${emojis.pout}`, `aaaaaaaaahh!! ${emojis.scree}`, `arrgh`,
-         `where's the good ending?`, `where's the good ending?!`, `this is stupid`,
-         `..was that right? no? aw, heck.`, `that wasn't supposed to happen..`,
-         `i couldn't get everything back in one piece..`, `i'm sorry!`,
-         `apologies for that..`, `..i was too lazy to get that, yeah..`,
-         `in case of error, i have to stop; so that's what i did`,
-         `sorry about that..`, `i blame the internet for that happening!`,
-         `what happened here?`, `oh, this is horrible!`, `you know what, i'll take the blame for messing up that..`,
-         `i'm off beam, it seems`, `no way!`, `i'm shook.`, `hmmm.. ${emojis.furthinking}`,
-         `uhm.. ${emojis.sweats}`, `noo! ${emojis.stop}`, `oi! ${emojis.oi}`, `stop it!! ${emojis.bap}`,
-         `soo....you see.. ${emojis.sweats}`, `stupid, stupid, stupid! ${emojis.ow}`,
-         `fur fox sake! ${emojis.yeet}`, `rip ${emojis.rip}`, `noooo ${emojis.noooo}`
-      ],
-
-      title: [
-         `what happened?`, `what just happened?`,
-         `something happened?`, `huh? something happened?`,
-         `an error occurred?`,
-         `did something go wrong?`,
-         `what went wrong?`,
-         `there was an error?`,
-         `hmm?`,
-         `something wrong?`,
-         `wait, there was an error?`
-      ],
-
-      error: [
-         `something awful happened with ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
-         `a error occurred while i tried to run ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
-         `i came across an error with ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
-         `command ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\` gave me an error..`,
-         `i found an uncaught exception with ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
-         `a mistake was found with ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\`..`,
-         `the command ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\` is a fallacy! it doesn't work!`,
-         `i regret to inform you but ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\` is erroring right now..`,
-         `sorry, but ${errorData.emoji} \`${[ `message`, `user` ].includes(errorData.interactionType) ? `` : prefix}${errorData.commandName}\` is currently broken..`
-      ],
-
-      suggestion: [
-         `you should try using it again later!`,
-         `i suggest you try again later!`,
-         `try using the command again later!`,
-         `give it a while and try again in a bit kitto~`,
-         `maybe try using the command again in a bit!`,
-         `rest for now and use the command later..`,
-         `be patient as the command may need some time to cool off..`,
-         `try using it again later....i'll say`,
-         `it might fix itself in a bit, so wait a bit for now`,
-         `wait a while as it could fix itself!`
-      ],
-
-      owner: [
-         `in the meantime, i'll go notify my owner of this..`,
-         `as you ponder on that, i'll make a note of this interaction..`,
-         `excuse me for a second, let me go yap at my owner..`,
-         `while you wait, i'll see if i can find a solution..`,
-         `now, let me find out the source of this error..`,
-         `..but don't fret! i'm sure my owner can fix this in a jiffy!`,
-         `stay calm, my owner probably knows what went wrong~`,
-         `sorry you had to experience the error; i hope it'll be fixed soon!`,
-         `..now, where's my owner when you need him?`,
-         `well i gotta go tell my owner of what happened now..`
-      ]
-   };
+   // this webhook
+   const webhook = new WebhookClient(webhookData);
 
 
-   // error
-   const statusInfo = httpStatusInfo(errorData.apiName, errorData.responseCode);
+   // what type of interaction this is
+   const interactionType = (() => {
+      if      (interaction.isAutocomplete())              return [ `autocomplete interaction`, `autocomplete`         ];
+      else if (interaction.isButton())                    return [ `button`,                   `button`               ];
+      else if (interaction.isChatInputCommand())          return [ `slash command`,            `chat-input`           ];
+      else if (interaction.isMessageContextMenuCommand()) return [ `message command`,          `message-context-menu` ];
+      else if (interaction.isModalSubmit())               return [ `modal`,                    `modal-submit`         ];
+      else if (interaction.isSelectMenu())                return [ `select menu`,              `select-menu`          ];
+      else if (interaction.isUserContextMenuCommand())    return [ `user command`,             `user-context-menu`    ];
+      else                                                return [ `interaction`,              `unknown`              ];
+   })();
 
-   const error = type === `api`
-      ? `${statusInfo.code} ${statusInfo.shortDescription}`
-      : errorData.error;
 
-   const suggestion = type === `api`
-      ? `\n` + strip`
-         » **code** › \`${statusInfo.code} ${statusInfo.shortDescription}\`
-         » **api** › **\`${errorData.apiName}\`**
-         » **description** › ${statusInfo.description}
-         » **possible fix** › ${statusInfo.fix}
-         » **more info** › [link](${statusInfo.link} "${statusInfo.link} 🔗\nview more detailed information about this error on Mozilla's MDN docs! 🐾")
-      `
-      : choice(responses.suggestion);
+   // name of this command/its custom id/whatever
+   const name = [
+      ...interaction.commandName                  ? [ interaction.commandName ]                  : [],
+      ...interaction.options.getSubCommandGroup() ? [ interaction.options.getSubCommandGroup() ] : [],
+      ...interaction.options.getSubCommand()      ? [ interaction.options.getSubCommand()      ] : []
+   ]
+      .join(` `)
+   || interaction.customId;
+
+
+   // wacky responses
+   const response = choice([
+      `${emojis.blushy} ahhhhh! what just happened?!`,
+      `${emojis.spiky_speech_bubble} that wasn't supposed to happen..`,
+      `${emojis.sweats} well, this is awkward..`,
+      `${emojis.hug} don't worry! this thing'll be fixed soon~`,
+      `${emojis.boooo} boooo!`,
+      `${emojis.stop} stop right there, criminal scum!`,
+      `${emojis.music_notes} what the hell am i doin' here? i don't belong here..~`,
+      `${emojis.national_park} how about going out for some air while you wait for this to be fixed?`,
+      `${emojis.aie} take that! -and this!`,
+      `${emojis.pbjt} ..ahh, that's apples mate.`,
+      `${emojis.shhh} shhh! this is top secret stuffs!!`,
+      `${emojis.ow} this is like watching a train wreck in slow motion, man`,
+      `${emojis.dab} \\*BAM\\*`,
+      `${emojis.yoshifall} not good!`,
+      `${emojis.scree} \\*confused sergal screaming noises\\*`,
+      `${emojis.slurp} \\*slurp\\*`,
+      `${emojis.nom} nom, nom, eat this.. nom, nom.`,
+      `${emojis.woah} got damn!`,
+      `${emojis.pawbs} look at all these beans`,
+      `${emojis.ooh} i think this code here is, well, drunken`,
+      `${emojis[`BWAH`]} BLOODY HELL!`,
+      `${emojis.onoes} oh noes! another error!`,
+      `${emojis.wrench} so this is what happens when you entrust a furry with development, huh`,
+      `${emojis.airplane[1]} destination: unknown`,
+      `${emojis.loading} ||y||||o||||u|||| ||||h||||a||||v||||e|||| ||||b||||e||||e||||n|||| ||||e||||n||||t||||e||||r||||t||||a||||i||||n||||e||||d||||!||`,
+      `${emojis[`EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE`]} ooh boy, another bug to squash!`,
+      `${emojis.happ}${emojis.happ}${emojis.happ}`,
+      `${emojis[`FOX`]} here's a fox for moral support~`,
+      `${emojis.hwat} no amount of washi tape can fix this!`,
+      `${emojis.facepaw} sorry we've left you astray!`,
+      `${emojis.muh} either the dumb furry dev got something wrong or you broke this (accidentally?)`,
+      `${emojis.pfff} we, too, really have no idea as to what has happened..`,
+      `${emojis.oi} EY! ERROR!`,
+      `${emojis.yeet} ..i can't think of a witty comment including the word "yeet" \\*~ dev furry\\*`,
+      `${emojis.yaya} welcome! you've just discovered our secret party!`,
+      `${emojis.bap} this ain't it, stop!`,
+      `${emojis.cutie} there's gotta be some room for cute furry boys....right?`,
+      `${emojis.bah} well, you don't see \\*that\\* every day!`
+   ]);
 
 
    // embeds
-   const embeds = {
-      user: [
-         new MessageEmbed({
-            color: primary,
-            description: strip`
-               ${emojis.loading} **${choice(responses.executing)}**
-               **\`  0%\` »** □□□□□□□□□□ **» \`100%\`**
-            `
+   const embeds = [
+      // user
+      new EmbedBuilder()
+         .setColor(`#f60000`)
+         .setDescription(strip`
+            ${emojis.rip} **an error occurred with this ${interactionType[0]}..**
+            > ${response}
+         `)
+         .setFooter({
+            text: `🆔 ${interaction.id}`
          }),
 
-         new MessageEmbed({
-            color: secondary,
-            fields: [{
-               name: `${choice(responses.title)} ${emojis.bomb}`,
-               value: strip`
-                  ${choice(responses.error)} ${emojis.yoshifall}
-                  ${suggestion}
+      // dev
+      new EmbedBuilder()
+         .setColor(`#f60000`)
+         .setDescription(strip`
+            ${emojis.rip} **ayo!! error!!**
+            > ${emojis.spiky_speech_bubble} \`${interactionType[1]}\`/\`${name}\`
+            > ${emojis.calendar_spiral} ${Formatters.time(Math.round(interaction.createdTimestamp / 1000))}
 
-                  ${choice(responses.owner)}
-                  > **id** › \`${interaction?.id}\` ${emojis.furthinking}
-               `,
-               inline: false
-            }]
+            \`\`\`js
+            ${error}
+            \`\`\`
+         `)
+         .setFooter({
+            text: `🆔 ${interaction.id}`
          })
-      ],
-
-      bun: [
-         new MessageEmbed({
-            color: primary,
-            fields: [{
-               name: `caught exception! ${emojis.bang}`,
-               value: strip`
-                  » **origin** › \`${
-                     type === `interaction`
-                        ? `${errorData.interactionType}/${errorData.commandName}` // interaction
-                        : type === `api`
-                           ? `${errorData.interactionType}/${errorData.commandName}/${errorData.apiName}` // api
-                           : `${errorData.origin}` // error
-                  }\`
-                  » **type** › \`automated\`
-
-                  » **date** › ${Formatters.time(Math.round((interaction?.createdTimestamp || Date.now()) / 1000))}
-                  ${[ `interaction`, `api` ].includes(type) ? `» **id** › \`${interaction.id}\`` : ``}
-               `,
-               inline: false
-            }]
-         }),
-
-         new MessageEmbed({
-            color: `#ff0000`,
-            description: Formatters.codeBlock(`js`, error)
-         })
-      ]
-   };
-
-
-   // user-facing error
-   const sendUserError = async () => {
-      const waitingResponses = choice(responses.waiting, 4);
-      let percentage = 0;
-
-      // creates an awesome bar
-      const generateBar = percentage => {
-         const numberOfBlocks = Math.round(percentage / 10);
-         return `${`■`.repeat(numberOfBlocks)}${`□`.repeat(10 - numberOfBlocks)}`;
-      };
-
-      await wait(500);
-
-      // array of random number ranges for generating the percentage
-      const randomNumberRanges = [
-         [ 20, 25 ],
-         [ 25, 30 ],
-         [ 10, 15 ],
-         [ 15, 20 ]
-      ];
-
-      for (let i = 0; i < 4; i ++) {
-         percentage += number(...randomNumberRanges[i]);
-
-         embeds.user[0].description = strip`
-            ${emojis.loading} **${waitingResponses[i]}**
-            **\` ${percentage}%\` » ${generateBar(percentage)} » \`100%\`**
-         `;
-
-         await interaction.editReply({
-            content: null,
-            embeds: [ embeds.user[0] ],
-            components: []
-         });
-
-         await wait(1000);
-      };
-
-      for (let i = 0; i < 2; i ++) {
-         if (i) // will run on second interaction
-            embeds.user[0].color = primary === `#ff0000`
-               ? colour(primary).darken(.5).hex()
-               : `#ff0000`; // change the colour slightly if the primary colour is already #ff0000
-
-         embeds.user[0].description = strip`
-            ${!i ? emojis.loading : emojis.no} **${!i ? choice(responses.nearlyThere) : choice(responses.what)}**
-            **\` 99%\` »** ■■■■■■■■■□ **» \`100%\`**
-         `;
-
-         await interaction.editReply({
-            content: null,
-            embeds: [ embeds.user[0] ],
-            components: []
-         });
-
-         await wait(1000);
-      };
-
-      await wait(1000); // 1000ms + 1000ms = 2000ms (2s)
-
-      embeds.user[0].description = strip`
-         ${emojis.no} **${emojis.foxsleep}**
-         **\` 99%\` »** ■■■■■■■■■□ **» \`100%\`**
-      `;
-
-      await interaction.editReply({
-         content: null,
-         embeds: embeds.user,
-         components: []
-      });
-   };
-
-
-   // server-side error
-   const sendServerError = async () => {
-      const webhook = new WebhookClient(webhookData);
-
-      return await webhook.send({ //? send this embed with the error to a webhook
-         username: `» ${botName} › errors`,
-         embeds: embeds.bun
-      });
-   };
+   ];
 
 
    try {
@@ -316,14 +122,27 @@ module.exports = async (interaction, data) => {
          noop;
 
       } finally {
-         if ([ `interaction`, `api` ].includes(type))
-            await sendUserError(); // this *could* have a chance of throwing an error (user deleting message, guild deleted..)
+         // this *could* have a chance of throwing an error (user deleting message, guild deleted..)
+         if (!interaction.isRepliable())
+            await interaction.editReply({
+               content: null,
+               embeds: [
+                  embeds[0]
+               ],
+               files: [],
+               components: []
+            });
 
          throw noop; // throw to catch
       };
 
 
    } catch {
-      await sendServerError();
+      // send to webhook
+      return await webhook.send({
+         embeds: [
+            embeds[1]
+         ]
+      });
    };
 };

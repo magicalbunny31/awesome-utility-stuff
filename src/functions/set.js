@@ -1,6 +1,6 @@
 /**
- * remove duplicates from an array of strings/numbers 📤
- * @param {any[]} array array of strings/numbers 📃
- * @returns {any[]} 📄
+ * remove duplicates from an array of values 📤
+ * @param {T[]} array array of values (presumably with duplicates, duh) 📃
+ * @returns {T[]} array of values (except there aren't any duplicate values in them owo) 📄 📄
  */
 module.exports = array => [ ...new Set(array) ];

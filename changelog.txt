@@ -175,3 +175,28 @@
 
 » features   -^^,--,~
 › emojis: added emojis 🦊
+
+
+
+26/may/2022 - 1.18.0
+
+» features   -^^,--,~
+› sendBotError: only send a webhook 💬
+› partition, shuffle, strip, sum, toDecimal, toHexadecimal: strengthen types 💭
+› sum, number, partition, set, wait: make jsdoc comments better 📋
+› formatPermission: rename to formatPermissions and accept/return multiple permissions 🔁
+› sum: add initialValue parameter 🏁
+› httpStatusInfo: rename to statusInfo and make it much more simpler 📋
+› statuses: removed because it was literally useless (and it kinda smelled too -w-) 🗑️
+› add colours data 🎨
+› specify node.js version (engines) in package.json ⚙️
+
+» styles   -^^,--,~
+› partialEmoji: fix formatting in typings 📨
+
+» code refactoring   -^^,--,~
+› use jsconfig for better internal typings 📄
+› remove redundant types (and a cheeky enum!) 🗑️
+
+» builds   -^^,--,~
+› use discord.js@dev (v14 wip) 📦

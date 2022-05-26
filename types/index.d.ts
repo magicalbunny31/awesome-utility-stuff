@@ -1,18 +1,6 @@
 // classes
 
-export class Statuses {
-   /**
-    * status utilities owo 🗨️
-    * @param statuses array of ActivitiesOptions 📋
-    */
-   constructor(statuses: import("discord.js").ActivitiesOptions[]);
-
-   /**
-    * get a random status ❓
-    * @returns ActivitiesOptions 📄
-    */
-   getStatus(): import("discord.js").ActivitiesOptions;
-};
+/* nothing to see here.. */
 
 
 
@@ -30,6 +18,86 @@ export class Statuses {
  * @returns list of *bad* words hehe 📜
  */
 export const badWords: typeof import("../src/data/badWords.js");
+
+/**
+ * colours that i use more than once across all projects 🎨
+ */
+export const colours: {
+   /**
+    * thy main colour palette 🐾
+    */
+   main: 0xe6e6e6,
+
+   /**
+    * thy main colour palette 🐾
+    */
+   secondary: 0x808080,
+
+   /**
+    * part of the rainbowo colour palette 🌈
+    */
+   red: 0xf60000,
+
+   /**
+    * part of the rainbowo colour palette 🌈
+    */
+   orange: 0xffc800,
+
+   /**
+    * part of the rainbowo colour palette 🌈
+    */
+   yellow: 0xffee00,
+
+   /**
+    * part of the rainbowo colour palette 🌈
+    */
+   green: 0x4de94c,
+
+   /**
+    * part of the rainbowo colour palette 🌈
+    */
+   blue: 0x3783ff,
+
+   /**
+    * part of the rainbowo colour palette 🌈
+    */
+   purple: 0x4815aa,
+
+   /**
+    * part of the rainbowo colour palette 🌈
+    */
+   pink: 0xfe83c6,
+
+   /**
+    * bun 🐰🐾's colours 🖌️
+    */
+   bun_primary: 0xc653ff,
+
+   /**
+    * bun 🐰🐾's colours 🖌️
+    */
+   bun_secondary: 0xed20dd,
+
+   /**
+    * fox kit 🦊🐾's colours 🖌️
+    */
+   fox_kit_primary: 0xe78522,
+
+   /**
+    * fox kit 🦊🐾's colours 🖌️
+    */
+   fox_kit_secondary: 0xd4caca,
+
+   /**
+    * fox kit 🦊🐾's colours 🖌️
+    */
+   fox_kit_tertiary: 0x332f36,
+
+   /**
+    * fox bot 🦊's colours 🖌️
+    */
+   fox_bot: 0xfeb139
+};
 
 /**
  * regular expression to match emojis in unicode 14.0 🦊
@@ -88,13 +156,17 @@ export function choice<T>(array: T[], choices: number): T[];
 export function createCollectorExpirationTime(timestamp: number): number;
 
 /**
- * formats a permission to a readable string
- * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags
- * @param permissionString permission to format
- * @example formatPermission("BAN_MEMBERS"); // ban members 🚫
- * @returns a string of a permission that has been formatted 📄
+ * formats a permission to a readable string 📝
+ * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags 🔗
+ * @param permissions permission to format 🗨️
+ * @example
+ * formatPermission([ PermissionFlags.BanMembers, PermissionFlags.KickMembers ]);
+ * formatPermission(0x6);
+ * formatPermission(0x6n);
+ * // [ `Ban Members 🚫`, `Kick Members 👢` ]
+ * @returns array of a permission strings that have been formatted 📄
  */
-export function formatPermission(permissionString: import("discord.js").PermissionString): string;
+export function formatPermissions(permissionsInput: import("discord.js/typings").PermissionFlags[] | number | bigint): string[];
 
 /**
  * get the nearest coloured paw from a hex colour value 🐾
@@ -247,21 +319,6 @@ export namespace help {
 };
 
 /**
- * get a random four-digit number string that can be used as a discord tag #️⃣
- * @returns 🆔
- */
-export function getDiscriminator(): string;
-
-/**
- * covers info on (about) all erroneous status codes 📋
- * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Status 🔗
- * @param api of the api 🦊
- * @param statusCode status code #️⃣
- * @returns status info 🗨️
- */
-export function httpStatusInfo(api: string, statusCode?: StatusCode | "unknown"): StatusInfo;
-
-/**
  * glorious no operation arrow function 💫
  * @example
  * () => {};
@@ -270,7 +327,7 @@ export function noop(): void;
 
 /**
  * get a random number! #️⃣
- * @param min minimum number to generate (inclusive) 🔢
+ * @param min minimum number to generate 🔢
  * @param max maximum number to generate 🔢
  */
 export function number(min: number, max: number): number;
@@ -281,28 +338,29 @@ export function number(min: number, max: number): number;
  * @param emoji text emoji string to parse 🦊
  * @returns object that matches the discord api emoji format 📋
  */
- export function partialEmoji(emoji: string): { animated: boolean, name: string, id: string? }
+export function partialEmoji(emoji: string): { animated: boolean, name: string, id: string? };
 
 /**
  * similar to Array.filter(), except elements that don't pass the condition are returned too 🔁
  * @param array array to partition 📃
  * @param condition condition to evaluate for each element ❓
  * @example partition([ 1, 3, 5, 7, 9 ], num => num < 5); // [[ 1, 3 ], [ 5, 7, 9 ]]
- * @returns Array[0]: pass; Array[1]: fail - try destructuring them! 📄
+ * @returns `Array[0]`: pass; `Array[1]`: fail - try destructuring them! 📄
  */
-export function partition(array: any[], condition: (value: any, index: number, array: any[]) => value is any): [ any[], any[] ];
+export function partition<T>(array: T[], condition: (value?: T, index?: number, array?: T[]) => boolean): [ T[], T[] ];
 
 /**
  * send an error response ❗
- * @param interaction interaction to edit 🗨️
- * @param data data to send for this error 📋
+ * @param interaction this interaction 🗨️
+ * @param webhookData webhook to send this error to 📋
+ * @param error the error that happened 📣
  */
-export async function sendBotError(interaction: ApplicationCommandInteraction, data: BotErrorInfoInteraction | BotErrorInfoAPI | BotErrorInfoError): Promise<void>;
+export async function sendBotError(interaction: Interaction, webhookData: WebhookData, error: Error): Promise<void>;
 
 /**
- * remove duplicates from an array of strings/numbers 📤
- * @param array array of strings/numbers 📃
- * @returns 📄
+ * remove duplicates from an array of values 📤
+ * @param array array of values (presumably with duplicates, duh) 📃
+ * @returns array of values (except there aren't any duplicate values in them owo) 📄
  */
 export function set<T>(array: T[]): T[];
 
@@ -311,39 +369,49 @@ export function set<T>(array: T[]): T[];
  * @param array array to shuffle 📃
  * @returns a shuffled version of the inputted array 📋
  */
-export function shuffle(array: any[]): any[];
+export function shuffle<T>(array: T[]): T[];
+
+/**
+ * covers info on http status codes 📋
+ * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Status 🔗
+ * @param statusCode status code to view info on #️⃣
+ * @returns some awesome status info 🗨️
+ */
+export function statusInfo(statusCode: string | number): StatusInfo;
 
 /**
  * strips indents off a string 🔨
  * @param str string to strip indents off of 🗨️
  * @returns string with indents stripped 📄
  */
-export function strip(str: import("common-tags").TemplateTag): string;
+export function strip(str: strip): string;
 
 /**
- * find the sum of an array of numbers 🔢
- * @param array array of numbers 📃
+ * find the sum of an array 🔢
+ * @param array array of values to find the sum of (very descriptive!!) 📃
+ * @param initialValue initial value for the reducer function 🏁
+ * @returns sum of the array 📩
  */
-export function sum(array: number[]): number;
+export function sum<T>(array: T[], initialValue?: any): T;
 
 /**
  * convert a colour to decimal format ➡️
  * @param colourToConvert colour to convert 🎨
  * @returns decimal number (integer) colour value 🎨
  */
-export async function toDecimal(colourToConvert: any): number;
+export async function toDecimal(colourToConvert: typeof import("color")): number;
 
 /**
  * convert a colour to hexadecimal format ➡️
  * @param colourToConvert colour to convert 🎨
  * @returns hex string colour value 🎨
  */
-export async function toHexadecimal(colourToConvert: any): string;
+export async function toHexadecimal(colourToConvert: typeof import("color")): string;
 
 /**
  * pretty much "pauses" asynchronous code ⏱️
- * @param delay ms to wait for 🔢
- * @returns ⌚
+ * @param delay ms delay to wait for 🔢
+ * @returns a "pause" in the asynchronous code!! ⌚
  */
 export async function wait(delay: number): Promise<void>;
 
@@ -352,18 +420,16 @@ export async function wait(delay: number): Promise<void>;
 
 
 // types
-type StatusCode = 400 | 401 | 402 | 403 | 404 | 405 | 406 | 407 | 408 | 409 | 410 | 411 | 412 | 413 | 414 | 415 | 416 | 417 | 418 | 421 | 422 | 423 | 424 | 425 | 426 | 428 | 429 | 431 | 451 | 500 | 501 | 502 | 503 | 504 | 505 | 506 | 507 | 508 | 510 | 511;
-
 type StatusInfo = {
-   code: StatusCode | "unknown";
-   shortDescription: string;
-   description: string;
-   fix: string;
+   status: string | number;
+   statusText: string;
    link: string;
 };
 
 
-type ApplicationCommandInteraction = import("discord.js").CommandInteraction | import("discord.js").ButtonInteraction | import("discord.js").SelectMenuInteraction;
+type Interaction = import("discord.js").Interaction;
+
+type WebhookData = import("discord.js").WebhookClientData;
 
 interface BotErrorInfo {
    type: "interaction" | "api" | "error";
@@ -406,8 +472,3 @@ interface BotErrorInfoError extends Omit<BotErrorInfo, "type" | "prefix"> {
 };
 
 type InteractionType = "chat-input" | "user" | "message" | "button" | "select-menu" | "modal";
-
-enum BotEmoji {
-   BUN = (await import("../src/data/emojis.js")).bun,
-   FOX_KIT = (await import("../src/data/emojis.js")).fox_kit
-};
