@@ -29,9 +29,9 @@ module.exports = async (interaction, webhookData, error) => {
 
    // name of this command/its custom id/whatever
    const name = [
-      ...interaction.commandName                  ? [ interaction.commandName ]                  : [],
-      ...interaction.options.getSubCommandGroup() ? [ interaction.options.getSubCommandGroup() ] : [],
-      ...interaction.options.getSubCommand()      ? [ interaction.options.getSubCommand()      ] : []
+      ...interaction.commandName                         ? [ interaction.commandName ]                  : [],
+      ...interaction?.options?.getSubcommandGroup(false) ? [ interaction.options.getSubcommandGroup() ] : [],
+      ...interaction?.options?.getSubcommand(false)      ? [ interaction.options.getSubcommand()      ] : []
    ]
       .join(` `)
    || interaction.customId;
@@ -123,7 +123,7 @@ module.exports = async (interaction, webhookData, error) => {
 
       } finally {
          // this *could* have a chance of throwing an error (user deleting message, guild deleted..)
-         if (!interaction.isRepliable())
+         try {
             await interaction.editReply({
                content: null,
                embeds: [
@@ -133,11 +133,15 @@ module.exports = async (interaction, webhookData, error) => {
                components: []
             });
 
-         throw noop; // throw to catch
+         } catch {
+            noop;
+         };
+
+         noop;
       };
 
 
-   } catch {
+   } finally {
       // send to webhook
       return await webhook.send({
          embeds: [

@@ -200,3 +200,10 @@
 
 » builds   -^^,--,~
 › use discord.js@dev (v14 wip) 📦
+
+
+
+29/may/2022 - 1.18.1
+
+» bug fixes   -^^,--,~
+› sendBotError: general stuffs - apparently i should've tested the code before believe that i make error-free code lmao 🔧
