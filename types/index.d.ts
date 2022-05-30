@@ -354,8 +354,9 @@ export function partition<T>(array: T[], condition: (value?: T, index?: number, 
  * @param interaction this interaction 🗨️
  * @param webhookData webhook to send this error to 📋
  * @param error the error that happened 📣
+ * @param sendInteractionResponse whether to use the interaction to show an error (to the user) or not 🗯️
  */
-export async function sendBotError(interaction: Interaction, webhookData: WebhookData, error: Error): Promise<void>;
+export async function sendBotError(interaction: import("discord.js").Interaction, webhookData: import("discord.js").WebhookClientData, error: Error, sendInteractionResponse?: boolean=true): Promise<void>;
 
 /**
  * remove duplicates from an array of values 📤
@@ -377,7 +378,11 @@ export function shuffle<T>(array: T[]): T[];
  * @param statusCode status code to view info on #️⃣
  * @returns some awesome status info 🗨️
  */
-export function statusInfo(statusCode: string | number): StatusInfo;
+export function statusInfo(statusCode: string | number): {
+   status: string | number;
+   statusText: string;
+   link: string;
+};
 
 /**
  * strips indents off a string 🔨
@@ -414,61 +419,3 @@ export async function toHexadecimal(colourToConvert: typeof import("color")): st
  * @returns a "pause" in the asynchronous code!! ⌚
  */
 export async function wait(delay: number): Promise<void>;
-
-
-
-
-
-// types
-type StatusInfo = {
-   status: string | number;
-   statusText: string;
-   link: string;
-};
-
-
-type Interaction = import("discord.js").Interaction;
-
-type WebhookData = import("discord.js").WebhookClientData;
-
-interface BotErrorInfo {
-   type: "interaction" | "api" | "error";
-   colours: string[];
-   webhook: {
-      id: import("discord.js").Snowflake;
-      token: string;
-   };
-   prefix: string;
-   botName: string;
-};
-
-interface BotErrorInfoInteraction extends Omit<BotErrorInfo, "type"> {
-   type: "interaction";
-   data: {
-      interactionType: InteractionType;
-      emoji: BotEmoji;
-      commandName: string;
-      error: string | Error;
-   };
-};
-
-interface BotErrorInfoAPI extends Omit<BotErrorInfo, "type"> {
-   type: "api";
-   data: {
-      interactionType: InteractionType;
-      emoji: BotEmoji;
-      commandName: string;
-      apiName: string;
-      responseCode: StatusCode | "unknown";
-   };
-};
-
-interface BotErrorInfoError extends Omit<BotErrorInfo, "type" | "prefix"> {
-   type: "error";
-   data: {
-      origin: string;
-      error: string | Error;
-   };
-};
-
-type InteractionType = "chat-input" | "user" | "message" | "button" | "select-menu" | "modal";

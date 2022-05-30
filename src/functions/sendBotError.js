@@ -3,8 +3,9 @@
  * @param {import("@types/index").Interaction} interaction this interaction 🗨️
  * @param {import("@types/index").WebhookData} webhookData webhook data to send this error to 📋
  * @param {Error} error the error that happened 📣
+ * @param {boolean} [sendInteractionResponse=true] whether to use the interaction to show an error (to the user) or not 🗯️
  */
-module.exports = async (interaction, webhookData, error) => {
+module.exports = async (interaction, webhookData, error, sendInteractionResponse = true) => {
    // imports
    const { EmbedBuilder, WebhookClient, Formatters } = require("discord.js");
    const { emojis, choice, noop, strip } = require("../../");
@@ -112,33 +113,34 @@ module.exports = async (interaction, webhookData, error) => {
 
 
    try {
-      try {
-         // attempt to defer the reply ephemerally, if not then assume the interaction has been replied to already
-         await interaction.deferReply({
-            ephemeral: true
-         });
-
-      } catch {
-         noop;
-
-      } finally {
-         // this *could* have a chance of throwing an error (user deleting message, guild deleted..)
+      if (sendInteractionResponse)
          try {
-            await interaction.editReply({
-               content: null,
-               embeds: [
-                  embeds[0]
-               ],
-               files: [],
-               components: []
+            // attempt to defer the reply ephemerally, if not then assume the interaction has been replied to already
+            await interaction.deferReply({
+               ephemeral: true
             });
 
          } catch {
             noop;
-         };
 
-         noop;
-      };
+         } finally {
+            // this *could* have a chance of throwing an error (user deleting message, guild deleted..)
+            try {
+               await interaction.editReply({
+                  content: null,
+                  embeds: [
+                     embeds[0]
+                  ],
+                  files: [],
+                  components: []
+               });
+
+            } catch {
+               noop;
+            };
+
+            noop;
+         };
 
 
    } finally {

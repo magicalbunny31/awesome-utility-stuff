@@ -207,3 +207,13 @@
 
 » bug fixes   -^^,--,~
 › sendBotError: general stuffs - apparently i should've tested the code before believe that i make error-free code lmao 🔧
+
+
+
+30/may/2022 - 1.18.2
+
+» features   -^^,--,~
+› sendBotError: add whether to use the interaction to show an error or not 🗯️
+
+» code refactoring   -^^,--,~
+› remove redundant types 🗑️
