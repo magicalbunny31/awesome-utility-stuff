@@ -213,7 +213,7 @@ module.exports = {
     * @returns {string} `@role`, `role name`, `id` 🦊
     */
    roleResolvable: function(roles) {
-      if (!roles.every(role => role instanceof Role))
+      if (roles && !roles.every(role => role instanceof Role))
          throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › roleResolvable: not a valid \`roles\` parameter value ⚠️`);
 
       const { choice } = require("../../");
@@ -242,7 +242,7 @@ module.exports = {
     * @returns {string} `@role` 🦊
     */
    roleMention: function(roles) {
-      if (!roles.every(role => role instanceof Role))
+      if (roles && !roles.every(role => role instanceof Role))
          throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › roleMention: not a valid \`roles\` parameter value ⚠️`);
 
       const { choice } = require("../../");
@@ -262,7 +262,7 @@ module.exports = {
     * @returns {string} `role name` 🦊
     */
    roleName: function(roles) {
-      if (!roles.every(role => role instanceof Role))
+      if (roles && !roles.every(role => role instanceof Role))
          throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › roleName: not a valid \`roles\` parameter value ⚠️`);
 
       const { choice } = require("../../");
@@ -282,7 +282,7 @@ module.exports = {
     * @returns {string} `text channel name` 🦊
     */
    textChannel: function(channels) {
-      if (!channels.every(role => role instanceof GuildChannel))
+      if (channels && !channels.every(role => role instanceof GuildChannel))
          throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › textChannel: not a valid \`channels\` parameter value ⚠️`);
 
       const { choice } = require("../../");
@@ -302,7 +302,7 @@ module.exports = {
     * @returns {string} `voice channel name` 🦊
     */
    voiceChannel: function(channels) {
-      if (!channels.every(role => role instanceof GuildChannel))
+      if (channels && !channels.every(role => role instanceof GuildChannel))
          throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › voiceChannel: not a valid \`channels\` parameter value ⚠️`);
 
       const { choice } = require("../../");
@@ -322,7 +322,7 @@ module.exports = {
     * @returns {string} `category channel name` 🦊
     */
    categoryChannel: function(channels) {
-      if (!channels.every(role => role instanceof GuildChannel))
+      if (channels && !channels.every(role => role instanceof GuildChannel))
          throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › categoryChannel: not a valid \`channels\` parameter value ⚠️`);
 
       const { choice } = require("../../");

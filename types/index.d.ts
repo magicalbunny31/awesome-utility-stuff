@@ -59,17 +59,10 @@ export function autoArray<T>(length: number, func: () => T): T[];
 /**
  * gets a random element from an array ❓
  * @param array array to get a random element from 📃
- * @returns an element of that array 📄
- */
-export function choice<T>(array: T[]): T;
-
-/**
- * gets a random element from an array ❓
- * @param array array to get a random element from 📃
  * @param choices number of choices to get #️⃣
  * @returns an element of that array 📄
  */
-export function choice<T>(array: T[], choices: number): T[];
+export function choice<T>(array: T[], choices?: number): T;
 
 /**
  * creates a discord.js MessageComponentCollector expiration time from a timestamp ⏳

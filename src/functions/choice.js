@@ -1,7 +1,7 @@
 /**
  * gets a random element from an array ❓
  * @param {T[]} array array to get a random element from 📃
- * @param {number} choices number of choices to get #️⃣
+ * @param {number} [choices] number of choices to get #️⃣
  * @returns {T | t[]} an element of that array 📄
  */
 module.exports = (array, choices) => {
@@ -13,7 +13,7 @@ module.exports = (array, choices) => {
    if (!Array.isArray(array))
       throw new TypeError(`@magicalbunny31/awesome-utility-stuff › choice: not a valid \`array\` parameter value ⚠️`);
 
-   if (typeof choices !== `number`)
+   if (choices && typeof choices !== `number`)
       throw new TypeError(`@magicalbunny31/awesome-utility-stuff › choice: not a valid \`choices\` parameter value ⚠️`);
 
 
