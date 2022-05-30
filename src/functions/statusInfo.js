@@ -11,7 +11,7 @@ module.exports = status => {
 
    // this isn't a valid status
    if (!STATUS_CODES[status])
-      throw new Error(`@magicalbunny31/awesome-utility-stuff › statusInfo: not a valid status ⚠️`);
+      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › statusInfo: not a valid \`status\` parameter value ⚠️`);
 
 
    // base url for http status infos

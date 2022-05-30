@@ -1,38 +1,50 @@
 /**
  * send an error to a webhook ❗
- * @param {import("@types/index").Interaction} interaction this interaction 🗨️
- * @param {import("@types/index").WebhookData} webhookData webhook data to send this error to 📋
+ * @param {import("discord.js").Interaction | string} interaction this interaction; if this value is typeof string then it'll show as the source instead 🗯️
+ * @param {import("discord.js").WebhookClientData} WebhookClientData webhook data to send this error to 📋
  * @param {Error} error the error that happened 📣
- * @param {boolean} [sendInteractionResponse=true] whether to use the interaction to show an error (to the user) or not 🗯️
+ * @param {boolean} [sendInteractionResponse=true] whether to use the interaction to show an error (to the user) or not 💭
+ * @returns {Promise<void>} an error sent to the webhook, plus a response to the user if specified 📋
  */
-module.exports = async (interaction, webhookData, error, sendInteractionResponse = true) => {
+module.exports = async (interaction, WebhookClientData, error, sendInteractionResponse = true) => {
    // imports
-   const { EmbedBuilder, WebhookClient, Formatters } = require("discord.js");
+   const { Interaction, WebhookClient, EmbedBuilder, Formatters } = require("discord.js");
    const { emojis, choice, noop, strip } = require("../../");
 
 
+   // data validation
+   if (!interaction instanceof Interaction || typeof interaction !== `string`)
+      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › sendBotError: not a valid \`interaction\` parameter value ⚠️`);
+
+   if (!WebhookClientData.id && !WebhookClientData.token && !WebhookClientData.url)
+      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › sendBotError: not a valid \`WebhookClientData\` parameter value ⚠️`);
+
+   if (!error instanceof Error)
+      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › sendBotError: not a valid \`error\` parameter value ⚠️`);
+
+
    // this webhook
-   const webhook = new WebhookClient(webhookData);
+   const webhook = new WebhookClient(WebhookClientData);
 
 
    // what type of interaction this is
    const interactionType = (() => {
-      if      (interaction.isAutocomplete())              return [ `autocomplete interaction`, `autocomplete`         ];
-      else if (interaction.isButton())                    return [ `button`,                   `button`               ];
-      else if (interaction.isChatInputCommand())          return [ `slash command`,            `chat-input`           ];
-      else if (interaction.isMessageContextMenuCommand()) return [ `message command`,          `message-context-menu` ];
-      else if (interaction.isModalSubmit())               return [ `modal`,                    `modal-submit`         ];
-      else if (interaction.isSelectMenu())                return [ `select menu`,              `select-menu`          ];
-      else if (interaction.isUserContextMenuCommand())    return [ `user command`,             `user-context-menu`    ];
-      else                                                return [ `interaction`,              `unknown`              ];
+      if      (interaction.isAutocomplete?.())              return [ `autocomplete interaction`, `autocomplete`         ];
+      else if (interaction.isButton?.())                    return [ `button`,                   `button`               ];
+      else if (interaction.isChatInputCommand?.())          return [ `slash command`,            `chat-input`           ];
+      else if (interaction.isMessageContextMenuCommand?.()) return [ `message command`,          `message-context-menu` ];
+      else if (interaction.isModalSubmit?.())               return [ `modal`,                    `modal-submit`         ];
+      else if (interaction.isSelectMenu?.())                return [ `select menu`,              `select-menu`          ];
+      else if (interaction.isUserContextMenuCommand?.())    return [ `user command`,             `user-context-menu`    ];
+      else                                                  return [ `interaction`,              `unknown`              ];
    })();
 
 
    // name of this command/its custom id/whatever
    const name = [
-      ...interaction.commandName                         ? [ interaction.commandName ]                  : [],
-      ...interaction?.options?.getSubcommandGroup(false) ? [ interaction.options.getSubcommandGroup() ] : [],
-      ...interaction?.options?.getSubcommand(false)      ? [ interaction.options.getSubcommand()      ] : []
+      ...interaction.commandName                           ? [ interaction.commandName ]                  : [],
+      ...interaction?.options?.getSubcommandGroup?.(false) ? [ interaction.options.getSubcommandGroup() ] : [],
+      ...interaction?.options?.getSubcommand?.(false)      ? [ interaction.options.getSubcommand()      ] : []
    ]
       .join(` `)
    || interaction.customId;
@@ -99,21 +111,21 @@ module.exports = async (interaction, webhookData, error, sendInteractionResponse
          .setColor(`#f60000`)
          .setDescription(strip`
             ${emojis.rip} **ayo!! error!!**
-            > ${emojis.spiky_speech_bubble} \`${interactionType[1]}\`/\`${name}\`
-            > ${emojis.calendar_spiral} ${Formatters.time(Math.round(interaction.createdTimestamp / 1000))}
+            > ${emojis.spiky_speech_bubble} \`${interaction instanceof Interaction ? `${interactionType[1]}\`/\`${name}` : interaction}\`
+            > ${emojis.calendar_spiral} ${Formatters.time(Math.round((interaction.createdTimestamp || Date.now()) / 1000))}
 
             \`\`\`js
             ${error}
             \`\`\`
          `)
          .setFooter({
-            text: `🆔 ${interaction.id}`
+            text: interaction instanceof Interaction ? `🆔 ${interaction.id}` : null
          })
    ];
 
 
    try {
-      if (sendInteractionResponse)
+      if (interaction instanceof Interaction && sendInteractionResponse)
          try {
             // attempt to defer the reply ephemerally, if not then assume the interaction has been replied to already
             await interaction.deferReply({

@@ -217,3 +217,17 @@
 
 » code refactoring   -^^,--,~
 › remove redundant types 🗑️
+
+
+
+30/may/2022 - 1.18.3
+
+» features   -^^,--,~
+› sendBotError: add optional use of using an interaction 🗯️
+› data validation for all functions ✅
+› sum: make jsdoc comments better 📋
+
+» code refactoring   -^^,--,~
+› refactor types (to make them more consistent across files) 📄
+› readd a type ➕
+› colours: remove comments per-key (they're pretty redundant, huh) 💬

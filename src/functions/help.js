@@ -1,4 +1,4 @@
-const { User, Collection, GuildChannel, Snowflake, Role } = require("discord.js");
+const { User, Collection, GuildChannel, Snowflake, Role, Interaction } = require("discord.js");
 
 
 /**
@@ -138,6 +138,9 @@ module.exports = {
     * @returns {string} `@user`, `username#tag`, `username`, `id` 🦊
     */
    userResolvable: function(user) {
+      if (!user instanceof User)
+         throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › userResolvable: not a valid \`user\` parameter value ⚠️`);
+
       const { choice } = require("../../");
 
       const mentions     = [ ...userNames.map(name => `@${name}`),                                  `@${user.username}` ];
@@ -159,6 +162,9 @@ module.exports = {
     * @returns {string} `@user` 🦊
     */
    userMention: function(user) {
+      if (!user instanceof User)
+         throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › userMention: not a valid \`user\` parameter value ⚠️`);
+
       const { choice } = require("../../");
 
       const mentions = [ ...userNames.map(name => `@${name}`), `@${user.username}` ];
@@ -173,6 +179,9 @@ module.exports = {
     * @returns {string} `username#tag` 🦊
     */
    userTag: function(user) {
+      if (!user instanceof User)
+         throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › userTag: not a valid \`user\` parameter value ⚠️`);
+
       const { choice } = require("../../");
 
       const usernameTags = [ ...userNames.map(name => `${name}#${module.exports.getDiscriminator()}`), user.tag ];
@@ -187,6 +196,9 @@ module.exports = {
     * @returns {string} `username` 🦊
     */
    userUsername: function(user) {
+      if (!user instanceof User)
+         throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › userUsername: not a valid \`user\` parameter value ⚠️`);
+
       const { choice } = require("../../");
 
       const usernames = [ ...userNames, user.username ];
@@ -201,6 +213,9 @@ module.exports = {
     * @returns {string} `@role`, `role name`, `id` 🦊
     */
    roleResolvable: function(roles) {
+      if (!roles.every(role => role instanceof Role))
+         throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › roleResolvable: not a valid \`roles\` parameter value ⚠️`);
+
       const { choice } = require("../../");
 
       const mentions =
@@ -227,6 +242,9 @@ module.exports = {
     * @returns {string} `@role` 🦊
     */
    roleMention: function(roles) {
+      if (!roles.every(role => role instanceof Role))
+         throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › roleMention: not a valid \`roles\` parameter value ⚠️`);
+
       const { choice } = require("../../");
 
       const mentions =
@@ -244,6 +262,9 @@ module.exports = {
     * @returns {string} `role name` 🦊
     */
    roleName: function(roles) {
+      if (!roles.every(role => role instanceof Role))
+         throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › roleName: not a valid \`roles\` parameter value ⚠️`);
+
       const { choice } = require("../../");
 
       const names =
@@ -261,6 +282,9 @@ module.exports = {
     * @returns {string} `text channel name` 🦊
     */
    textChannel: function(channels) {
+      if (!channels.every(role => role instanceof GuildChannel))
+         throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › textChannel: not a valid \`channels\` parameter value ⚠️`);
+
       const { choice } = require("../../");
 
       const textChannels =
@@ -278,6 +302,9 @@ module.exports = {
     * @returns {string} `voice channel name` 🦊
     */
    voiceChannel: function(channels) {
+      if (!channels.every(role => role instanceof GuildChannel))
+         throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › voiceChannel: not a valid \`channels\` parameter value ⚠️`);
+
       const { choice } = require("../../");
 
       const voiceChannels =
@@ -295,6 +322,9 @@ module.exports = {
     * @returns {string} `category channel name` 🦊
     */
    categoryChannel: function(channels) {
+      if (!channels.every(role => role instanceof GuildChannel))
+         throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › categoryChannel: not a valid \`channels\` parameter value ⚠️`);
+
       const { choice } = require("../../");
 
       const categoryChannels =
@@ -323,6 +353,9 @@ module.exports = {
     * @returns {string} 📃
     */
    moderationReason: function(type) {
+      if (![ `ban`, `kick`, `timeout`, `revoke-ban` ].includes(type))
+         throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › moderationReason: not a valid \`type\` parameter value ⚠️`);
+
       const { choice } = require("../../");
 
       if (type === `ban` || type === `kick`)
@@ -347,13 +380,19 @@ module.exports = {
 
 
    /**
-    * from a @discord.js/Collection, get a command's autocomplete choices ✏️
-    * @param {import("../../types").ApplicationCommandInteraction} interaction this interaction 🗨️
-    * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
+    * from a @discord.js/Collection of `Command`s, get a command's possible autocomplete choices ✏️
+    * @param {import("discord.js").CommandInteraction} interaction this interaction 🗨️
+    * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `Command`s 📋
     * @param {string} commandName name of the command to get autocomplete choices from 🆔
-    * @returns {import("discord.js").ApplicationCommandData[]} 📄
+    * @returns {string[]} array of strings of this command's possible autocomplete choices 📄
     */
    getAutocompleteChoices: async function(interaction, commands, commandName) {
+      if (interaction instanceof Interaction)
+         throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › getAutocompleteChoices: not a valid \`interaction\` parameter value ⚠️`);
+
+      if (typeof commandName !== `string`)
+         throw new TypeError(`@magicalbunny31/awesome-utility-stuff › help › getAutocompleteChoices: not a valid \`commandName\` parameter value ⚠️`);
+
       const command = commands.get(commandName);
 
       const autocompleteChoicesData = await command?.getAutocompleteChoices(interaction);
@@ -364,8 +403,8 @@ module.exports = {
 
 
    /**
-    * from a @discord.js/Collection, get a random command 🗨️
-    * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
+    * from a @discord.js/Collection of `Command`s, get a random command 🗨️
+    * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `Command`s 📋
     * @returns {string} command name 📄
     */
    command: function(commands) {
@@ -374,8 +413,8 @@ module.exports = {
 
 
    /**
-    * from a @discord.js/Collection, get a random command category 🗨️
-    * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
+    * from a @discord.js/Collection of `Command`s, get a random command category 🗨️
+    * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `Command`s 📋
     * @returns {string} category name 📄
     */
    category: function(commands) {
@@ -386,7 +425,7 @@ module.exports = {
 
 
    /**
-    * from a @discord.js/Collection, get a random command subcategory 🗨️
+    * from a @discord.js/Collection of `Command`s, get a random command subcategory 🗨️
     * @param {import("discord.js").Collection<string, import("../../types/command").Command>} commands \@discord.js/Collection of `ApplicationCommand`s 📋
     * @returns {string} subcategory name 📄
     */

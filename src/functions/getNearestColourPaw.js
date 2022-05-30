@@ -4,10 +4,17 @@
  * @returns {string} nearest coloured paw emoji 🐾
  */
 module.exports = hex => {
+   // imports
    const { emojis } = require("../../");
    const { from: nearestColourFrom } = require("nearest-color");
 
 
+   // data validation
+   if (typeof hex !== `string`)
+      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › getNearestColourPaw: not a valid \`hex\` parameter value ⚠️`);
+
+
+   // colours
    const colours = {
       red:    `#f60000`,
       orange: `#ffc800`,
@@ -18,6 +25,8 @@ module.exports = hex => {
       pink:   `#fe83c6`
    };
 
+
+   // emojis
    const paws = {
       red:    emojis.red_paws,
       orange: emojis.orange_paws,
@@ -29,6 +38,7 @@ module.exports = hex => {
    };
 
 
+   // get the nearest coloured paw from a hex colour value 🐾
    const nearestColour = nearestColourFrom(colours);
 
    const { name } = nearestColour(hex);

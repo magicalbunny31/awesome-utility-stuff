@@ -6,6 +6,11 @@
  * @returns {number} period of time in 15 minutes from the timestamp but minus 3 seconds for good measure owo 🕑
  */
 module.exports = timestamp => {
+   // data validation
+   if (typeof timestamp !== `number`)
+      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › createCollectorExpirationTime: not a valid \`timestamp\` parameter value ⚠️`);
+
+
    // timestamp of when this interaction's token will become invalidated
    // in 15 minutes but minus 3 seconds for good measure owo
    const invalidatedTimestamp = timestamp + 900000 - 3000;

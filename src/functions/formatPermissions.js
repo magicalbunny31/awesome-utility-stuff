@@ -1,9 +1,9 @@
 /**
  * formats a permission to a readable string 📝
  * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags 🔗
- * @param {import("discord.js/typings").PermissionFlags[] | number | bigint} permissionsInput permission to format 🗨️
+ * @param {import("discord.js").PermissionFlagsBits[] | number | bigint} permissionsInput permission to format 🗨️
  * @example
- * formatPermission([ PermissionFlags.BanMembers, PermissionFlags.KickMembers ]);
+ * formatPermission([ PermissionFlagsBits.BanMembers, PermissionFlagsBits.KickMembers ]);
  * formatPermission(0x6);
  * formatPermission(0x6n);
  * // [ `Ban Members 🚫`, `Kick Members 👢` ]
@@ -12,6 +12,15 @@
 module.exports = permissionsInput => {
    // imports
    const { sum } = require("../../");
+
+
+   // data validation
+   if (
+      Array.isArray(permissionsInput)
+         ? !permissionsInput.every(permission => typeof permission === `bigint`)
+         : ![ `number`, `bigint` ].includes(typeof permissionsInput)
+   )
+      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › formatPermissions: not a valid \`permissionsInput\` parameter value ⚠️`);
 
 
    // get the permissionsInput as a BigInt

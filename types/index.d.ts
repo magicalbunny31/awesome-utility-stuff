@@ -22,82 +22,7 @@ export const badWords: typeof import("../src/data/badWords.js");
 /**
  * colours that i use more than once across all projects 🎨
  */
-export const colours: {
-   /**
-    * thy main colour palette 🐾
-    */
-   main: 0xe6e6e6,
-
-   /**
-    * thy main colour palette 🐾
-    */
-   secondary: 0x808080,
-
-   /**
-    * part of the rainbowo colour palette 🌈
-    */
-   red: 0xf60000,
-
-   /**
-    * part of the rainbowo colour palette 🌈
-    */
-   orange: 0xffc800,
-
-   /**
-    * part of the rainbowo colour palette 🌈
-    */
-   yellow: 0xffee00,
-
-   /**
-    * part of the rainbowo colour palette 🌈
-    */
-   green: 0x4de94c,
-
-   /**
-    * part of the rainbowo colour palette 🌈
-    */
-   blue: 0x3783ff,
-
-   /**
-    * part of the rainbowo colour palette 🌈
-    */
-   purple: 0x4815aa,
-
-   /**
-    * part of the rainbowo colour palette 🌈
-    */
-   pink: 0xfe83c6,
-
-   /**
-    * bun 🐰🐾's colours 🖌️
-    */
-   bun_primary: 0xc653ff,
-
-   /**
-    * bun 🐰🐾's colours 🖌️
-    */
-   bun_secondary: 0xed20dd,
-
-   /**
-    * fox kit 🦊🐾's colours 🖌️
-    */
-   fox_kit_primary: 0xe78522,
-
-   /**
-    * fox kit 🦊🐾's colours 🖌️
-    */
-   fox_kit_secondary: 0xd4caca,
-
-   /**
-    * fox kit 🦊🐾's colours 🖌️
-    */
-   fox_kit_tertiary: 0x332f36,
-
-   /**
-    * fox bot 🦊's colours 🖌️
-    */
-   fox_bot: 0xfeb139
-};
+export const colours: typeof import("../src/data/colours.js");
 
 /**
  * regular expression to match emojis in unicode 14.0 🦊
@@ -160,13 +85,13 @@ export function createCollectorExpirationTime(timestamp: number): number;
  * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags 🔗
  * @param permissions permission to format 🗨️
  * @example
- * formatPermission([ PermissionFlags.BanMembers, PermissionFlags.KickMembers ]);
+ * formatPermission([ PermissionFlagsBits.BanMembers, PermissionFlagsBits.KickMembers ]);
  * formatPermission(0x6);
  * formatPermission(0x6n);
  * // [ `Ban Members 🚫`, `Kick Members 👢` ]
  * @returns array of a permission strings that have been formatted 📄
  */
-export function formatPermissions(permissionsInput: import("discord.js/typings").PermissionFlags[] | number | bigint): string[];
+export function formatPermissions(permissionsInput: import("discord.js/typings").PermissionFlagsBits[] | number | bigint): string[];
 
 /**
  * get the nearest coloured paw from a hex colour value 🐾
@@ -276,30 +201,30 @@ export namespace help {
    export function moderationReason(type: "ban" | "kick" | "timeout" | "revoke-ban"): string;
 
    /**
-    * from a @discord.js/Collection, get a command's autocomplete choices ✏️
+    * from a @discord.js/Collection of `Command`s, get a command's possible autocomplete choices ✏️
     * @param interaction this interaction 🗨️
-    * @param commands \@discord.js/Collection of `ApplicationCommand`s 📋
+    * @param commands \@discord.js/Collection of `Command`s 📋
     * @param commandName name of the command to get autocomplete choices from 🆔
-    * @returns 📄
+    * @returns array of strings of this command's possible autocomplete choices 📄
     */
-   export function getAutocompleteChoices(interaction: import("../").ApplicationCommandInteraction, commands: import("discord.js").Collection<string, import("./command").Command>, commandName: string): Promise<import("discord.js").ApplicationCommandData[]>;
+   export function getAutocompleteChoices(interaction: import("discord.js").CommandInteraction, commands: import("discord.js").Collection<string, import("./command").Command>, commandName: string): Promise<string[]>;
 
    /**
-    * from a @discord.js/Collection, get a random command 🗨️
-    * @param commands \@discord.js/Collection of `ApplicationCommand`s 📋
+    * from a @discord.js/Collection of `Command`s, get a random command 🗨️
+    * @param commands \@discord.js/Collection of `Command`s 📋
     * @returns command name 📄
     */
    export function command(commands: import("discord.js").Collection<string, import("./command").Command>): string;
 
    /**
-    * from a @discord.js/Collection, get a random command category 🗨️
+    * from a @discord.js/Collection of `Command`s, get a random command category 🗨️
     * @param commands \@discord.js/Collection of `ApplicationCommand`s 📋
     * @returns category name 📄
     */
    export function category(commands: import("discord.js").Collection<string, import("./command").Command>): string;
 
    /**
-    * from a @discord.js/Collection, get a random command subcategory 🗨️
+    * from a @discord.js/Collection of `Command`s, get a random command subcategory 🗨️
     * @param commands \@discord.js/Collection of `ApplicationCommand`s 📋
     * @returns subcategory name 📄
     */
@@ -355,8 +280,19 @@ export function partition<T>(array: T[], condition: (value?: T, index?: number, 
  * @param webhookData webhook to send this error to 📋
  * @param error the error that happened 📣
  * @param sendInteractionResponse whether to use the interaction to show an error (to the user) or not 🗯️
+ * @returns an error sent to the webhook, plus a response to the user if specified 📋
  */
 export async function sendBotError(interaction: import("discord.js").Interaction, webhookData: import("discord.js").WebhookClientData, error: Error, sendInteractionResponse?: boolean=true): Promise<void>;
+
+/**
+ * send an error response ❗
+ * @param interaction this interaction 🗨️
+ * @param webhookData webhook to send this error to 📋
+ * @param error the error that happened 📣
+ * @param sendInteractionResponse whether to use the interaction to show an error (to the user) or not 🗯️
+ * @returns an error sent to the webhook, plus a response to the user if specified 📋
+ */
+export async function sendBotError(interaction: string, webhookData: import("discord.js").WebhookClientData, error: Error): Promise<void>;
 
 /**
  * remove duplicates from an array of values 📤
@@ -378,11 +314,7 @@ export function shuffle<T>(array: T[]): T[];
  * @param statusCode status code to view info on #️⃣
  * @returns some awesome status info 🗨️
  */
-export function statusInfo(statusCode: string | number): {
-   status: string | number;
-   statusText: string;
-   link: string;
-};
+export function statusInfo(statusCode: string | number): StatusInfo;
 
 /**
  * strips indents off a string 🔨
@@ -392,7 +324,7 @@ export function statusInfo(statusCode: string | number): {
 export function strip(str: strip): string;
 
 /**
- * find the sum of an array 🔢
+ * find the sum of an array ((aka a quick way of running an addition reducer function)) 🔢
  * @param array array of values to find the sum of (very descriptive!!) 📃
  * @param initialValue initial value for the reducer function 🏁
  * @returns sum of the array 📩
@@ -419,3 +351,15 @@ export async function toHexadecimal(colourToConvert: typeof import("color")): st
  * @returns a "pause" in the asynchronous code!! ⌚
  */
 export async function wait(delay: number): Promise<void>;
+
+
+
+
+
+// types
+
+type StatusInfo = {
+   status: string | number;
+   statusText: string;
+   link: string;
+};

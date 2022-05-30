@@ -5,6 +5,12 @@
  * @returns {{ animated: boolean, name: string, id: string? }} object that matches the discord api emoji format 📋
  */
 module.exports = emoji => {
+   // data validation
+   if (typeof emoji !== `string`)
+      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › partial: not a valid \`emoji\` parameter value ⚠️`);
+
+
+   // return the partial emoji
    if (emoji.includes(`%`)) emoji = decodeURIComponent(emoji);
 
    if (!emoji.includes(`:`)) return { animated: false, emoji: emoji, id: null }; // this is a unicode emoji

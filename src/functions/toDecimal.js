@@ -1,7 +1,12 @@
 /**
  * convert a colour to decimal format ➡️
- * @param {any} colourToConvert colour to convert 🎨
+ * @param {typeof import("color")} colourToConvert colour to convert 🎨
  * @returns {number} decimal number (integer) colour value 🎨
  */
-const colour = require("color");
-module.exports = colourToConvert => colour(colourToConvert).rgbNumber();
+module.exports = colourToConvert => {
+   // imports
+   const colour = require("color");
+
+   // convert the colour
+   return colour(colourToConvert).rgbNumber();
+};
