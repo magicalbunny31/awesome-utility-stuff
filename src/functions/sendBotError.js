@@ -13,7 +13,7 @@ module.exports = async (interaction, WebhookClientData, error, sendInteractionRe
 
 
    // data validation
-   if (!interaction instanceof Interaction || typeof interaction !== `string`)
+   if (!(interaction instanceof Interaction || typeof interaction === `string`))
       throw new TypeError(`@magicalbunny31/awesome-utility-stuff › sendBotError: not a valid \`interaction\` parameter value ⚠️`);
 
    if (!WebhookClientData.id && !WebhookClientData.token && !WebhookClientData.url)

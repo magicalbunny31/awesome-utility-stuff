@@ -231,3 +231,10 @@
 › refactor types (to make them more consistent across files) 📄
 › readd a type ➕
 › colours: remove comments per-key (they're pretty redundant, huh) 💬
+
+
+
+31/may/2022 - 1.18.4
+
+» bug fixes   -^^,--,~
+› sendBotError: fix validation checking for interaction parameter 📋
