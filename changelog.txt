@@ -238,3 +238,10 @@
 
 » bug fixes   -^^,--,~
 › sendBotError: fix validation checking for interaction parameter 📋
+
+
+
+08/jun/2022 - 1.18.5
+
+» features   -^^,--,~
+› url: update regular expression 🔗
