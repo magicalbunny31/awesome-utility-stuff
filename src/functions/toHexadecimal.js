@@ -7,6 +7,7 @@ module.exports = colourToConvert => {
    // imports
    const colour = require("color");
 
+
    // convert the colour
    return colour(colourToConvert).hex();
 };

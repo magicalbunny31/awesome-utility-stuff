@@ -7,7 +7,7 @@
 module.exports = emoji => {
    // data validation
    if (typeof emoji !== `string`)
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › partial: not a valid \`emoji\` parameter value ⚠️`);
+      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › partialEmoji: not a valid \`emoji\` parameter value ⚠️`);
 
 
    // return the partial emoji

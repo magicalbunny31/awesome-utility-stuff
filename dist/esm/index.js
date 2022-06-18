@@ -10,6 +10,7 @@ import url from "../../src/data/url.js";
 
 // functions
 import autoArray from "../../src/functions/autoArray.js";
+import checkChatInputCommandPermissions from "../../src/functions/checkChatInputCommandPermissions.js";
 import choice from "../../src/functions/choice.js";
 import createCollectorExpirationTime from "../../src/functions/createCollectorExpirationTime.js";
 import formatPermissions from "../../src/functions/formatPermissions.js";
@@ -43,6 +44,7 @@ export {
 
    // functions
    autoArray,
+   checkChatInputCommandPermissions,
    choice,
    createCollectorExpirationTime,
    formatPermissions,

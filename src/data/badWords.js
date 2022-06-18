@@ -1,9 +1,9 @@
 /**
- * bad boys bad boys
+ * bad boys bad boys 🦊💬
  *
- * whatcha gunna do
+ * whatcha gunna do 🦊💬
  *
- * whatcha gunna do when they cum for you
+ * whatcha gunna do when they cum for you 🦊💬
  *
  * @returns {string[]} list of *bad* words hehe 📜
  */

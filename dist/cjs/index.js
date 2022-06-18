@@ -10,6 +10,7 @@ const url = require("../../src/data/url.js");
 
 // functions
 const autoArray = require("../../src/functions/autoArray.js");
+const checkChatInputCommandPermissions = require("../../src/functions/checkChatInputCommandPermissions.js");
 const choice = require("../../src/functions/choice.js");
 const createCollectorExpirationTime = require("../../src/functions/createCollectorExpirationTime.js");
 const formatPermissions = require("../../src/functions/formatPermissions.js");
@@ -43,6 +44,7 @@ module.exports = {
 
    // functions
    autoArray,
+   checkChatInputCommandPermissions,
    choice,
    createCollectorExpirationTime,
    formatPermissions,

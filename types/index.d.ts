@@ -9,11 +9,11 @@
 // data
 
 /**
- * bad boys bad boys
+ * bad boys bad boys 🦊💬
  *
- * whatcha gunna do
+ * whatcha gunna do 🦊💬
  *
- * whatcha gunna do when they cum for you
+ * whatcha gunna do when they cum for you 🦊💬
  *
  * @returns list of *bad* words hehe 📜
  */
@@ -38,6 +38,7 @@ export const emojis: typeof import("../src/data/emojis.js");
 
 /**
  * my regular expression to match http(s) urls 🦊
+ * @see https://stackoverflow.com/a/15855457 🔗
  * @returns regular expression to match http(s) urls 🦊
  */
 export const url: RegExp;
@@ -55,6 +56,16 @@ export const url: RegExp;
  * @returns array with values filled via a function 📄
  */
 export function autoArray<T>(length: number, func: () => T): T[];
+
+/**
+ * check if a member has permissions to use a (discord) chat-input application command ✅
+ * @param commandId id of the command to view permissions of 🔎
+ * @param member check if this member has permissions to use this (discord) chat-input application command 👥
+ * @param channel channel to check permissions against 💬
+ * @param defaultMemberPermissions default member permissions for this (discord) chat-input application command 📃
+ * @returns whether this member has permissions to use this (discord) chat-input application command 📛
+ */
+export async function checkChatInputCommandPermissions(commandId: string, member: import("discord.js").GuildMember, channel: import("discord.js").NewsChannel | import("discord.js").TextChannel | import("discord.js").VoiceChannel, defaultMemberPermissions?: import("discord.js").PermissionResolvable = 0n): Promise<boolean>;
 
 /**
  * gets a random element from an array ❓
@@ -329,14 +340,14 @@ export function sum<T>(array: T[], initialValue?: any): T;
  * @param colourToConvert colour to convert 🎨
  * @returns decimal number (integer) colour value 🎨
  */
-export async function toDecimal(colourToConvert: typeof import("color")): number;
+export function toDecimal(colourToConvert: typeof import("color")): number;
 
 /**
  * convert a colour to hexadecimal format ➡️
  * @param colourToConvert colour to convert 🎨
  * @returns hex string colour value 🎨
  */
-export async function toHexadecimal(colourToConvert: typeof import("color")): string;
+export function toHexadecimal(colourToConvert: typeof import("color")): string;
 
 /**
  * pretty much "pauses" asynchronous code ⏱️

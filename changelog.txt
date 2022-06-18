@@ -229,7 +229,7 @@
 
 » code refactoring   -^^,--,~
 › refactor types (to make them more consistent across files) 📄
-› readd a type ➕
+› re-add a type ➕
 › colours: remove comments per-key (they're pretty redundant, huh) 💬
 
 
@@ -245,3 +245,25 @@
 
 » features   -^^,--,~
 › url: update regular expression 🔗
+
+
+
+18/jun/2022 - 1.19.0
+
+» features   -^^,--,~
+› add checkChatInputCommandPermissions ✅
+› url: update regular expression (again) 🔗
+
+» styles   -^^,--,~
+› partialEmoji: correct TypeError typo 📝
+› badWords: add emojis 🦊💬
+› license: add year range (technically it's unnecessary therefore it's not a feature) 🏷️
+› readme: add emojis 🦊
+› readme: add installations from pnpm and yarn 💻
+› readme: coloured codeblock text for installations 🟦
+
+» code refactoring   -^^,--,~
+› toDecimal, toHexadecimal: line spacing 📄
+
+» chores   -^^,--,~
+› remove unneeded async declarations in types ⌚
