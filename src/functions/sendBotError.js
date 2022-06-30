@@ -1,6 +1,6 @@
 /**
  * send an error to a webhook ❗
- * @param {import("discord.js").Interaction | string} interaction this interaction; if this value is typeof string then it'll show as the source instead 🗯️
+ * @param {import("discord.js").BaseInteraction | string} interaction this interaction; if this value is typeof string then it'll show as the source instead 🗯️
  * @param {import("discord.js").WebhookClientData} WebhookClientData webhook data to send this error to 📋
  * @param {Error} error the error that happened 📣
  * @param {boolean} [sendInteractionResponse=true] whether to use the interaction to show an error (to the user) or not 💭
@@ -8,12 +8,12 @@
  */
 module.exports = async (interaction, WebhookClientData, error, sendInteractionResponse = true) => {
    // imports
-   const { Interaction, WebhookClient, EmbedBuilder, Formatters } = require("discord.js");
+   const { BaseInteraction, WebhookClient, EmbedBuilder, Formatters } = require("discord.js");
    const { emojis, choice, noop, strip } = require("../../");
 
 
    // data validation
-   if (!(interaction instanceof Interaction || typeof interaction === `string`))
+   if (!(interaction instanceof BaseInteraction || typeof interaction === `string`))
       throw new TypeError(`@magicalbunny31/awesome-utility-stuff › sendBotError: not a valid \`interaction\` parameter value ⚠️`);
 
    if (!WebhookClientData.id && !WebhookClientData.token && !WebhookClientData.url)
@@ -111,7 +111,7 @@ module.exports = async (interaction, WebhookClientData, error, sendInteractionRe
          .setColor(`#f60000`)
          .setDescription(strip`
             ${emojis.rip} **ayo!! error!!**
-            > ${emojis.spiky_speech_bubble} \`${interaction instanceof Interaction ? `${interactionType[1]}\`/\`${name}` : interaction}\`
+            > ${emojis.spiky_speech_bubble} \`${interaction instanceof BaseInteraction ? `${interactionType[1]}\`/\`${name}` : interaction}\`
             > ${emojis.calendar_spiral} ${Formatters.time(Math.round((interaction.createdTimestamp || Date.now()) / 1000))}
 
             \`\`\`js
@@ -119,13 +119,13 @@ module.exports = async (interaction, WebhookClientData, error, sendInteractionRe
             \`\`\`
          `)
          .setFooter({
-            text: interaction instanceof Interaction ? `🆔 ${interaction.id}` : null
+            text: interaction instanceof BaseInteraction ? `🆔 ${interaction.id}` : null
          })
    ];
 
 
    try {
-      if (interaction instanceof Interaction && sendInteractionResponse)
+      if (interaction instanceof BaseInteraction && sendInteractionResponse)
          try {
             // attempt to defer the reply ephemerally, if not then assume the interaction has been replied to already
             await interaction.deferReply({

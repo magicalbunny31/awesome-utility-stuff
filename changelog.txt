@@ -267,3 +267,13 @@
 
 » chores   -^^,--,~
 › remove unneeded async declarations in types ⌚
+
+
+
+30/jun/2022 - 1.19.1
+
+» bug fixes   -^^,--,~
+› sendBotError: update typings and data validation 📋
+
+» styles   -^^,--,~
+› license: slightly change year range formatting 📝

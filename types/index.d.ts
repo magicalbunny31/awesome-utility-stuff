@@ -286,7 +286,7 @@ export function partition<T>(array: T[], condition: (value?: T, index?: number, 
  * @param sendInteractionResponse whether to use the interaction to show an error (to the user) or not 🗯️
  * @returns an error sent to the webhook, plus a response to the user if specified 📋
  */
-export async function sendBotError(interaction: import("discord.js").Interaction, webhookData: import("discord.js").WebhookClientData, error: Error, sendInteractionResponse?: boolean=true): Promise<void>;
+export async function sendBotError(interaction: import("discord.js").BaseInteraction, webhookData: import("discord.js").WebhookClientData, error: Error, sendInteractionResponse?: boolean=true): Promise<void>;
 
 /**
  * send an error response ❗
