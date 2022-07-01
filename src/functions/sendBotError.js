@@ -157,7 +157,7 @@ module.exports = async (interaction, WebhookClientData, error, sendInteractionRe
 
    } finally {
       // send to webhook
-      return await webhook.send({
+      void await webhook.send({
          embeds: [
             embeds[1]
          ]

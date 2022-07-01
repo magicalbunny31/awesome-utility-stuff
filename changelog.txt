@@ -277,3 +277,10 @@
 
 » styles   -^^,--,~
 › license: slightly change year range formatting 📝
+
+
+
+30/jun/2022 - 1.19.2
+
+» bug fixes   -^^,--,~
+› sendBotError: return void, not APIMessage 🪃
