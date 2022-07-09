@@ -284,3 +284,10 @@
 
 » bug fixes   -^^,--,~
 › sendBotError: return void, not APIMessage 🪃
+
+
+
+09/jul/2022 - 1.19.4
+
+» features   -^^,--,~
+› emojis: added emojis 🦊

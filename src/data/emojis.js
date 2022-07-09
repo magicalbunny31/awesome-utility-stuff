@@ -13,6 +13,8 @@ module.exports = {
 
    "fox_bot": "<:fox_bot:964995656278224967>",
 
+   "flooded_area": "<:flooded_area:995461994989756526>",
+
    "furry_pride":  "<:furry_pride:797613808147365898>",
    "rainbow_flag": "<:rainbow_flag:792165589526904832>",
 
