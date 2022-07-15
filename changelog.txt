@@ -291,3 +291,10 @@
 
 » features   -^^,--,~
 › emojis: added emojis 🦊
+
+
+
+15/jul/2022 - 1.19.4
+
+» bug fixes   -^^,--,~
+› checkChatInputCommandPermissions: update data validation checks ☑️

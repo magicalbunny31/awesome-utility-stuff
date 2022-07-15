@@ -15,7 +15,7 @@
  */
 module.exports = async (commandId, member, channel, defaultMemberPermissions = 0n) => {
    // imports
-   const { GuildMember, Channel, ChannelType, PermissionsBitField, PermissionFlagsBits, ApplicationCommandPermissionType } = require("discord.js");
+   const { GuildMember, GuildChannel, ChannelType, PermissionsBitField, PermissionFlagsBits, ApplicationCommandPermissionType } = require("discord.js");
 
 
    // data validation
@@ -25,7 +25,7 @@ module.exports = async (commandId, member, channel, defaultMemberPermissions = 0
    if (!member instanceof GuildMember)
       throw new TypeError(`@magicalbunny31/awesome-utility-stuff › checkChatInputCommandPermissions: not a valid \`member\` parameter value ⚠️`);
 
-   if (!channel instanceof Channel || ![ ChannelType.GuildText, ChannelType.GuildVoice, ChannelType.GuildNews ].includes(channel.type))
+   if (!channel instanceof GuildChannel || ![ ChannelType.GuildText, ChannelType.GuildVoice, ChannelType.GuildNews ].includes(channel.type))
       throw new TypeError(`@magicalbunny31/awesome-utility-stuff › checkChatInputCommandPermissions: not a valid \`channel\` parameter value ⚠️`);
 
    if (
