@@ -298,3 +298,13 @@
 
 » bug fixes   -^^,--,~
 › checkChatInputCommandPermissions: update data validation checks ☑️
+
+
+
+20/jul/2022 - 1.19.5
+
+» features   -^^,--,~
+› emojis: added emojis 🦊
+
+» builds   -^^,--,~
+› discord.js: switch to main 📦

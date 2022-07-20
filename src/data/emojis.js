@@ -38,6 +38,7 @@ module.exports = {
    "text_channel_nsfw":    "<a:text_channel_nsfw:916395583307153460>",
 
    "announcement_channel": "<a:announcement_channel:916395583630106664>",
+   "forum_channel":        "<a:forum_channel:999348804480409642>",
 
    "voice_channel":         "<a:voice_channel:916395583760121866>",
    "voice_channel_limited": "<a:voice_channel_limited:916395583659450378>",
