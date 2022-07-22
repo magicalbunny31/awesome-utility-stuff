@@ -308,3 +308,16 @@
 
 » builds   -^^,--,~
 › discord.js: switch to main 📦
+
+
+
+22/jul/2022 - 1.20.0
+
+» features   -^^,--,~
+› add findSimilar 📋
+› choice: improve types 💭
+› colours: primary colours only 🎨
+› colours: add fennec, berry_bot, flooded_area 💻🫐🌊
+
+» styles   -^^,--,~
+› choice: fix capitalisation in types 🔠

@@ -13,6 +13,7 @@ const autoArray = require("../../src/functions/autoArray.js");
 const checkChatInputCommandPermissions = require("../../src/functions/checkChatInputCommandPermissions.js");
 const choice = require("../../src/functions/choice.js");
 const createCollectorExpirationTime = require("../../src/functions/createCollectorExpirationTime.js");
+const findSimilar = require("../../src/functions/findSimilar.js");
 const formatPermissions = require("../../src/functions/formatPermissions.js");
 const getNearestColourPaw = require("../../src/functions/getNearestColourPaw.js");
 const help = require("../../src/functions/help.js");
@@ -47,6 +48,7 @@ module.exports = {
    checkChatInputCommandPermissions,
    choice,
    createCollectorExpirationTime,
+   findSimilar,
    formatPermissions,
    getNearestColourPaw,
    help,

@@ -13,12 +13,11 @@ module.exports = {
    purple: 0x4815aa,
    pink: 0xfe83c6,
 
-   bun_primary: 0xc653ff,
-   bun_secondary: 0xed20dd,
+   bun: 0xc653ff,
+   fox_kit: 0xe78522,
+   fox_bot: 0xfeb139,
+   fennec: 0xffd995,
 
-   fox_kit_primary: 0xe78522,
-   fox_kit_secondary: 0xd4caca,
-   fox_kit_tertiary: 0x332f36,
-
-   fox_bot: 0xfeb139
+   berry_bot: 0x0f87f0,
+   flooded_area: 0x4de94c
 };

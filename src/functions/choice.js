@@ -2,7 +2,7 @@
  * gets a random element from an array ❓
  * @param {T[]} array array to get a random element from 📃
  * @param {number} [choices] number of choices to get #️⃣
- * @returns {T | t[]} an element of that array 📄
+ * @returns {T | T[]} an element of that array 📄
  */
 module.exports = (array, choices) => {
    // imports

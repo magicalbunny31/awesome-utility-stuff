@@ -73,7 +73,15 @@ export async function checkChatInputCommandPermissions(commandId: string, member
  * @param choices number of choices to get #️⃣
  * @returns an element of that array 📄
  */
-export function choice<T>(array: T[], choices?: number): T;
+export function choice<T>(array: T[]): T;
+
+/**
+ * gets a random element from an array ❓
+ * @param array array to get a random element from 📃
+ * @param choices number of choices to get #️⃣
+ * @returns an element of that array 📄
+ */
+export function choice<T>(array: T[], choices: number): T[];
 
 /**
  * creates a discord.js MessageComponentCollector expiration time from a timestamp ⏳
@@ -83,6 +91,45 @@ export function choice<T>(array: T[], choices?: number): T;
  * @returns period of time in 15 minutes from the timestamp but minus 3 seconds for good measure owo 🕑
  */
 export function createCollectorExpirationTime(timestamp: number): number;
+
+/**
+ * find similar strings/objects based off of a string 📋
+ *
+ * this is compared off aceakash's string-similarity, see link 👤
+ * @see https://github.com/aceakash/string-similarity 🔗
+ * @param query string to query 📄
+ * @param targets target array 📃
+ * @param settings settings to include 🔧
+ * @returns array of results of the targets sorted in similarity
+ */
+export function findSimilar(query: string, targets: string[], settings: {
+   /** max amounts of results to return 🔢 */
+   limit?: number;
+
+   /** filter out results with a score below this target 🗯️ */
+   minScore?: number
+}): { score: number, target: string }[];
+
+/**
+ * find similar strings/objects based off of a string 📋
+ *
+ * this is compared off aceakash's string-similarity, see link 👤
+ * @see https://github.com/aceakash/string-similarity 🔗
+ * @param query string to query 📄
+ * @param targets target array 📃
+ * @param settings settings to include 🔧
+ * @returns array of results of the targets sorted in similarity
+ */
+export function findSimilar<T>(query: string, targets: T[], settings: {
+   /** for an array of objects, the key of the object to access for the string 💬 */
+   key?: keyof T;
+
+   /** max amounts of results to return 🔢 */
+   limit?: number;
+
+   /** filter out results with a score below this target 🗯️ */
+   minScore?: number
+}): { score: number, object: T }[];
 
 /**
  * formats a permission to a readable string 📝

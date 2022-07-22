@@ -13,6 +13,7 @@ import autoArray from "../../src/functions/autoArray.js";
 import checkChatInputCommandPermissions from "../../src/functions/checkChatInputCommandPermissions.js";
 import choice from "../../src/functions/choice.js";
 import createCollectorExpirationTime from "../../src/functions/createCollectorExpirationTime.js";
+import findSimilar from "../../src/functions/findSimilar.js";
 import formatPermissions from "../../src/functions/formatPermissions.js";
 import getNearestColourPaw from "../../src/functions/getNearestColourPaw.js";
 import help from "../../src/functions/help.js";
@@ -47,6 +48,7 @@ export {
    checkChatInputCommandPermissions,
    choice,
    createCollectorExpirationTime,
+   findSimilar,
    formatPermissions,
    getNearestColourPaw,
    help,
