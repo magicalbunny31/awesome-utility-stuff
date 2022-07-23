@@ -8,7 +8,7 @@
  */
 module.exports = async (interaction, WebhookClientData, error, sendInteractionResponse = true) => {
    // imports
-   const { BaseInteraction, WebhookClient, EmbedBuilder, Formatters } = require("discord.js");
+   const { BaseInteraction, WebhookClient, InteractionType, EmbedBuilder, Formatters } = require("discord.js");
    const { emojis, choice, noop, strip } = require("../../");
 
 
@@ -29,23 +29,26 @@ module.exports = async (interaction, WebhookClientData, error, sendInteractionRe
 
    // what type of interaction this is
    const interactionType = (() => {
-      if      (interaction.isAutocomplete?.())              return [ `autocomplete interaction`, `autocomplete`         ];
-      else if (interaction.isButton?.())                    return [ `button`,                   `button`               ];
-      else if (interaction.isChatInputCommand?.())          return [ `slash command`,            `chat-input`           ];
-      else if (interaction.isMessageContextMenuCommand?.()) return [ `message command`,          `message-context-menu` ];
-      else if (interaction.isModalSubmit?.())               return [ `modal`,                    `modal-submit`         ];
-      else if (interaction.isSelectMenu?.())                return [ `select menu`,              `select-menu`          ];
-      else if (interaction.isUserContextMenuCommand?.())    return [ `user command`,             `user-context-menu`    ];
-      else                                                  return [ `interaction`,              `unknown`              ];
+      switch (true) {
+         case interaction.type === InteractionType.ApplicationCommandAutocomplete: return [ `autocomplete interaction`, `autocomplete`         ];
+         case interaction.isButton?.():                                            return [ `button`,                   `button`               ];
+         case interaction.isChatInputCommand?.():                                  return [ `slash command`,            `chat-input`           ];
+         case interaction.isMessageContextMenuCommand?.():                         return [ `message command`,          `message-context-menu` ];
+         case interaction.type === InteractionType.ModalSubmit:                    return [ `modal`,                    `modal-submit`         ];
+         case interaction.isSelectMenu?.():                                        return [ `select menu`,              `select-menu`          ];
+         case interaction.isUserContextMenuCommand?.():                            return [ `user command`,             `user-context-menu`    ];
+         default:                                                                  return [ `interaction`,              `unknown`              ];
+      };
    })();
 
 
    // name of this command/its custom id/whatever
    const name = [
-      ...interaction.commandName                           ? [ interaction.commandName ]                  : [],
-      ...interaction?.options?.getSubcommandGroup?.(false) ? [ interaction.options.getSubcommandGroup() ] : [],
-      ...interaction?.options?.getSubcommand?.(false)      ? [ interaction.options.getSubcommand()      ] : []
+      interaction.commandName,
+      interaction?.options?.getSubcommandGroup?.(false),
+      interaction?.options?.getSubcommand?.(false)
    ]
+      .filter(Boolean)
       .join(` `)
    || interaction.customId;
 

@@ -321,3 +321,10 @@
 
 » styles   -^^,--,~
 › choice: fix capitalisation in types 🔠
+
+
+
+23/jul/2022 - 1.20.1
+
+» bug fixes   -^^,--,~
+› sendBotError: update code to support discord.js v14 🔃
