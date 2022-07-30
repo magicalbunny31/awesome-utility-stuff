@@ -328,3 +328,10 @@
 
 » bug fixes   -^^,--,~
 › sendBotError: update code to support discord.js v14 🔃
+
+
+
+30/jul/2022 - 1.20.2
+
+» features   -^^,--,~
+› emojis: added emojis 🦊
