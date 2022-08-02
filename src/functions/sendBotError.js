@@ -8,7 +8,7 @@
  */
 module.exports = async (interaction, WebhookClientData, error, sendInteractionResponse = true) => {
    // imports
-   const { BaseInteraction, WebhookClient, InteractionType, EmbedBuilder, Formatters } = require("discord.js");
+   const { BaseInteraction, WebhookClient, InteractionType, EmbedBuilder, time } = require("discord.js");
    const { emojis, choice, noop, strip } = require("../../");
 
 
@@ -115,7 +115,7 @@ module.exports = async (interaction, WebhookClientData, error, sendInteractionRe
          .setDescription(strip`
             ${emojis.rip} **ayo!! error!!**
             > ${emojis.spiky_speech_bubble} \`${interaction instanceof BaseInteraction ? `${interactionType[1]}\`/\`${name}` : interaction}\`
-            > ${emojis.calendar_spiral} ${Formatters.time(Math.round((interaction.createdTimestamp || Date.now()) / 1000))}
+            > ${emojis.calendar_spiral} ${time(Math.round((interaction.createdTimestamp || Date.now()) / 1000))}
 
             \`\`\`js
             ${error}
