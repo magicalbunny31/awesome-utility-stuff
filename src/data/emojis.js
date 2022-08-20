@@ -83,8 +83,10 @@ module.exports = {
 
    "mutant_standard": "<:mutant_standard:911322978313179187>",
 
-   "open_folder":  "<:open_folder:885778608403152907>",
-   "yellow_book":  "<:yellow_book:809123390438768660>",
+   "bookmark":        "<:bookmark:1010695622397022349>",
+   "spiral_notebook": "<:spiral_notebook:1010695621264552066>",
+   "open_folder":     "<:open_folder:885778608403152907>",
+   "yellow_book":     "<:yellow_book:809123390438768660>",
 
    "world_map":          "<:world_map:792165588486586418>",
    "wrench":             "<:wrench:792165588448968794>",
@@ -97,6 +99,7 @@ module.exports = {
    "speaker":            "<:speaker:809180470679830618>",
    "robot":              "<:robot:792517131920211989>",
    "bomb":               "<:bomb:792165588209762325>",
+   "firecracker":        "<:firecracker:1010695617158332518>",
 
    "arrow_up":    "<:arrow_up:944670056862875708>",
    "arrow_down":  "<:arrow_down:944670056846094406>",
@@ -114,6 +117,7 @@ module.exports = {
    "hash_char":             "<:hash_char:889290260952006707>",
    "special_characters":    "<:special_characters:889290261161734154>",
    "magnifying_glass_left": "<:magnifying_glass_left:924388808244486254>",
+   "stylus":                "<:stylus:1010695618823471185>",
 
    "speaker_medium_volume": "<:speaker_medium_volume:861636339219824660>",
    "speaker_muted":         "<:speaker_muted:886043910823104532>",
@@ -140,10 +144,11 @@ module.exports = {
    "lightning":        "<:lightning:946454866920865843>",
    "snow":             "<:snow:946454867021561856>",
 
-   "laptop":    "<:laptop:884098085754634280>",
-   "phone":     "<:phone:864529940141441035>",
-   "phone_off": "<:phone_off:864529940556152862>",
-   "watch":     "<:watch:886043479980003368>",
+   "laptop":           "<:laptop:884098085754634280>",
+   "phone":            "<:phone:864529940141441035>",
+   "phone_with_arrow": "<:phone_with_arrow:1010695619721035838>",
+   "phone_off":        "<:phone_off:864529940556152862>",
+   "watch":            "<:watch:886043479980003368>",
 
    "airplane":     [ "<:airplane:896512829572644925>", "<a:airplane:896512429058555914>" ],
    "train":        "<:train:945733338172379206>",

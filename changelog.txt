@@ -338,10 +338,18 @@
 
 
 
-02/jul/2022 - 1.20.3
+02/aug/2022 - 1.20.3
 
 » bug fixes   -^^,--,~
 › sendBotError: replace deprecated Formatters 🔁
 
 » styles   -^^,--,~
 › wait: missing semicolon 📝
+
+
+
+21/aug/2022 - 1.20.4
+
+» features   -^^,--,~
+› emojis: added emojis 🦊
+› sendBotError: send error stack 🗃️

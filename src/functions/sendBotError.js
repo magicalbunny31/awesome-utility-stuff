@@ -118,7 +118,7 @@ module.exports = async (interaction, WebhookClientData, error, sendInteractionRe
             > ${emojis.calendar_spiral} ${time(Math.round((interaction.createdTimestamp || Date.now()) / 1000))}
 
             \`\`\`js
-            ${error}
+            ${error.stack || error}
             \`\`\`
          `)
          .setFooter({
