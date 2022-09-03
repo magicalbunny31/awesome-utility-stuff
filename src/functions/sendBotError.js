@@ -8,8 +8,8 @@
  */
 module.exports = async (interaction, WebhookClientData, error, sendInteractionResponse = true) => {
    // imports
-   const { BaseInteraction, WebhookClient, InteractionType, EmbedBuilder, time } = require("discord.js");
-   const { emojis, choice, noop, strip } = require("../../");
+   const { BaseInteraction, WebhookClient, InteractionType, EmbedBuilder, time, codeBlock } = require("discord.js");
+   const { colours, emojis, choice, noop, strip } = require("../../");
 
 
    // data validation
@@ -92,15 +92,48 @@ module.exports = async (interaction, WebhookClientData, error, sendInteractionRe
       `${emojis.yaya} welcome! you've just discovered our secret party!`,
       `${emojis.bap} this ain't it, stop!`,
       `${emojis.cutie} there's gotta be some room for cute furry boys....right?`,
-      `${emojis.bah} well, you don't see \\*that\\* every day!`
+      `${emojis.bah} well, you don't see \\*that\\* every day!`,
+      `${emojis.claps} aye aye, well done chef`,
+      `${emojis.furdancing} out partying~`,
+      `${emojis.mhn} i can fix it!`,
+      `${emojis.pout} awh, well damn!`,
+      `${emojis.shrug} muh`
    ]);
+
+
+   // function to parse the error stack
+   const parseErrorStack = stack => {
+      // get the dirname, format it from windows => linux
+      const currentDirs = __dirname.replaceAll(`\\`, `/`).split(`/`);
+
+      // get the first stack trace of the filepath
+      const filePath = decodeURI(stack.split(`\n`)[1].trim().split(`///`)[1]);
+      const dirs = filePath.split(`/`);
+      const rootPaths = [];
+
+      // push the root dir of the project to the root paths
+      for (const [ i, dir ] of dirs.entries()) {
+         if (dir !== currentDirs[i])
+            rootPaths.push(dir);
+      };
+
+      // get the line and column of the error, and replace it with just the filename
+      const [ filename, line, column ] = rootPaths.at(-1).split(`:`);
+      rootPaths.splice(-1, 1, filename);
+
+      // the full error path
+      const errorPath = rootPaths.join(`/`);
+
+      // return these stuffs back
+      return [ errorPath, filename, line.match(/(\d+)/)[0], column.match(/(\d+)/)[0] ];
+   };
 
 
    // embeds
    const embeds = [
       // user
       new EmbedBuilder()
-         .setColor(`#f60000`)
+         .setColor(colours.red)
          .setDescription(strip`
             ${emojis.rip} **an error occurred with this ${interactionType[0]}..**
             > ${response}
@@ -111,16 +144,28 @@ module.exports = async (interaction, WebhookClientData, error, sendInteractionRe
 
       // dev
       new EmbedBuilder()
-         .setColor(`#f60000`)
-         .setDescription(strip`
-            ${emojis.rip} **ayo!! error!!**
-            > ${emojis.spiky_speech_bubble} \`${interaction instanceof BaseInteraction ? `${interactionType[1]}\`/\`${name}` : interaction}\`
-            > ${emojis.calendar_spiral} ${time(Math.round((interaction.createdTimestamp || Date.now()) / 1000))}
-
-            \`\`\`js
-            ${error.stack || error}
-            \`\`\`
-         `)
+         .setColor(colours.red)
+         .setDescription(
+            [ // i don't want to use \u200b: can't use `strip`
+               `${emojis.rip} **ayo!! error!!**`,
+               `> ${emojis.spiky_speech_bubble} \`${interaction instanceof BaseInteraction ? `${interactionType[1]}\`/\`${name}` : interaction}\``,
+               `> ${emojis.calendar_spiral} ${time(Math.round((interaction.createdTimestamp || Date.now()) / 1000))}`,
+               codeBlock(`ansi`,
+                  [
+                     `\u001b[31m${error.name}\u001b[30m: \u001b[0m${error.message}`,
+                     ...error.stack
+                        ? [
+                           ``,
+                           `\u001b[30m>\u001b[0m \u001b[33m${parseErrorStack(error.stack)[1]}\u001b[30m:\u001b[32m${parseErrorStack(error.stack)[2]}\u001b[30m:\u001b[32m${parseErrorStack(error.stack)[3]}\u001b[0m`,
+                           `  \u001b[30m${parseErrorStack(error.stack)[0]}`
+                        ]
+                        : []
+                  ]
+                     .join(`\n`)
+               )
+            ]
+               .join(`\n`)
+         )
          .setFooter({
             text: interaction instanceof BaseInteraction ? `🆔 ${interaction.id}` : null
          })

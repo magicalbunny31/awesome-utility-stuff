@@ -353,3 +353,11 @@
 » features   -^^,--,~
 › emojis: added emojis 🦊
 › sendBotError: send error stack 🗃️
+
+
+
+03/sep/2022 - 1.20.5
+
+» features   -^^,--,~
+› emojis: added emojis 🦊
+› sendBotError: improve formatting of errors 📝
