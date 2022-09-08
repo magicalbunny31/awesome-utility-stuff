@@ -236,6 +236,7 @@ module.exports = {
    "pink_paws":   "<a:pink_paws:944006359433752588>",
 
 
-   "twitter": "<a:twitter:972926164643491900>",
-   "telegram": "<a:telegram:972926164572176465>"
+   "twitter":  "<a:twitter:972926164643491900>",
+   "telegram": "<a:telegram:972926164572176465>",
+   "e621":     "<a:e621:1017479439380123748>"
 };
