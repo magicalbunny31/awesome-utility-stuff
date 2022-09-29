@@ -12,17 +12,6 @@ module.exports = async (interaction, WebhookClientData, error, sendInteractionRe
    const { colours, emojis, choice, noop, strip } = require("../../");
 
 
-   // data validation
-   if (!(interaction instanceof BaseInteraction || typeof interaction === `string`))
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › sendBotError: not a valid \`interaction\` parameter value ⚠️`);
-
-   if (!WebhookClientData.id && !WebhookClientData.token && !WebhookClientData.url)
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › sendBotError: not a valid \`WebhookClientData\` parameter value ⚠️`);
-
-   if (!error instanceof Error)
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › sendBotError: not a valid \`error\` parameter value ⚠️`);
-
-
    // this webhook
    const webhook = new WebhookClient(WebhookClientData);
 
@@ -173,7 +162,7 @@ module.exports = async (interaction, WebhookClientData, error, sendInteractionRe
 
 
    try {
-      if (interaction instanceof BaseInteraction && sendInteractionResponse)
+      if (sendInteractionResponse)
          try {
             // attempt to defer the reply ephemerally, if not then assume the interaction has been replied to already
             await interaction.deferReply({

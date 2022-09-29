@@ -1,6 +1,5 @@
 30/jan/2022 - 1.11.0
 
-
 » features   -^^,--,~
 › add changelog 📋
 › add HelpUsage class ❓
@@ -20,7 +19,6 @@
 
 
 02/feb/2022 - 1.12.0
-
 
 » features   -^^,--,~
 › HelpUsage: prefer static methods
@@ -368,3 +366,10 @@
 
 » features   -^^,--,~
 › emojis: added emojis 🦊
+
+
+
+29/sep/2022 - 1.21.0
+
+» features   -^^,--,~
+› sendBotError: removed data validation because it was just too annoying to keep up with discord.js 🗑️
