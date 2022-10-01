@@ -113,9 +113,15 @@ module.exports = async (interaction, WebhookClientData, error, sendInteractionRe
       // the full error path
       const errorPath = rootPaths.join(`/`);
 
+      // cannot parse this error stack
+      if (!line && !column)
+         return false;
+
       // return these stuffs back
       return [ errorPath, filename, line.match(/(\d+)/)[0], column.match(/(\d+)/)[0] ];
    };
+
+   const errorStack = parseErrorStack(error.stack);
 
 
    // embeds
@@ -142,13 +148,18 @@ module.exports = async (interaction, WebhookClientData, error, sendInteractionRe
                codeBlock(`ansi`,
                   [
                      `\u001b[31m${error.name}\u001b[30m: \u001b[0m${error.message}`,
-                     ...error.stack
+                     ``,
+                     ...errorStack
                         ? [
-                           ``,
-                           `\u001b[30m>\u001b[0m \u001b[33m${parseErrorStack(error.stack)[1]}\u001b[30m:\u001b[32m${parseErrorStack(error.stack)[2]}\u001b[30m:\u001b[32m${parseErrorStack(error.stack)[3]}\u001b[0m`,
-                           `  \u001b[30m${parseErrorStack(error.stack)[0]}`
+                           `\u001b[30m>\u001b[0m \u001b[33m${errorStack[1]}\u001b[30m:\u001b[32m${errorStack[2]}\u001b[30m:\u001b[32m${errorStack[3]}\u001b[0m`,
+                           `  \u001b[30m${errorStack[0]}`
                         ]
-                        : []
+                        : error.stack
+                           ? [
+                              `\u001b[4;31mraw error stack\u001b[0m`,
+                              `\u001b[30m${error.stack}`
+                           ]
+                           : []
                   ]
                      .join(`\n`)
                )

@@ -373,3 +373,10 @@
 
 » features   -^^,--,~
 › sendBotError: removed data validation because it was just too annoying to keep up with discord.js 🗑️
+
+
+
+01/oct/2022 - 1.21.1
+
+» features   -^^,--,~
+› sendBotError: use raw error stack instead if the given error stack can't be parsed 🗯️
