@@ -59,7 +59,7 @@ module.exports = async (commandId, member, channel, defaultMemberPermissions = 0
    const clientId = member.client.user.id;
 
    // https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-guild-application-command-permissions-structure
-   //                  command with explicit overwrites           commands without explicit overwrites      no set permissions
+   //                  command with explicit overwrites            commands without explicit overwrites       no set permissions
    const permissions = await fetchCommandPermissions(commandId) || await fetchCommandPermissions(clientId) || [];
 
 
@@ -103,9 +103,14 @@ module.exports = async (commandId, member, channel, defaultMemberPermissions = 0
       return false;
 
 
-   // this member is explicitly granted permissions to use this command
-   if (permissions.find(permission => permission.id === member.id)?.permission)
-      return true;
+   // this channel has permissions explicitly set for this command
+   if (typeof permissions.find(permission => permission.id === channel.id)?.permission === `boolean`)
+      return permissions.find(permission => permission.id === channel.id).permission;
+
+
+   // this member has permissions explicitly set for this command
+   if (typeof permissions.find(permission => permission.id === member.id)?.permission === `boolean`)
+      return permissions.find(permission => permission.id === member.id).permission;
 
 
    // this member's roles grant this member permissions to use this command
@@ -118,11 +123,21 @@ module.exports = async (commandId, member, channel, defaultMemberPermissions = 0
       return true;
 
 
+   // one of this member's roles is denied permissions to use this command
+   if (
+      member.roles.cache
+         .filter(role => role.id !== AllMembers)                                                          // don't check their @everyone role
+         .filter(role => permissions.find(permission => permission.id === role.id)?.permission === false) // this role is granted permissions (as long as one of their roles grant permissions, they'll be able to use the command)
+         .size
+   )
+      return false;
+
+
    // this member lacks the default member permissions to use this command
    if (!member.permissions.has(defaultMemberPermissions))
       return false;
 
 
-   // this is member is denied permissions to use this command
-   return false;
+   // this is member has permissions to use this command
+   return true;
 };

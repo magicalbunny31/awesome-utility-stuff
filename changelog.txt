@@ -380,3 +380,10 @@
 
 » features   -^^,--,~
 › sendBotError: use raw error stack instead if the given error stack can't be parsed 🗯️
+
+
+
+16/oct/2022 - 1.21.2
+
+» bug fixes   -^^,--,~
+› checkChatInputCommandPermissions: more edits to make this work as intended 💭
