@@ -70,6 +70,7 @@ module.exports = {
    "HypeSquad_events":             "<a:HypeSquad_events:925138043243987055>",
    "Partnered_server_owner":       "<a:Partnered_server_owner:925138043076231179>",
    "Early_verified_bot_developer": "<a:Early_verified_bot_developer:925138043403370527>",
+   "Active_Developer":             "<a:Active_Developer:1041285786697469952>",
 
    "Discord_staff":               "<a:Discord_staff:925138043399209030>",
    "Discord_certified_moderator": "<a:Discord_certified_moderator:925138043374039151>",

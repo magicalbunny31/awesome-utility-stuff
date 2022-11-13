@@ -387,3 +387,10 @@
 
 » bug fixes   -^^,--,~
 › checkChatInputCommandPermissions: more edits to make this work as intended 💭
+
+
+
+08/sep/2022 - 1.21.3
+
+» features   -^^,--,~
+› emojis: added emojis 🦊
