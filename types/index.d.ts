@@ -25,8 +25,8 @@ export const badWords: typeof import("../src/data/badWords.js");
 export const colours: typeof import("../src/data/colours.js");
 
 /**
- * regular expression to match emojis in unicode 14.0 🦊
- * @returns regular expression to match emojis in unicode 14.0 🦊
+ * regular expression to match emojis in unicode 15.0 🦊
+ * @returns regular expression to match emojis in unicode 15.0 🦊
  */
 export const emoji: RegExp;
 
@@ -375,7 +375,7 @@ export function statusInfo(statusCode: string | number): StatusInfo;
 export function strip(str: strip): string;
 
 /**
- * find the sum of an array ((aka a quick way of running an addition reducer function)) 🔢
+ * find the sum of an array (aka a quick way of running an addition reducer function) 🔢
  * @param array array of values to find the sum of (very descriptive!!) 📃
  * @param initialValue initial value for the reducer function 🏁
  * @returns sum of the array 📩

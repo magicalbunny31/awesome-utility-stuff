@@ -1,12 +1,9 @@
-# » vscode 💻
+# 💻 vscode
 .vscode/
 *.code-workspace
 
-# » dependencies 📦
+# 📦 dependencies
 node_modules/
 
-# » .env 📜
-.env
-
-# » testing dir 🔧
+# 🔧 testing dir
 test/
