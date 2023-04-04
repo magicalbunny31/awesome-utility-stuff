@@ -33,6 +33,11 @@ module.exports = {
    "slash_command": "<:slash_command:898355158403149824>",
    "fancy_typing":  "<a:fancy_typing:898371553920684032>",
 
+   "online":  "<a:online:1092880977166094446>",
+   "idle":    "<a:idle:1092880981662376026>",
+   "dnd":     "<a:dnd:1092880983793078444>",
+   "offline": "<a:offline:1092880979569422367>",
+
    "text_channel":         "<a:text_channel:916395583604949072>",
    "text_channel_limited": "<a:text_channel_limited:916395583609122826>",
    "text_channel_nsfw":    "<a:text_channel_nsfw:916395583307153460>",

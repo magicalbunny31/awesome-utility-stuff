@@ -408,3 +408,10 @@
 › gitignore: updated formatting 🎨
 › gitignore: remove redundant file ignores 📄
 › license: update license 📜
+
+
+
+04/apr/2023 - 1.22.1
+
+» features   -^^,--,~
+› emojis: added emojis 🦊
