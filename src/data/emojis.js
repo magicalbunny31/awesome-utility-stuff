@@ -50,6 +50,7 @@ module.exports = {
 
    "stage_channel": "<a:stage_channel:916395583722373190>",
 
+   "scheduled_events": "<a:scheduled_events:1097420136287305759>",
    "active_threads":   "<a:active_threads:916395583642669146>",
    "category_channel": "<a:category_channel:916395583663669318>",
    "rules_channel":    "<a:rules_channel:916395583663669319>",
@@ -59,6 +60,7 @@ module.exports = {
    "people":  "<a:people:921777485492936804>",
    "mention": "<a:mention:1002959964991651983>",
 
+   "AutoMod":        "<a:AutoMod:1097559798419050526>",
    "server_booster": "<a:server_booster:915296177799442442>",
    "wumpus_nitro":   "<a:wumpus_nitro:915297825384972288>",
 

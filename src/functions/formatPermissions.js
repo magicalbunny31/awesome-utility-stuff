@@ -12,6 +12,7 @@
 module.exports = permissionsInput => {
    // imports
    const { sum } = require("../../");
+   const { PermissionFlagsBits } = require("discord.js");
 
 
    // data validation
@@ -32,59 +33,65 @@ module.exports = permissionsInput => {
    // list of permissions
    const permissionsList = {
       // general server permissions
-      [0x0000000000000400]: `View Channels 👁‍🗨`,
-      [0x0000000000000010]: `Manage Channels 📝`,
-      [0x0000000010000000]: `Manage Roles 🏷️`,
-      [0x0000000040000000]: `Manage Emojis and Stickers 🦊`,
-      [0x0000000000000080]: `View Audit Log 📋`,
-      [0x0000000000080000]: `View Server Insights 🔮`,
-      [0x0000000020000000]: `Manage Webhooks 📢`,
-      [0x0000000000000020]: `Manage Server 🔧`,
+      [PermissionFlagsBits.ViewChannel]:            `View Channels 👁‍🗨`,
+      [PermissionFlagsBits.ManageChannels]:         `Manage Channels 📝`,
+      [PermissionFlagsBits.ManageRoles]:            `Manage Roles 🏷️`,
+      [PermissionFlagsBits.ManageGuildExpressions]: `Manage Expressions 🦊`,
+      [PermissionFlagsBits.ViewAuditLog]:           `View Audit Log 📋`,
+      [PermissionFlagsBits.ViewGuildInsights]:      `View Server Insights 🔮`,
+      [PermissionFlagsBits.ManageWebhooks]:         `Manage Webhooks 📢`,
+      [PermissionFlagsBits.ManageGuild]:            `Manage Server 🔧`,
 
       // membership permissions
-      [0x0000000000000001]: `Create Invite 📨`,
-      [0x0000000004000000]: `Change Nickname 📛`,
-      [0x0000000008000000]: `Manage Nicknames 👥`,
-      [0x0000000000000002]: `Kick Members 👢`,
-      [0x0000000000000004]: `Ban Members 🚫`,
-      [0x0000010000000000]: `Moderate Members 🚨`,
+      [PermissionFlagsBits.CreateInstantInvite]: `Create Invite 📨`,
+      [PermissionFlagsBits.ChangeNickname]:      `Change Nickname 📛`,
+      [PermissionFlagsBits.ManageNicknames]:     `Manage Nicknames 👥`,
+      [PermissionFlagsBits.KickMembers]:         `Kick Members 👢`,
+      [PermissionFlagsBits.BanMembers]:          `Ban Members 🚫`,
+      [PermissionFlagsBits.ModerateMembers]:     `Moderate Members 🚨`,
 
       // text channel permissions
-      [0x0000000000000800]: `Send Messages 📨`,
-      [0x0000004000000000]: `Send Messages in Threads 🧵`,
-      [0x0000000800000000]: `Create Public Threads 🔓`,
-      [0x0000001000000000]: `Create Private Threads 🔒`,
-      [0x0000000000004000]: `Embed Links 🔗`,
-      [0x0000000000008000]: `Attach Files 📄`,
-      [0x0000000000000040]: `Add Reactions 🙀`,
-      [0x0000000000040000]: `Use External Emojis 🐱`,
-      [0x0000002000000000]: `Use External Stickers 🖼️`,
-      [0x0000000000020000]: `Mention @everyone, @here and All Roles ❗`,
-      [0x0000000000002000]: `Manage Messages 🗃️`,
-      [0x0000000400000000]: `Manage Threads 📂`,
-      [0x0000000000010000]: `Read Message History 📃`,
-      [0x0000000000001000]: `Send Text-to-speech Messages 📣`,
-      [0x0000000080000000]: `Use Application Commands 🤖`,
+      [PermissionFlagsBits.SendMessages]:           `Send Messages 📨`,
+      [PermissionFlagsBits.SendMessagesInThreads]:  `Send Messages in Threads 🧵`,
+      [PermissionFlagsBits.CreatePublicThreads]:    `Create Public Threads 🔓`,
+      [PermissionFlagsBits.CreatePrivateThreads]:   `Create Private Threads 🔒`,
+      [PermissionFlagsBits.EmbedLinks]:             `Embed Links 🔗`,
+      [PermissionFlagsBits.AttachFiles]:            `Attach Files 📄`,
+      [PermissionFlagsBits.AddReactions]:           `Add Reactions 🙀`,
+      [PermissionFlagsBits.UseExternalEmojis]:      `Use External Emojis 🐱`,
+      [PermissionFlagsBits.UseExternalStickers]:    `Use External Stickers 🖼️`,
+      [PermissionFlagsBits.MentionEveryone]:        `Mention @everyone, @here and All Roles ❗`,
+      [PermissionFlagsBits.ManageMessages]:         `Manage Messages 🗃️`,
+      [PermissionFlagsBits.ManageThreads]:          `Manage Threads 📂`,
+      [PermissionFlagsBits.ReadMessageHistory]:     `Read Message History 📃`,
+      [PermissionFlagsBits.SendTTSMessages]:        `Send Text-to-speech Messages 📣`,
+      [PermissionFlagsBits.UseApplicationCommands]: `Use Application Commands 🤖`,
+      [0x0000040000000000]:                         `Send Voice Messages 🗣️`, // TODO: update when PermissionFlagsBits bit is available
 
       // voice channel permissions
-      [0x0000000000100000]: `Connect 📲`,
-      [0x0000000000200000]: `Speak 🔉`,
-      [0x0000000000000200]: `Video 📹`,
-      [0x0000008000000000]: `Use Activities 🚀`,
-      [0x0000000002000000]: `Use Voice Activity 🎙️`,
-      [0x0000000000000100]: `Priority Speaker 🔊`,
-      [0x0000000000400000]: `Mute Members 🔇`,
-      [0x0000000000800000]: `Deafen Members 🎧`,
-      [0x0000000001000000]: `Move Members 📥`,
+      [PermissionFlagsBits.Connect]:               `Connect 📲`,
+      [PermissionFlagsBits.Speak]:                 `Speak 🔉`,
+      [PermissionFlagsBits.Stream]:                `Video 📹`,
+      [PermissionFlagsBits.UseEmbeddedActivities]: `Use Activities 🚀`,
+      [PermissionFlagsBits.UseSoundboard]:         `Use Soundboard 🎉`,
+      [PermissionFlagsBits.UseExternalSounds]:     `Use External Sounds 🔉`,
+      [PermissionFlagsBits.UseVAD]:                `Use Voice Activity 🎙️`,
+      [PermissionFlagsBits.PrioritySpeaker]:       `Priority Speaker 🔊`,
+      [PermissionFlagsBits.MuteMembers]:           `Mute Members 🔇`,
+      [PermissionFlagsBits.DeafenMembers]:         `Deafen Members 🎧`,
+      [PermissionFlagsBits.MoveMembers]:           `Move Members 📥`,
 
       // stage channel permissions
-      [0x0000000100000000]: `Request to Speak 👋`,
+      [PermissionFlagsBits.RequestToSpeak]: `Request to Speak 👋`,
 
       // events permissions
-      [0x0000000200000000]: `Manage Events 🗓️`,
+      [PermissionFlagsBits.ManageEvents]: `Manage Events 🗓️`,
 
       // advanced
-      [0x0000000000000008]: `Administrator 💼`
+      [PermissionFlagsBits.Administrator]: `Administrator 💼`,
+
+      // idk
+      [PermissionFlagsBits.ViewCreatorMonetizationAnalytics]: `View Creator Monetization Analytics 📈`
    };
 
 

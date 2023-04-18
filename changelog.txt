@@ -415,3 +415,14 @@
 
 » features   -^^,--,~
 › emojis: added emojis 🦊
+
+
+
+18/apr/2023 - 1.22.2
+
+» features   -^^,--,~
+› emojis: added emojis 🦊
+› formatPermissions: added/updated permissions 📝
+
+» builds   -^^,--,~
+› updated discord.js to v14.9.0 📦

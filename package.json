@@ -1,6 +1,6 @@
 {
    "name": "@magicalbunny31/awesome-utility-stuff",
-   "version": "1.22.1",
+   "version": "1.22.2",
    "description": "some awesome utilities that i pretty much need or else my code will suck 🐾",
    "scripts": {
       "test-cjs": "node ./test/index.cjs",
@@ -28,7 +28,7 @@
    "dependencies": {
       "color": "^4.2.3",
       "common-tags": "^1.8.2",
-      "discord.js": "^14.0.3",
+      "discord.js": "^14.9.0",
       "nearest-color": "^0.4.4"
    },
    "engines": {
