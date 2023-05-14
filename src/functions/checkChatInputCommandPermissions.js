@@ -1,143 +1,305 @@
 /**
- * 🔎 the following code is ludicrously verbose
- * 📖 however, it's exceptionally readable!!
+ * 🔎 the following code is basically spaghetti code
+ * 📖 however, it's very readable!!
  * ✨ we (or i) *love* readable code~ ,':3
+ * 🦊 ~ magicalbunny31
  */
 
 
 /**
- * check if a member has permissions to use a (discord) chat-input application command ✅
+ * check if a member has permissions to use a (discord) chat-input application command 🔓
  * @param {string} commandId id of the command to view permissions of 🔎
- * @param {import("discord.js").GuildMember} member check if this member has permissions to use this (discord) chat-input application command 👥
- * @param {import("discord.js").NewsChannel | import("discord.js").TextChannel | import("discord.js").VoiceChannel} channel channel to check permissions against 💬
- * @param {import("discord.js").PermissionResolvable} [defaultMemberPermission=0n] default member permissions for this (discord) chat-input application command 📃
+ * @param {import("discord.js").GuildTextBasedChannel} channel channel to check permissions against 💬
+ * @param {import("discord.js").GuildMember} member member to check permissions against 👤
+ * @see https://cdn.discordapp.com/attachments/697138785317814292/1042878162901672048/flowchart-for-new-permissions.png
  * @returns {boolean} whether this member has permissions to use this (discord) chat-input application command 📛
  */
-module.exports = async (commandId, member, channel, defaultMemberPermissions = 0n) => {
+module.exports = async (commandId, channel, member) => {
    // imports
-   const { GuildMember, GuildChannel, ChannelType, PermissionsBitField, PermissionFlagsBits, ApplicationCommandPermissionType } = require("discord.js");
+   const Discord = require("discord.js");
 
 
    // data validation
    if (typeof commandId !== `string`)
       throw new TypeError(`@magicalbunny31/awesome-utility-stuff › checkChatInputCommandPermissions: not a valid \`commandId\` parameter value ⚠️`);
 
-   if (!member instanceof GuildMember)
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › checkChatInputCommandPermissions: not a valid \`member\` parameter value ⚠️`);
-
-   if (!channel instanceof GuildChannel || ![ ChannelType.GuildText, ChannelType.GuildVoice, ChannelType.GuildNews ].includes(channel.type))
+   if (![ Discord.ChannelType.GuildAnnouncement, Discord.ChannelType.GuildStageVoice, Discord.ChannelType.GuildText, Discord.ChannelType.PrivateThread, Discord.ChannelType.PublicThread, Discord.ChannelType.GuildVoice ].includes(channel.type))
       throw new TypeError(`@magicalbunny31/awesome-utility-stuff › checkChatInputCommandPermissions: not a valid \`channel\` parameter value ⚠️`);
 
-   if (
-      !(
-         Array.isArray(defaultMemberPermissions)
-            ? defaultMemberPermissions.every(defaultMemberPermission => defaultMemberPermission instanceof PermissionsBitField || [ `string`, `bigint` ].includes(typeof defaultMemberPermission))
-            : defaultMemberPermissions instanceof PermissionsBitField || [ `string`, `bigint` ].includes(typeof defaultMemberPermissions)
-      )
-   )
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › checkChatInputCommandPermissions: not a valid \`defaultMemberPermissions\` parameter value ⚠️`);
+   if (!member instanceof Discord.GuildMember)
+      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › checkChatInputCommandPermissions: not a valid \`member\` parameter value ⚠️`);
 
 
-   // function to manually fetch command permissions (discord.js REST module is being a crybaby and keeps throwing)
-   const fetchCommandPermissions = async commandId => {
+   // this client
+   const client = channel.client;
+
+
+   // this guild
+   const guild = channel.guild;
+
+
+   // permission constants
+   const AllMembers  =           guild.id;         // the permission id for AllMembers is the guild's id
+   const AllChannels = `${BigInt(guild.id) - 1n}`; // the permission id for AllChannels is the guild's id, minus 1
+
+
+   // fetch application permissions for this guild
+   const applicationPermissions = await (async () => {
       try {
-         // https://discord.com/developers/docs/interactions/application-commands#get-application-command-permissions
-         const applicationId = member.client.application.id;
-         const guildId = member.guild.id;
-         const { permissions } = await member.client.rest.get(`/applications/${applicationId}/guilds/${guildId}/commands/${commandId}/permissions`);
-         return permissions;
+         return await guild.commands.permissions.fetch({
+            command: client.id // using the client's id fetches its application permissions
+         });
 
       } catch {
-         // no set permissions
-         return undefined;
+         // no permissions set
+         return [];
+      };
+   })();
+
+
+   // fetch command permissions for this guild
+   const commandPermissions = await (async () => {
+      try {
+         return await guild.commands.permissions.fetch({
+            command: commandId
+         });
+
+      } catch {
+         // no permissions set
+         return [];
+      };
+   })();
+
+
+   // fetch default_member_permissions for this command
+   const defaultMemberPermissions = await (async () => {
+      try {
+         // this is a guild command
+         const command = await guild.commands.fetch(commandId);
+         return command.defaultMemberPermissions;
+
+      } catch {
+         // this is a global command
+         const command = await client.application.commands.fetch(commandId);
+         return command.defaultMemberPermissions;
+
+      };
+   })();
+
+
+   // this member has administrator permissions: they're granted explicit permissions to use the command
+   if (member.permissions.has(Discord.PermissionFlagsBits.Administrator))
+      return true;
+
+
+   // an array of the roles this member has, mapped by ids
+   const memberRolesAsIds = member.roles.cache.map(role => role.id);
+
+
+   // check default_member_permissions
+   const checkDefaultMemberPermissions = async () => {
+      if (defaultMemberPermissions === null) { // default_member_permissions for this command is null (there are no default_member_permissions)
+         return true;
+
+
+      } else { // default_member_permissions for this command isn't null (there are default_member_permissions)
+
+
+         if (defaultMemberPermissions.bitfield === 0n) { // default_member_permissions for this command is 0 (this command is disabled by default, except administrators)
+            return false;
+
+
+         } else { // default_member_permissions for this command isn't 0
+
+
+            if (channel.permissionsFor(member).has(defaultMemberPermissions)) { // in the current channel, this user has guild permissions that are defined by the default_member_permissions
+               return true;
+
+            } else { // in the current channel, this user doesn't have guild permissions that are defined by the default_member_permissions
+               return false;
+            };
+
+
+         };
+
+
       };
    };
 
 
-   // get permissions
-   const guildId  = member.guild.id;
-   const clientId = member.client.user.id;
-
-   // https://discord.com/developers/docs/interactions/application-commands#application-command-permissions-object-guild-application-command-permissions-structure
-   //                  command with explicit overwrites            commands without explicit overwrites       no set permissions
-   const permissions = await fetchCommandPermissions(commandId) || await fetchCommandPermissions(clientId) || [];
+   // check user/role permissions
+   const checkUserRolePermissions = async () => {
+      if (commandPermissions.find(commandPermission => commandPermission.id === member.id)) { // commandPermission overrides exists for this user
 
 
-   // permission constants
-   const AllMembers  =           guildId;
-   const AllChannels = `${BigInt(guildId) - 1n}`;
+         if (commandPermissions.find(commandPermission => commandPermission.id === member.id).permission) { // its value is true
+            return true;
+
+         } else { // its value is false
+            return false;
+         };
 
 
-   // restore default permissions if none are set
-   if (!permissions.length)
-      permissions.push({
-         id: AllMembers,
-         permission: true,
-         type: ApplicationCommandPermissionType.User
-      }, {
-         id: AllChannels,
-         permission: true,
-         type: ApplicationCommandPermissionType.Channel
-      });
+      } else { // commandPermission overrides doesn't exist for this user
 
 
-   // this member has administrator permissions: they're granted explicit permissions to use the command
-   if (member.permissions.has(PermissionFlagsBits.Administrator))
-      return true;
+         if (commandPermissions.filter(commandPermission => memberRolesAsIds.includes(commandPermission.id)).length) { // commandPermission overrides exists for one of this user's roles
 
 
-   // this command is denied for all members and this member isn't an exception (and no granted roles are included)
-   if (
-      !permissions.find(permission => permission.id === AllMembers)?.permission
-      && !permissions.find(permission => permission.id === member.id)?.permission
-      && !permissions.filter(permission => permission.id !== AllMembers && permission.type === ApplicationCommandPermissionType.Role && permission.permission)?.length
-   )
-      return false;
+            if (commandPermissions.filter(commandPermission => memberRolesAsIds.includes(commandPermission.id) && commandPermission.permission).length) { // commandPermission overrides for one of this user's roles is set to true
+               return true;
+
+            } else { // none of the commandPermission overrides for one of this user's roles is set to true
+               return false;
+            };
 
 
-   // this command is denied in all channels and this channel isn't an exception
-   if (
-      !permissions.find(permission => permission.id === AllChannels)?.permission
-      && !permissions.find(permission => permission.id === channel.id)?.permission
-   )
-      return false;
+         } else { // commandPermission overrides doesn't exist for one of this user's roles
 
 
-   // this channel has permissions explicitly set for this command
-   if (typeof permissions.find(permission => permission.id === channel.id)?.permission === `boolean`)
-      return permissions.find(permission => permission.id === channel.id).permission;
+            if (commandPermissions.find(commandPermission => commandPermission.id === AllMembers)) { // commandPermission overrides exists for AllMembers
 
 
-   // this member has permissions explicitly set for this command
-   if (typeof permissions.find(permission => permission.id === member.id)?.permission === `boolean`)
-      return permissions.find(permission => permission.id === member.id).permission;
+               if (commandPermissions.find(commandPermission => commandPermission.id === AllMembers).permission) { // its value is true
+                  return true;
+
+               } else { // its value is false
+                  return false;
+               };
 
 
-   // this member's roles grant this member permissions to use this command
-   if (
-      member.roles.cache
-         .filter(role => role.id !== AllMembers)                                                // don't check their @everyone role
-         .filter(role => permissions.find(permission => permission.id === role.id)?.permission) // this role is granted permissions (as long as one of their roles grant permissions, they'll be able to use the command)
-         .size
-   )
-      return true;
+            } else { // commandPermission overrides doesn't exist for AllMembers
 
 
-   // one of this member's roles is denied permissions to use this command
-   if (
-      member.roles.cache
-         .filter(role => role.id !== AllMembers)                                                          // don't check their @everyone role
-         .filter(role => permissions.find(permission => permission.id === role.id)?.permission === false) // this role is granted permissions (as long as one of their roles grant permissions, they'll be able to use the command)
-         .size
-   )
-      return false;
+               if (applicationPermissions.find(applicationPermission => applicationPermission.id === member.id)) { // applicationPermission overrides exists for this user
 
 
-   // this member lacks the default member permissions to use this command
-   if (!member.permissions.has(defaultMemberPermissions))
-      return false;
+                  if (applicationPermissions.find(applicationPermission => applicationPermission.id === member.id).permission) { // its value is true
+                     return checkDefaultMemberPermissions();
+
+                  } else { // its value is false
+                     return false;
+                  };
 
 
-   // this is member has permissions to use this command
-   return true;
+               } else { // applicationPermission overrides doesn't exist for this user
+
+
+                  if (applicationPermissions.filter(applicationPermission => memberRolesAsIds.includes(applicationPermission.id)).length) { // applicationPermission overrides exists for one of this user's roles
+
+
+                     if (applicationPermissions.filter(applicationPermission => memberRolesAsIds.includes(applicationPermission.id) && applicationPermission.permission).length) { // applicationPermission overrides for one of this user's roles is set to true
+                        return checkDefaultMemberPermissions();
+
+                     } else { // none of the applicationPermission overrides for one of this user's roles is set to true
+                        return false;
+                     };
+
+
+                  } else { // applicationPermission overrides doesn't exist for one of this user's roles
+
+
+                     if (applicationPermissions.find(applicationPermission => applicationPermission.id === AllMembers)) { // applicationPermission overrides exists for AllMembers
+
+
+                        if (applicationPermissions.find(applicationPermission => applicationPermission.id === AllMembers).permission) { // its value is true
+                           return checkDefaultMemberPermissions();
+
+                        } else { // its value is false
+                           return false;
+                        };
+
+
+                     } else { // applicationPermission overrides doesn't exist for AllMembers
+                        return checkDefaultMemberPermissions();
+                     };
+
+
+                  };
+
+
+               };
+
+
+            };
+
+
+         };
+
+
+      };
+   };
+
+
+   // check channel permissions
+   const checkChannelPermissions = () => {
+      if (commandPermissions.find(commandPermission => commandPermission.id === channel.id)) { // commandPermission overrides exists for this channel
+
+
+         if (commandPermissions.find(commandPermission => commandPermission.id === channel.id).permission) { // its value is true
+            return checkUserRolePermissions();
+
+         } else { // its value is false
+            return false;
+         };
+
+
+      } else { // commandPermission overrides doesn't exist for this channel
+
+
+         if (commandPermissions.find(commandPermission => commandPermission.id === AllChannels)) { // commandPermission overrides exists for AllChannels
+
+            if (commandPermissions.find(commandPermission => commandPermission.id === AllChannels).permission) { // value is true
+               return checkUserRolePermissions();
+
+            } else { // value is false
+               return false;
+            };
+
+
+         } else { // commandPermission overrides doesn't exist for AllChannels
+
+
+            if (applicationPermissions.find(applicationPermission => applicationPermission.id === channel.id)) { // applicationPermission overrides exists for this channel
+
+
+               if (applicationPermissions.find(applicationPermission => applicationPermission.id === channel.id).permission) { // value is true
+                  return checkUserRolePermissions();
+
+               } else { // value is false
+                  return false;
+               };
+
+
+            } else { // applicationPermission overrides doesn't exist for this channel
+
+
+               if (applicationPermissions.find(applicationPermission => applicationPermission.id === AllChannels)) { // applicationPermission overrides exists for AllChannels
+
+
+                  if (applicationPermissions.find(applicationPermission => applicationPermission.id === AllChannels).permission) { // its value is true
+                     return checkUserRolePermissions();
+
+                  } else { // its value is false
+                     return false;
+                  };
+
+
+               } else { // applicationPermission overrides doesn't exist for AllChannels
+                  return checkUserRolePermissions();
+               };
+
+
+            };
+
+
+         };
+
+
+      };
+   };
+
+
+   // oh boy, here we go!!
+   return checkChannelPermissions();
 };

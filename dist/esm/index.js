@@ -16,12 +16,9 @@ import createCollectorExpirationTime from "../../src/functions/createCollectorEx
 import findSimilar from "../../src/functions/findSimilar.js";
 import formatPermissions from "../../src/functions/formatPermissions.js";
 import getNearestColourPaw from "../../src/functions/getNearestColourPaw.js";
-import help from "../../src/functions/help.js";
 import noop from "../../src/functions/noop.js";
 import number from "../../src/functions/number.js";
-import partialEmoji from "../../src/functions/partialEmoji.js";
 import partition from "../../src/functions/partition.js";
-import sendBotError from "../../src/functions/sendBotError.js";
 import set from "../../src/functions/set.js";
 import shuffle from "../../src/functions/shuffle.js";
 import statusInfo from "../../src/functions/statusInfo.js";
@@ -51,12 +48,9 @@ export {
    findSimilar,
    formatPermissions,
    getNearestColourPaw,
-   help,
    noop,
    number,
    partition,
-   partialEmoji,
-   sendBotError,
    set,
    shuffle,
    statusInfo,

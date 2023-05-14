@@ -16,12 +16,9 @@ const createCollectorExpirationTime = require("../../src/functions/createCollect
 const findSimilar = require("../../src/functions/findSimilar.js");
 const formatPermissions = require("../../src/functions/formatPermissions.js");
 const getNearestColourPaw = require("../../src/functions/getNearestColourPaw.js");
-const help = require("../../src/functions/help.js");
 const noop = require("../../src/functions/noop.js");
 const number = require("../../src/functions/number.js");
-const partialEmoji = require("../../src/functions/partialEmoji");
 const partition = require("../../src/functions/partition.js");
-const sendBotError = require("../../src/functions/sendBotError.js");
 const set = require("../../src/functions/set.js");
 const shuffle = require("../../src/functions/shuffle.js");
 const statusInfo = require("../../src/functions/statusInfo.js");
@@ -51,12 +48,9 @@ module.exports = {
    findSimilar,
    formatPermissions,
    getNearestColourPaw,
-   help,
    noop,
    number,
-   partialEmoji,
    partition,
-   sendBotError,
    set,
    shuffle,
    statusInfo,

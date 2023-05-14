@@ -66,7 +66,7 @@ module.exports = permissionsInput => {
       [PermissionFlagsBits.ReadMessageHistory]:     `Read Message History 📃`,
       [PermissionFlagsBits.SendTTSMessages]:        `Send Text-to-speech Messages 📣`,
       [PermissionFlagsBits.UseApplicationCommands]: `Use Application Commands 🤖`,
-      [0x0000040000000000]:                         `Send Voice Messages 🗣️`, // TODO: update when PermissionFlagsBits bit is available
+      [PermissionFlagsBits.SendVoiceMessages]:      `Send Voice Messages 🗣️`,
 
       // voice channel permissions
       [PermissionFlagsBits.Connect]:               `Connect 📲`,

@@ -426,3 +426,17 @@
 
 » builds   -^^,--,~
 › updated discord.js to v14.9.0 📦
+
+
+
+14/may/2023 - 1.23.0
+
+» features   -^^,--,~
+› checkChatInputCommandPermissions: updated to support new permission system (finally) ⬆️
+› formatPermissions: update to use new `PermissionFlagsBits.SendVoiceMessages`, instead of a literal bitfield ⬆️
+› help: removed, as it was *very* outdated/redundant 🗑️
+› partialEmoji: removed, as it already exists within discord.js 🗑️
+› sendBotError: removed, as it was (internally) deprecated 🗑️
+
+» builds   -^^,--,~
+› updated discord.js to v14.11.0 📦

@@ -58,14 +58,14 @@ export const url: RegExp;
 export function autoArray<T>(length: number, func: () => T): T[];
 
 /**
- * check if a member has permissions to use a (discord) chat-input application command ✅
+ * check if a member has permissions to use a (discord) chat-input application command 🔓
  * @param commandId id of the command to view permissions of 🔎
- * @param member check if this member has permissions to use this (discord) chat-input application command 👥
  * @param channel channel to check permissions against 💬
- * @param defaultMemberPermissions default member permissions for this (discord) chat-input application command 📃
+ * @param member member to check permissions against 👤
+ * @see https://cdn.discordapp.com/attachments/697138785317814292/1042878162901672048/flowchart-for-new-permissions.png
  * @returns whether this member has permissions to use this (discord) chat-input application command 📛
  */
-export async function checkChatInputCommandPermissions(commandId: string, member: import("discord.js").GuildMember, channel: import("discord.js").NewsChannel | import("discord.js").TextChannel | import("discord.js").VoiceChannel, defaultMemberPermissions?: import("discord.js").PermissionResolvable = 0n): Promise<boolean>;
+export async function checkChatInputCommandPermissions(commandId: string, channel: import("discord.js").GuildTextBasedChannel, member: import("discord.js").GuildMember): Promise<boolean>;
 
 /**
  * gets a random element from an array ❓
@@ -152,149 +152,6 @@ export function formatPermissions(permissionsInput: import("discord.js/typings")
 export function getNearestColourPaw(hex: string): string;
 
 /**
- * help usage utilities ❓
- */
-export namespace help {
-   /**
-    * get a random four-digit number string that can be used as a discord tag #️⃣
-    * @returns 🆔
-    */
-   export function getDiscriminator(): string;
-
-   /**
-    * get a discord snowflake 🆔
-    * @see https://discord.com/developers/docs/reference#snowflakes
-    * @returns {string} 🆔
-    */
-   export function getId(): string;
-
-   /**
-    * returns data that can be resolved into the following: `@user`, `username#tag`, `username`, `id` 👤
-    * @param user the command user 🗨️
-    * @returns `@user`, `username#tag`, `username`, `id` 🦊
-    */
-   export function userResolvable(user: import("discord.js").User): string;
-
-   /**
-    * returns data that can be resolved into the following: `@user` 🆔
-    * @param} user the command user 🗨️
-    * @returns `@user` 🦊
-    */
-   export function userMention(user: import("discord.js").User): string;
-
-   /**
-    * returns data that can be resolved into the following: `username#tag` 🆔
-    * @param user the command user 🗨️
-    * @returns `username#tag` 🦊
-    */
-   export function userTag(user: import("discord.js").User): string;
-
-   /**
-    * returns data that can be resolved into the following: `username` 🆔
-    * @param user the command user 🗨️
-    * @returns `username` 🦊
-    */
-   export function userUsername(user: import("discord.js").User): string;
-
-   /**
-    * returns data that can be resolved into the following: `@role`, `role name`, `id` 🆔
-    * @param roles this guild's roles, if there is a guild 🗨️
-    * @returns `@role`, `role name`, `id` 🦊
-    */
-   export function roleResolvable(roles?: import("discord.js").Collection<import("discord.js").Snowflake, import("discord.js").Role>): string;
-
-   /**
-    * returns data that can be resolved into the following: `@role` 🆔
-    * @param roles this guild's roles, if there is a guild 🗨️
-    * @returns `@role` 🦊
-    */
-   export function roleMention(roles?: import("discord.js").Collection<import("discord.js").Snowflake, import("discord.js").Role>): string;
-
-   /**
-    * returns data that can be resolved into the following: `role name` 🆔
-    * @param roles this guild's roles, if there is a guild 🗨️
-    * @returns `role name` 🦊
-    */
-   export function roleName(roles?: import("discord.js").Collection<import("discord.js").Snowflake, import("discord.js").Role>): string;
-
-   /**
-    * returns data that can be resolved into the following: `text channel name` 🆔
-    * @param channels this guild's channels, if there is a guild 🗨️
-    * @returns `text channel name` 🦊
-    */
-   export function textChannel(channels?: import("discord.js").Collection<import("discord.js").Snowflake, import("discord.js").GuildChannel>): string;
-
-   /**
-    * returns data that can be resolved into the following: `voice channel name` 🆔
-    * @param channels this guild's channels, if there is a guild 🗨️
-    * @returns `voice channel name` 🦊
-    */
-   export function voiceChannel(channels?: import("discord.js").Collection<import("discord.js").Snowflake, import("discord.js").GuildChannel>): string;
-
-   /**
-    * returns data that can be resolved into the following: `category channel name` 🆔
-    * @param channels this guild's channels, if there is a guild 🗨️
-    * @returns `category channel name` 🦊
-    */
-   export function categoryChannel(channels?: import("discord.js").Collection<import("discord.js").Snowflake, import("discord.js").GuildChannel>): string;
-
-   /**
-    * boolean option 🗨️
-    * @returns 💻
-    */
-   export function boolean(): boolean;
-
-   /**
-    * returns a moderation reason 🗨️
-    * @param type type of moderation reason related to this command 📋
-    * @returns {string} 📃
-    */
-   export function moderationReason(type: "ban" | "kick" | "timeout" | "revoke-ban"): string;
-
-   /**
-    * from a @discord.js/Collection of `Command`s, get a command's possible autocomplete choices ✏️
-    * @param interaction this interaction 🗨️
-    * @param commands \@discord.js/Collection of `Command`s 📋
-    * @param commandName name of the command to get autocomplete choices from 🆔
-    * @returns array of strings of this command's possible autocomplete choices 📄
-    */
-   export function getAutocompleteChoices(interaction: import("discord.js").CommandInteraction, commands: import("discord.js").Collection<string, import("./command").Command>, commandName: string): Promise<string[]>;
-
-   /**
-    * from a @discord.js/Collection of `Command`s, get a random command 🗨️
-    * @param commands \@discord.js/Collection of `Command`s 📋
-    * @returns command name 📄
-    */
-   export function command(commands: import("discord.js").Collection<string, import("./command").Command>): string;
-
-   /**
-    * from a @discord.js/Collection of `Command`s, get a random command category 🗨️
-    * @param commands \@discord.js/Collection of `ApplicationCommand`s 📋
-    * @returns category name 📄
-    */
-   export function category(commands: import("discord.js").Collection<string, import("./command").Command>): string;
-
-   /**
-    * from a @discord.js/Collection of `Command`s, get a random command subcategory 🗨️
-    * @param commands \@discord.js/Collection of `ApplicationCommand`s 📋
-    * @returns subcategory name 📄
-    */
-   export function subcategory(commands: import("discord.js").Collection<string, import("./command").Command>): string;
-
-   /**
-    * random location string for command `/weather` 🌦️
-    * @returns ⛅
-    */
-   export function location(): string;
-
-   /**
-    * random string to translate to owo for command `/owo` 🦊
-    * @returns 💬
-    */
-   export function owo(): string;
-};
-
-/**
  * glorious no operation arrow function 💫
  * @example
  * () => {};
@@ -309,14 +166,6 @@ export function noop(): void;
 export function number(min: number, max: number): number;
 
 /**
- * get a partial emoji object with `id`, `name` and `animated` - perfect for message components! 🔁
- * @see https://discord.com/developers/docs/resources/emoji#emoji-object
- * @param emoji text emoji string to parse 🦊
- * @returns object that matches the discord api emoji format 📋
- */
-export function partialEmoji(emoji: string): { animated: boolean, name: string, id: string? };
-
-/**
  * similar to Array.filter(), except elements that don't pass the condition are returned too 🔁
  * @param array array to partition 📃
  * @param condition condition to evaluate for each element ❓
@@ -324,26 +173,6 @@ export function partialEmoji(emoji: string): { animated: boolean, name: string, 
  * @returns `Array[0]`: pass; `Array[1]`: fail - try destructuring them! 📄
  */
 export function partition<T>(array: T[], condition: (value?: T, index?: number, array?: T[]) => boolean): [ T[], T[] ];
-
-/**
- * send an error response ❗
- * @param interaction this interaction 🗨️
- * @param webhookData webhook to send this error to 📋
- * @param error the error that happened 📣
- * @param sendInteractionResponse whether to use the interaction to show an error (to the user) or not 🗯️
- * @returns an error sent to the webhook, plus a response to the user if specified 📋
- */
-export async function sendBotError(interaction: import("discord.js").BaseInteraction, webhookData: import("discord.js").WebhookClientData, error: Error, sendInteractionResponse?: boolean=true): Promise<void>;
-
-/**
- * send an error response ❗
- * @param interaction this interaction 🗨️
- * @param webhookData webhook to send this error to 📋
- * @param error the error that happened 📣
- * @param sendInteractionResponse whether to use the interaction to show an error (to the user) or not 🗯️
- * @returns an error sent to the webhook, plus a response to the user if specified 📋
- */
-export async function sendBotError(interaction: string, webhookData: import("discord.js").WebhookClientData, error: Error): Promise<void>;
 
 /**
  * remove duplicates from an array of values 📤
