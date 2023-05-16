@@ -16,7 +16,7 @@ module.exports = {
    "flooded_area": "<:flooded_area:995461994989756526>",
 
    "furry_pride":  "<:furry_pride:797613808147365898>",
-   "rainbow_flag": "<:rainbow_flag:792165589526904832>",
+   "rainbow_flag": "<:rainbow_flag:1108130986723651664>",
 
    "rabbit":            "<:rabbit:874677500679192606>",
    "fox":               "<:fox:792165588180795414>",
@@ -167,8 +167,12 @@ module.exports = {
    "credit_card": "<:credit_card:924394512065892412>",
    "moneybag":    "<:moneybag:924394645419618344>",
 
+   "star":             "<:star:1108126469663752242>",
    "sparkles":         "<:sparkles:924397913667416135>",
    "two_hearts_orbit": "<:two_hearts_orbit:957751136021000252>",
+
+   "shark_think":  "<:shark_think:1108127834838409256>",
+   "trainsgender": "<:trainsgender:1108127888307404891>",
 
 
    "awoo":        [ "<:awoo:704359905502560257>", "<:awoo:809131060930936933>" ],

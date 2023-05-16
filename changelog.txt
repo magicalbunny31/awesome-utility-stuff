@@ -440,3 +440,11 @@
 
 » builds   -^^,--,~
 › updated discord.js to v14.11.0 📦
+
+
+
+16/may/2023 - 1.23.1
+
+» features   -^^,--,~
+› emojis: added emojis 🦊
+› emojis: updated :rainbow_flag: 🏳️‍🌈
