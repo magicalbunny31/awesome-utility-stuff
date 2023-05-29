@@ -448,3 +448,10 @@
 » features   -^^,--,~
 › emojis: added emojis 🦊
 › emojis: updated :rainbow_flag: 🏳️‍🌈
+
+
+
+29/may/2023 - 1.23.2
+
+» features   -^^,--,~
+› emojis: updated emojis 🦊
