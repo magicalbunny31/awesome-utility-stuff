@@ -455,3 +455,10 @@
 
 » features   -^^,--,~
 › emojis: updated emojis 🦊
+
+
+
+12/jun/2023 - 1.23.3
+
+» features   -^^,--,~
+› colours: add spaced_out 🛰️

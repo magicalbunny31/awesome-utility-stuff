@@ -19,5 +19,6 @@ module.exports = {
    fennec: 0xffd995,
 
    berry_bot: 0x0f87f0,
-   flooded_area: 0x4de94c
+   flooded_area: 0x4de94c,
+   spaced_out: 0x401f91
 };
