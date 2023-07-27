@@ -9,17 +9,6 @@
 // data
 
 /**
- * bad boys bad boys 🦊💬
- *
- * whatcha gunna do 🦊💬
- *
- * whatcha gunna do when they cum for you 🦊💬
- *
- * @returns list of *bad* words hehe 📜
- */
-export const badWords: typeof import("../src/data/badWords.js");
-
-/**
  * colours that i use more than once across all projects 🎨
  */
 export const colours: typeof import("../src/data/colours.js");
@@ -93,14 +82,31 @@ export function choice<T>(array: T[], choices: number): T[];
 export function createCollectorExpirationTime(timestamp: number): number;
 
 /**
+ * defer `Discord.ActionRow` `Discord.Component`s on a `Discord.Message` 💭
+ * @param customId custom_id of a `Discord.Component` to display as deferred 🚩
+ * @param components `Discord.Component`s (in `Discord.ActionRow`s) to defer 🔘
+ * @returns deferred `Discord.Component`s (in `Discord.ActionRow`s) ✅
+ */
+export function deferComponents(customId: string, components: import("discord.js").ActionRow[]): import("discord.js").ActionRow[];
+
+/**
+ * defer `Discord.ActionRow` `Discord.Component`s on a `Discord.Message` 💭
+ * @param customId custom_id of a `Discord.Component` to display as deferred 🚩
+ * @param values default option values of the select menu 📋
+ * @param components `Discord.Component`s (in `Discord.ActionRow`s) to defer 🔘
+ * @returns deferred `Discord.Component`s (in `Discord.ActionRow`s) ✅
+ */
+export function deferComponents(customId: string, values: string[], components: import("discord.js").ActionRow[]): import("discord.js").ActionRow[];
+
+/**
  * find similar strings/objects based off of a string 📋
  *
- * this is compared off aceakash's string-similarity, see link 👤
+ * this uses aceakash's string-similarity, see link 👤
  * @see https://github.com/aceakash/string-similarity 🔗
  * @param query string to query 📄
  * @param targets target array 📃
  * @param settings settings to include 🔧
- * @returns array of results of the targets sorted in similarity
+ * @returns array of results of the targets sorted in similarity 📜
  */
 export function findSimilar(query: string, targets: string[], settings: {
    /** max amounts of results to return 🔢 */
@@ -113,12 +119,12 @@ export function findSimilar(query: string, targets: string[], settings: {
 /**
  * find similar strings/objects based off of a string 📋
  *
- * this is compared off aceakash's string-similarity, see link 👤
+ * this uses aceakash's string-similarity, see link 👤
  * @see https://github.com/aceakash/string-similarity 🔗
  * @param query string to query 📄
  * @param targets target array 📃
  * @param settings settings to include 🔧
- * @returns array of results of the targets sorted in similarity
+ * @returns array of results of the targets sorted in similarity 📜
  */
 export function findSimilar<T>(query: string, targets: T[], settings: {
    /** for an array of objects, the key of the object to access for the string 💬 */

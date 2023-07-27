@@ -461,4 +461,17 @@
 12/jun/2023 - 1.23.3
 
 » features   -^^,--,~
-› colours: add spaced_out 🛰️
+› colours: add spaced_out 🌌
+
+
+
+27/jul/2023 - 1.24.0
+
+» features   -^^,--,~
+› added deferComponents 💭
+› removed badWords 📜
+› findSimilar: updated to only display results that contain the query string 📋
+
+» styles​ ​ ​ -^^,--,~
+› findSimilar: updated types 📄
+› findSimilar: data validation displaying error from `choice` instead of `findSimilar` ⚠️

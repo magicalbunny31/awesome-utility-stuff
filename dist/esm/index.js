@@ -2,7 +2,6 @@
 /* nothing to see here.. */
 
 // data
-import badWords from "../../src/data/badWords.js";
 import colours from "../../src/data/colours.js";
 import emoji from "../../src/data/emoji.js";
 import emojis from "../../src/data/emojis.js";
@@ -13,6 +12,7 @@ import autoArray from "../../src/functions/autoArray.js";
 import checkChatInputCommandPermissions from "../../src/functions/checkChatInputCommandPermissions.js";
 import choice from "../../src/functions/choice.js";
 import createCollectorExpirationTime from "../../src/functions/createCollectorExpirationTime.js";
+import deferComponents from "../../src/functions/deferComponents.js";
 import findSimilar from "../../src/functions/findSimilar.js";
 import formatPermissions from "../../src/functions/formatPermissions.js";
 import getNearestColourPaw from "../../src/functions/getNearestColourPaw.js";
@@ -34,7 +34,6 @@ export {
    /* nothing to see here.. */
 
    // data
-   badWords,
    colours,
    emoji,
    emojis,
@@ -45,6 +44,7 @@ export {
    checkChatInputCommandPermissions,
    choice,
    createCollectorExpirationTime,
+   deferComponents,
    findSimilar,
    formatPermissions,
    getNearestColourPaw,

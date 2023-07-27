@@ -1,7 +1,7 @@
 /**
  * find similar strings/objects based off of a string 📋
  *
- * this is compared off aceakash's string-similarity, see link 👤
+ * this uses aceakash's string-similarity, see link 👤
  * @see https://github.com/aceakash/string-similarity 🔗
  * @param {string} query string to query 📄
  * @param {(string | object)[]} targets target array 📃
@@ -9,7 +9,7 @@
  * @param {string} settings.key for an array of objects, the key of the object to access for the string 💬
  * @param {number} settings.limit max amounts of results to return 🔢
  * @param {number} settings.minScore filter out results with a score below this target 🗯️
- * @returns {{ score: number, [target | object]: string | T }[]} array of results of the targets sorted in similarity
+ * @returns {{ score: number, [target | object]: string | T }[]} array of results of the targets sorted in similarity 📜
  */
 module.exports = (query, targets, settings = {}) => {
    // data validation
@@ -17,11 +17,7 @@ module.exports = (query, targets, settings = {}) => {
       throw new TypeError(`@magicalbunny31/awesome-utility-stuff › findSimilar: not a valid \`query\` parameter value ⚠️`);
 
    if (!(targets.every(target => typeof target === `string`) || targets.every(target => typeof target === `object`)))
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › choice: not a valid \`targets\` parameter value ⚠️`);
-
-
-   // results array
-   const results = [];
+      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › findSimilar: not a valid \`targets\` parameter value ⚠️`);
 
 
    // function to compare two strings
@@ -71,34 +67,37 @@ module.exports = (query, targets, settings = {}) => {
    };
 
 
-   // loop each of the targets
-   for (const element of targets) {
-      // the target to use
-      const target = settings.key
-         ? element[settings.key]
-         : element;
+   // results array
+   const results = targets
+      .filter(element => {
+         // the target to use
+         const target = settings.key
+            ? element[settings.key]
+            : element;
 
-      // get a score of those matches
-      const score = compareStrings(query, target);
+         // check if this target is included in the query
+         return target.toLowerCase().includes(query.toLowerCase());
+      })
+      .map(element => {
+         // the target to use
+         const target = settings.key
+            ? element[settings.key]
+            : element;
 
-      // score is below minScore
-      if (score < settings.minScore || 0)
-         continue;
+         // get a score of those matches
+         const score = compareStrings(query, target);
 
-      // push to the results
-      results.push({
-         score,
-         [settings.key ? `object` : `target`]: element
-      });
-   };
-
-
-   // sort these results in the order of their score
-   const sortedResults = results.sort((a, b) => b.score - a.score);
+         // map these scores
+         return {
+            score,
+            [settings.key ? `object` : `target`]: element
+         };
+      })
+      .sort((resultA, resultB) => resultB.score - resultA.score);
 
 
    // return these results
    return settings.limit
-      ? sortedResults.slice(0, settings.limit) // if a limit was specified, slice the results array
-      : sortedResults;
+      ? results.slice(0, settings.limit) // if a limit was specified, slice the results array
+      : results;
 };

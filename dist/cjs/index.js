@@ -2,7 +2,6 @@
 /* nothing to see here.. */
 
 // data
-const badWords = require("../../src/data/badWords.js");
 const colours = require("../../src/data/colours.js");
 const emoji = require("../../src/data/emoji.js");
 const emojis = require("../../src/data/emojis.js");
@@ -13,6 +12,7 @@ const autoArray = require("../../src/functions/autoArray.js");
 const checkChatInputCommandPermissions = require("../../src/functions/checkChatInputCommandPermissions.js");
 const choice = require("../../src/functions/choice.js");
 const createCollectorExpirationTime = require("../../src/functions/createCollectorExpirationTime.js");
+const deferComponents = require("../../src/functions/deferComponents.js");
 const findSimilar = require("../../src/functions/findSimilar.js");
 const formatPermissions = require("../../src/functions/formatPermissions.js");
 const getNearestColourPaw = require("../../src/functions/getNearestColourPaw.js");
@@ -34,7 +34,6 @@ module.exports = {
    /* nothing to see here.. */
 
    // data
-   badWords,
    colours,
    emoji,
    emojis,
@@ -45,6 +44,7 @@ module.exports = {
    checkChatInputCommandPermissions,
    choice,
    createCollectorExpirationTime,
+   deferComponents,
    findSimilar,
    formatPermissions,
    getNearestColourPaw,
