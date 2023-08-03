@@ -8,12 +8,22 @@ module.exports = {
    "bun":          "<:bun:898586051994615879>",
    "bun_paw_wave": "<:bun_paw_wave:792165588436385802>",
 
+
    "fox_kit":      "<:fox_kit:898586067601621102>",
    "fox_paw_wave": "<:fox_paw_wave:848198115148169237>",
 
+
    "fox_bot": "<:fox_bot:964995656278224967>",
 
-   "flooded_area": "<:flooded_area:995461994989756526>",
+
+   "flooded_area":         "<:flooded_area:995461994989756526>",
+   "area_communities_bot": "<:area_communities_bot:1135719948224843856>",
+
+   "currency_shopkeeper_bunny":  "<:currency_shopkeeper_bunny:1136538004329091082>",
+   "currency_shopkeeper_halo":   "<:currency_shopkeeper_halo:1136538010356293723>",
+   "currency_shopkeeper_ruby":   "<:currency_shopkeeper_ruby:1136538067063287848>",
+   "currency_shopkeeper_deerie": "<:currency_shopkeeper_deerie:1136538082875817986>",
+
 
    "furry_pride":  "<:furry_pride:797613808147365898>",
    "rainbow_flag": "<:rainbow_flag:1108130986723651664>",
@@ -23,9 +33,11 @@ module.exports = {
    "wolf":              "<:wolf:945731994233471016>",
    "deer_with_antlers": "<:deer_with_antlers:945732149359812648>",
 
+
    "yes":    "<:yes:792173102146519051>",
    "no":     "<:no:792173102377205811>",
    "naught": "<:naught:913945492092772363>",
+
 
    "discord":       "<:discord:886360841769844766>",
    "loading":       "<a:loading:701942569210478623>",
@@ -83,6 +95,7 @@ module.exports = {
    "Discord_certified_moderator": "<a:Discord_certified_moderator:925138043374039151>",
    "Discord_bug_hunter_level_1":  "<a:Discord_bug_hunter_level_1:925138043399188540>",
    "Discord_bug_hunter_level_2":  "<a:Discord_bug_hunter_level_2:925138172172701716>",
+
 
    "nodejs":    "<:nodejs:898724888993493063>",
    "npm":       "<:npm:898724889022832690>",

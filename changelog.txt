@@ -475,3 +475,13 @@
 » styles​ ​ ​ -^^,--,~
 › findSimilar: updated types 📄
 › findSimilar: data validation displaying error from `choice` instead of `findSimilar` ⚠️
+
+
+
+03/aug/2023 - 1.24.1
+
+» features   -^^,--,~
+› emojis: added emojis 🦊
+
+» builds   -^^,--,~
+› updated discord.js to v14.12.1 📦
