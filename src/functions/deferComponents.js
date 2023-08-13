@@ -8,23 +8,12 @@
 module.exports = (customId, valuesOrComponents, components) => {
    // imports
    const { emojis } = require("../../");
-   const { ActionRow, BaseSelectMenuComponent, ButtonComponent, parseEmoji } = require("discord.js");
+   const { BaseSelectMenuComponent, ButtonComponent, parseEmoji } = require("discord.js");
 
 
    // parameters
    const values          = components ? valuesOrComponents : undefined;
    const deferComponents = components || valuesOrComponents;
-
-
-   // data validation
-   if (typeof customId !== `string`)
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › deferComponents: not a valid \`customId\` parameter value ⚠️`);
-
-   if (values && !values.every(value => typeof value === `string` || value instanceof String))
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › deferComponents: not a valid \`values\` parameter value ⚠️`);
-
-   if (!deferComponents.every(component => component instanceof ActionRow))
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › deferComponents: not a valid \`components\` parameter value ⚠️`);
 
 
    // find indexes

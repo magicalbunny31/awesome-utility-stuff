@@ -9,11 +9,6 @@ module.exports = hex => {
    const { from: nearestColourFrom } = require("nearest-color");
 
 
-   // data validation
-   if (typeof hex !== `string`)
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › getNearestColourPaw: not a valid \`hex\` parameter value ⚠️`);
-
-
    // colours
    const colours = {
       red:    `#f60000`,

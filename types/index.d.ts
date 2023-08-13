@@ -14,7 +14,7 @@
 export const colours: typeof import("../src/data/colours.js");
 
 /**
- * regular expression to match emojis in unicode 15.0 🦊
+ * my regular expression to match emojis in unicode 15.0 🦊
  * @returns regular expression to match emojis in unicode 15.0 🦊
  */
 export const emoji: RegExp;
@@ -71,15 +71,6 @@ export function choice<T>(array: T[]): T;
  * @returns an element of that array 📄
  */
 export function choice<T>(array: T[], choices: number): T[];
-
-/**
- * creates a discord.js MessageComponentCollector expiration time from a timestamp ⏳
- *
- * this time will be roughly when the interaction's token invalidates ❌
- * @param timestamp timestamp (in ms) of the interaction ⌚
- * @returns period of time in 15 minutes from the timestamp but minus 3 seconds for good measure owo 🕑
- */
-export function createCollectorExpirationTime(timestamp: number): number;
 
 /**
  * defer `Discord.ActionRow` `Discord.Component`s on a `Discord.Message` 💭
@@ -193,14 +184,6 @@ export function set<T>(array: T[]): T[];
  * @returns a shuffled version of the inputted array 📋
  */
 export function shuffle<T>(array: T[]): T[];
-
-/**
- * covers info on http status codes 📋
- * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Status 🔗
- * @param statusCode status code to view info on #️⃣
- * @returns some awesome status info 🗨️
- */
-export function statusInfo(statusCode: string | number): StatusInfo;
 
 /**
  * strips indents off a string 🔨

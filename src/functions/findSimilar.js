@@ -12,14 +12,6 @@
  * @returns {{ score: number, [target | object]: string | T }[]} array of results of the targets sorted in similarity 📜
  */
 module.exports = (query, targets, settings = {}) => {
-   // data validation
-   if (typeof query !== `string`)
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › findSimilar: not a valid \`query\` parameter value ⚠️`);
-
-   if (!(targets.every(target => typeof target === `string`) || targets.every(target => typeof target === `object`)))
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › findSimilar: not a valid \`targets\` parameter value ⚠️`);
-
-
    // function to compare two strings
    const compareStrings = (query, target) => {
       // get rid of whitespace characters

@@ -16,18 +16,7 @@
  */
 module.exports = async (commandId, channel, member) => {
    // imports
-   const Discord = require("discord.js");
-
-
-   // data validation
-   if (typeof commandId !== `string`)
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › checkChatInputCommandPermissions: not a valid \`commandId\` parameter value ⚠️`);
-
-   if (![ Discord.ChannelType.GuildAnnouncement, Discord.ChannelType.GuildStageVoice, Discord.ChannelType.GuildText, Discord.ChannelType.PrivateThread, Discord.ChannelType.PublicThread, Discord.ChannelType.GuildVoice ].includes(channel.type))
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › checkChatInputCommandPermissions: not a valid \`channel\` parameter value ⚠️`);
-
-   if (!member instanceof Discord.GuildMember)
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › checkChatInputCommandPermissions: not a valid \`member\` parameter value ⚠️`);
+   const { PermissionFlagsBits } = require("discord.js");
 
 
    // this client
@@ -88,7 +77,7 @@ module.exports = async (commandId, channel, member) => {
 
 
    // this member has administrator permissions: they're granted explicit permissions to use the command
-   if (member.permissions.has(Discord.PermissionFlagsBits.Administrator))
+   if (member.permissions.has(PermissionFlagsBits.Administrator))
       return true;
 
 

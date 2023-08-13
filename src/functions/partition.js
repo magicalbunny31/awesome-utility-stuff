@@ -6,14 +6,6 @@
  * @returns {[ T[], T[] ]} Array[0]: pass; Array[1]: fail - try destructuring them! 📄
  */
 module.exports = (array, condition) => {
-   // data validation
-   if (!Array.isArray(array))
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › partition: not a valid \`array\` parameter value ⚠️`);
-
-   if (typeof condition !== `function`)
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › partition: not a valid \`condition\` parameter value ⚠️`);
-
-
    // partition the array
    return array.reduce(([ pass, fail ], element) =>
       condition(element) ? [[ ...pass, element ], fail ] : [ pass, [ ...fail, element ]],

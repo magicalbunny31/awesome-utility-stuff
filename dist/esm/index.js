@@ -11,7 +11,6 @@ import url from "../../src/data/url.js";
 import autoArray from "../../src/functions/autoArray.js";
 import checkChatInputCommandPermissions from "../../src/functions/checkChatInputCommandPermissions.js";
 import choice from "../../src/functions/choice.js";
-import createCollectorExpirationTime from "../../src/functions/createCollectorExpirationTime.js";
 import deferComponents from "../../src/functions/deferComponents.js";
 import findSimilar from "../../src/functions/findSimilar.js";
 import formatPermissions from "../../src/functions/formatPermissions.js";
@@ -21,11 +20,8 @@ import number from "../../src/functions/number.js";
 import partition from "../../src/functions/partition.js";
 import set from "../../src/functions/set.js";
 import shuffle from "../../src/functions/shuffle.js";
-import statusInfo from "../../src/functions/statusInfo.js";
 import strip from "../../src/functions/strip.js";
 import sum from "../../src/functions/sum.js";
-import toDecimal from "../../src/functions/toDecimal.js";
-import toHexadecimal from "../../src/functions/toHexadecimal.js";
 import wait from "../../src/functions/wait.js";
 
 
@@ -43,7 +39,6 @@ export {
    autoArray,
    checkChatInputCommandPermissions,
    choice,
-   createCollectorExpirationTime,
    deferComponents,
    findSimilar,
    formatPermissions,
@@ -53,10 +48,7 @@ export {
    partition,
    set,
    shuffle,
-   statusInfo,
    strip,
    sum,
-   toDecimal,
-   toHexadecimal,
    wait
 };

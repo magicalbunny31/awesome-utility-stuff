@@ -5,11 +5,6 @@
  * @returns {T} sum of the array 📩
  */
 module.exports = (array, initialValue) => {
-   // data validation
-   if (!Array.isArray(array))
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › sum: not a valid \`array\` parameter value ⚠️`);
-
-
    // reduce the array
    return array.reduce((accumulator, current) => accumulator + current, initialValue ?? 0);
 };

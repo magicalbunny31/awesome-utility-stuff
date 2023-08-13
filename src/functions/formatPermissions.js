@@ -15,15 +15,6 @@ module.exports = permissionsInput => {
    const { PermissionFlagsBits } = require("discord.js");
 
 
-   // data validation
-   if (
-      Array.isArray(permissionsInput)
-         ? !permissionsInput.every(permission => typeof permission === `bigint`)
-         : ![ `number`, `bigint` ].includes(typeof permissionsInput)
-   )
-      throw new TypeError(`@magicalbunny31/awesome-utility-stuff › formatPermissions: not a valid \`permissionsInput\` parameter value ⚠️`);
-
-
    // get the permissionsInput as a BigInt
    const permissions = Array.isArray(permissionsInput)
       ? sum(permissionsInput, 0n)

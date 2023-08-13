@@ -485,3 +485,24 @@
 
 » builds   -^^,--,~
 › updated discord.js to v14.12.1 📦
+
+
+
+13/aug/2023 - 1.25.0
+
+» features   -^^,--,~
+› removed dependabot 🤖
+› destructure all imports 📦
+› removed data validation 📋
+› removed createCollectorExpirationTime ⏳
+› removed statusInfo 🔗
+› removed toDecimal ➡️
+› removed toHexadecimal ➡️
+
+» code refactoring   -^^,--,~
+› emoji: make jsdoc comments consistent 💬
+› remove redundant types file command.d.ts 🗑️
+
+» builds   -^^,--,~
+› updated node.js to v16.11.0 📦
+› removed color 📦
