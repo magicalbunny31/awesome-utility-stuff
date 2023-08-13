@@ -6,7 +6,7 @@ that's it 🐰🦊🐺🦌
 
 ## installation 💻
 
-📦 **dependencies require [Node.js](https://nodejs.org "https://nodejs.org 🔗") >=16.9.0 installed!**
+📦 **dependencies require [Node.js](https://nodejs.org "https://nodejs.org 🔗") >=16.11.0 installed!**
 
 💻 you can then install this repository via [npm](https://www.npmjs.com "https://www.npmjs.com 🔗"), [pnpm](https://pnpm.io "https://pnpm.io 🔗") or [yarn](https://yarnpkg.com "https://yarnpkg.com 🔗")~
 
