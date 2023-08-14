@@ -506,3 +506,10 @@
 » builds   -^^,--,~
 › updated node.js to v16.11.0 📦
 › removed color 📦
+
+
+
+14/aug/2023 - 1.25.1
+
+» features   -^^,--,~
+› emojis: added emojis 🦊

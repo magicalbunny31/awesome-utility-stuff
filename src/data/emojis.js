@@ -139,6 +139,7 @@ module.exports = {
    "special_characters":    "<:special_characters:889290261161734154>",
    "magnifying_glass_left": "<:magnifying_glass_left:924388808244486254>",
    "stylus":                "<:stylus:1010695618823471185>",
+   "siren":                 "<:siren:1140620855412523008>",
 
    "speaker_medium_volume": "<:speaker_medium_volume:861636339219824660>",
    "speaker_muted":         "<:speaker_muted:886043910823104532>",
