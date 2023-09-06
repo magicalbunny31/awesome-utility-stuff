@@ -513,3 +513,10 @@
 
 » features   -^^,--,~
 › emojis: added emojis 🦊
+
+
+
+06/sep/2023 - 1.25.2
+
+» features   -^^,--,~
+› emojis: updated emojis 🦊

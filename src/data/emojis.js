@@ -42,8 +42,10 @@ module.exports = {
    "discord":       "<:discord:886360841769844766>",
    "loading":       "<a:loading:701942569210478623>",
    "typing":        "<a:typing:905237955428352000>",
-   "slash_command": "<:slash_command:898355158403149824>",
    "fancy_typing":  "<a:fancy_typing:898371553920684032>",
+
+   "slash_command": "<a:slash_command:1148866611227414568>",
+   "context_menu_command": "<a:context_menu_command:1148866148696346654>",
 
    "online":  "<a:online:1092880977166094446>",
    "idle":    "<a:idle:1092880981662376026>",
@@ -63,7 +65,7 @@ module.exports = {
    "stage_channel": "<a:stage_channel:916395583722373190>",
 
    "scheduled_events": "<a:scheduled_events:1097420136287305759>",
-   "active_threads":   "<a:active_threads:916395583642669146>",
+   "active_threads":   "<a:active_threads:1148867485727207504>",
    "category_channel": "<a:category_channel:916395583663669318>",
    "rules_channel":    "<a:rules_channel:916395583663669319>",
 
