@@ -36,6 +36,9 @@ module.exports = {
    "no":     "<:no:792173102377205811>",
    "naught": "<:naught:913945492092772363>",
 
+   "no_entry":   "<a:no:1152643550564077619>",
+   "green_tick": "<a:green_tick:1152643690481852599>",
+
 
    "loading":       "<a:loading:701942569210478623>",
    "typing":        "<a:typing:905237955428352000>",

@@ -537,3 +537,10 @@
 
 » features   -^^,--,~
 › emojis: updated emojis 🦊
+
+
+
+16/sep/2023 - 1.25.5
+
+» features   -^^,--,~
+› emojis: updated emojis 🦊
