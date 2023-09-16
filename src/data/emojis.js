@@ -5,19 +5,17 @@
  * @returns {string} an emoji in the format <a:name:id> or <:name:id> 🗨️
  */
 module.exports = {
-   "bun":          "<:bun:898586051994615879>",
+   "fox_bot":              "<:fox_bot:964995656278224967>",
+   "bun":                  "<:bun:898586051994615879>",
+   "aviator_handbook":     "<:aviator_handbook:1152636507325206558>",
+   "fox_kit":              "<:fox_kit:898586067601621102>",
+   "fennec":               "<:fennec:1152637078924951614>",
+   "area_communities_bot": "<:area_communities_bot:1135719948224843856>",
+
    "bun_paw_wave": "<:bun_paw_wave:792165588436385802>",
-
-
-   "fox_kit":      "<:fox_kit:898586067601621102>",
    "fox_paw_wave": "<:fox_paw_wave:848198115148169237>",
 
-
-   "fox_bot": "<:fox_bot:964995656278224967>",
-
-
-   "flooded_area":         "<:flooded_area:995461994989756526>",
-   "area_communities_bot": "<:area_communities_bot:1135719948224843856>",
+   "flooded_area": "<:flooded_area:995461994989756526>",
 
    "currency_shopkeeper_bunny":  "<:currency_shopkeeper_bunny:1136538004329091082>",
    "currency_shopkeeper_halo":   "<:currency_shopkeeper_halo:1136538010356293723>",

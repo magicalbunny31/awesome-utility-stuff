@@ -530,3 +530,10 @@
 
 » builds   -^^,--,~
 › updated discord.js to v14.13.0 📦
+
+
+
+16/sep/2023 - 1.25.4
+
+» features   -^^,--,~
+› emojis: updated emojis 🦊
