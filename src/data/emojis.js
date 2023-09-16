@@ -39,7 +39,6 @@ module.exports = {
    "naught": "<:naught:913945492092772363>",
 
 
-   "discord":       "<:discord:886360841769844766>",
    "loading":       "<a:loading:701942569210478623>",
    "typing":        "<a:typing:905237955428352000>",
    "fancy_typing":  "<a:fancy_typing:898371553920684032>",
@@ -278,7 +277,10 @@ module.exports = {
    "pink_paws":   "<a:pink_paws:944006359433752588>",
 
 
+   "discord":  "<:discord:886360841769844766>",
    "twitter":  "<a:twitter:972926164643491900>",
    "telegram": "<a:telegram:972926164572176465>",
+   "ko_fi":    "<a:ko_fi:1152617917754658956>",
+   "top_gg":   "<a:top_gg:1152617873026600991>",
    "e621":     "<a:e621:1017479439380123748>"
 };
