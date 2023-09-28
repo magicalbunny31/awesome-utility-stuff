@@ -201,20 +201,6 @@ export function strip(str: strip): string;
 export function sum<T>(array: T[], initialValue?: any): T;
 
 /**
- * convert a colour to decimal format ➡️
- * @param colourToConvert colour to convert 🎨
- * @returns decimal number (integer) colour value 🎨
- */
-export function toDecimal(colourToConvert: typeof import("color")): number;
-
-/**
- * convert a colour to hexadecimal format ➡️
- * @param colourToConvert colour to convert 🎨
- * @returns hex string colour value 🎨
- */
-export function toHexadecimal(colourToConvert: typeof import("color")): string;
-
-/**
  * pretty much "pauses" asynchronous code ⏱️
  * @param delay ms delay to wait for 🔢
  * @returns a "pause" in the asynchronous code!! ⌚
