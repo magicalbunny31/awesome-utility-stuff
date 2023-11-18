@@ -47,10 +47,10 @@ module.exports = {
    "slash_command": "<a:slash_command:1148866611227414568>",
    "context_menu_command": "<a:context_menu_command:1148866148696346654>",
 
-   "online":  "<a:online:1092880977166094446>",
-   "idle":    "<a:idle:1092880981662376026>",
-   "dnd":     "<a:dnd:1092880983793078444>",
-   "offline": "<a:offline:1092880979569422367>",
+   "online":  "<a:online:1168303948462047344>",
+   "idle":    "<a:idle:1168303967537741887>",
+   "dnd":     "<a:dnd:1168303998017744986>",
+   "offline": "<a:offline:1175493190711791626>",
 
    "text_channel":         "<a:text_channel:916395583604949072>",
    "text_channel_limited": "<a:text_channel_limited:916395583609122826>",

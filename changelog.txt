@@ -551,3 +551,10 @@
 
 » features   -^^,--,~
 › removed redundant types in index.d.ts 🗑️
+
+
+
+18/nov/2023 - 1.25.7
+
+» features   -^^,--,~
+› emojis: updated emojis 🦊
