@@ -39,12 +39,31 @@ export const url: RegExp;
 // functions
 
 /**
+ * check if two arrays are equal 🔀
+ *
+ * this function won't work if the arrays contain [`Object`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)s ⚠️
+ * @param a array to compare 📃
+ * @param b array to compare 📃
+ * @returns `true` if these arrays are equal (and vice versa) ❓
+ */
+export function arraysEqual<A, B>(a: A, b: B): boolean;
+
+/**
  * automatically create an array with values filled via a function 🔁
  * @param length how long this array should be #️⃣
  * @param func function to run for each element of this array 📃
  * @returns array with values filled via a function 📄
  */
-export function autoArray<T>(length: number, func: () => T): T[];
+export function autoArray<T>(length: number, func: (value?: T, index?: number) => T): T[];
+
+/**
+ * check if the correct user responds to a MessageComponent and, if not, responds to it 📋
+ * @param expectedUser the user that should be able to interact with this MessageComponent 👤
+ * @param receivedUser the user that ended up interacting with this MessageComponent 👥
+ * @param interaction the interaction to respond to 💬
+ * @returns nothing, or the interaction responded to ✅
+ */
+export async function blockWrongUserMessageComponentInteraction(expectedUser: import("discord.js").User, receivedUser: import("discord.js").User, interaction: import("discord.js").MessageComponentInteraction): Promise<void>;
 
 /**
  * check if a member has permissions to use a (discord) chat-input application command 🔓
@@ -201,20 +220,15 @@ export function strip(str: strip): string;
 export function sum<T>(array: T[], initialValue?: any): T;
 
 /**
+ * function to try to fetch something or return undefined instead of throwing ⏱️
+ * @param promise the Promise to try 📂
+ * @returns the resolved Promise, or `undefined` if the Promise couldn't be resolved 📄
+ */
+export async function tryOrUndefined<T>(promise: T): T?;
+
+/**
  * pretty much "pauses" asynchronous code ⏱️
  * @param delay ms delay to wait for 🔢
  * @returns a "pause" in the asynchronous code!! ⌚
  */
 export async function wait(delay: number): Promise<void>;
-
-
-
-
-
-// types
-
-type StatusInfo = {
-   status: string | number;
-   statusText: string;
-   link: string;
-};

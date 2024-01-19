@@ -558,3 +558,18 @@
 
 » features   -^^,--,~
 › emojis: updated emojis 🦊
+
+
+
+17/jan/2024 - 1.25.8
+
+» features   -^^,--,~
+› added arraysEqual 🔀
+› added blockWrongUserMessageComponentInteraction 🗯️
+› added tryOrUndefined ⏱️
+› emojis: updated emojis 🦊
+› autoArray: add value and index parameters for the function ➕
+› index.d.ts: removed redundant types 🗑️
+
+» bug fixes   -^^,--,~
+› partition: fix index and array parameters not existing within the function ➕

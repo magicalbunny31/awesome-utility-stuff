@@ -7,8 +7,8 @@
  */
 module.exports = (array, condition) => {
    // partition the array
-   return array.reduce(([ pass, fail ], element) =>
-      condition(element) ? [[ ...pass, element ], fail ] : [ pass, [ ...fail, element ]],
+   return array.reduce(([ pass, fail ], element, index, array) =>
+      condition(element, index, array) ? [[ ...pass, element ], fail ] : [ pass, [ ...fail, element ]],
       [[], []]
    );
 };
