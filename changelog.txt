@@ -581,3 +581,10 @@
 » features   -^^,--,~
 › added formatBytes 📄
 › emojis: updated emojis 🦊
+
+
+
+20/may/2024 - 1.25.10
+
+» bug fixes   -^^,--,~
+› formatBytes: fix bytes defaulting to true 🔂
