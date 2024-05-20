@@ -148,6 +148,16 @@ export function findSimilar<T>(query: string, targets: T[], settings: {
 }): { score: number, object: T }[];
 
 /**
+ * format bytes into a human-readable string 📄
+ * @see https://stackoverflow.com/a/18650828 🔗
+ * @param bytes bytes to convert into a human-readable string 🔢
+ * @param useBytes set to `true` if you want to use mebi- (default `false`) 🔀
+ * @param decimals amount of decimal spaces to display in the human-readable string (default `2`) #️⃣
+ * @returns human-readable string 📄
+ */
+export function formatBytes<T>(bytes: number, useBytes: boolean = false, decimals: number = 2): string;
+
+/**
  * formats a permission to a readable string 📝
  * @see https://discord.com/developers/docs/topics/permissions#permissions-bitwise-permission-flags 🔗
  * @param permissions permission to format 🗨️

@@ -44,6 +44,10 @@ module.exports = {
    "typing":        "<a:typing:905237955428352000>",
    "fancy_typing":  "<a:fancy_typing:898371553920684032>",
 
+   "app":          "<a:app:1230583592233734178>",
+   "verified_app": "<a:verified_app:1230583590547361813>",
+
+   "shapes":               "<a:shapes:1230940373191364688>",
    "slash_command":        "<a:slash_command:1193174898546319471>",
    "context_menu_command": "<a:context_menu_command:1193174900052066444>",
 

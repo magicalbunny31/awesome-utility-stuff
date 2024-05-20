@@ -15,6 +15,7 @@ import checkChatInputCommandPermissions from "../../src/functions/checkChatInput
 import choice from "../../src/functions/choice.js";
 import deferComponents from "../../src/functions/deferComponents.js";
 import findSimilar from "../../src/functions/findSimilar.js";
+import formatBytes from "../../src/functions/formatBytes.js";
 import formatPermissions from "../../src/functions/formatPermissions.js";
 import getNearestColourPaw from "../../src/functions/getNearestColourPaw.js";
 import noop from "../../src/functions/noop.js";
@@ -46,6 +47,7 @@ export {
    choice,
    deferComponents,
    findSimilar,
+   formatBytes,
    formatPermissions,
    getNearestColourPaw,
    noop,

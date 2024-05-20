@@ -573,3 +573,11 @@
 
 » bug fixes   -^^,--,~
 › partition: fix index and array parameters not existing within the function ➕
+
+
+
+20/may/2024 - 1.25.9
+
+» features   -^^,--,~
+› added formatBytes 📄
+› emojis: updated emojis 🦊

@@ -15,6 +15,7 @@ const checkChatInputCommandPermissions = require("../../src/functions/checkChatI
 const choice = require("../../src/functions/choice.js");
 const deferComponents = require("../../src/functions/deferComponents.js");
 const findSimilar = require("../../src/functions/findSimilar.js");
+const formatBytes = require("../../src/functions/formatBytes.js");
 const formatPermissions = require("../../src/functions/formatPermissions.js");
 const getNearestColourPaw = require("../../src/functions/getNearestColourPaw.js");
 const noop = require("../../src/functions/noop.js");
@@ -46,6 +47,7 @@ module.exports = {
    choice,
    deferComponents,
    findSimilar,
+   formatBytes,
    formatPermissions,
    getNearestColourPaw,
    noop,
